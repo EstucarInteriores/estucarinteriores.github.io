@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Express – Particulares</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #c7745c; /* terracota */
+      --verde-oscuro: #4f6154;
+      --texto: #222222;
+      --gris-suave: #f5f5f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #ffffff;
+      color: var(--texto);
+      padding: 32px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 960px;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.08);
+      padding: 32px 40px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-top: 8px solid var(--accent);
+      pointer-events: none;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      height: 32px;
+      width: auto;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .brand-name .line1 {
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .brand-name .line2 {
+      font-size: 10px;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    h1 {
+      font-size: 26px;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .intro {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    ul {
+      list-style: none;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    ul li::before {
+      content: "– ";
+    }
+
+    .image-card {
+      background: #ffffff;
+      border-radius: 999px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 999px;
+      display: block;
+    }
+
+    .cta {
+      margin-top: 32px;
+    }
+
+    .cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #777;
+      text-align: right;
+    }
+
+    @media (max-width: 800px) {
+      .page {
+        padding: 24px 20px 28px;
+        border-radius: 18px;
+      }
+      main {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .image-card {
+        border-radius: 18px;
+      }
+      .image-card img {
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <header>
+      <div class="brand">
+        <img src="Fondo Blanco.png" alt="Estucar Interiores">
+        <div class="brand-name">
+          <span class="line1">ESTUCAR</span>
+          <span class="line2">INTERIORES</span>
+        </div>
+      </div>
+      <div class="tag">Portfolio express – Particulares</div>
+    </header>
+
+    <main>
+      <section>
+        <h1>Interiorismo para viviendas claras, equilibradas y vivibles.</h1>
+
+        <p class="intro">
+          Trabajo con personas que quieren sacar más partido a su casa: mejorar la distribución, ganar luz,
+          integrar mobiliario a medida o reformular la atmósfera completa con coherencia estética.
+          Defino soluciones pensadas para el día a día, fáciles de mantener y bien coordinadas con la obra.
+        </p>
+
+        <div class="section-title">Qué aporto</div>
+        <ul>
+          <li>Estudio de distribución para ganar amplitud, luz y orden.</li>
+          <li>Propuestas de mobiliario y almacenaje a medida adaptadas al espacio real.</li>
+          <li>Selección de materiales, colores y texturas coherentes con la arquitectura existente.</li>
+          <li>Iluminación planteada para uso real: zonas de estar, trabajo, lectura y circulación.</li>
+          <li>Documentación gráfica clara para poder ejecutar el proyecto sin improvisaciones.</li>
+        </ul>
+
+        <div class="cta">
+          <a href="https://www.estucarinteriores.com" target="_blank" rel="noopener noreferrer">
+            Ver más proyectos
+          </a>
+        </div>
+      </section>
+
+      <aside>
+        <div class="image-card">
+          <!-- aquí usas una de las imágenes que tienes en el repo -->
+          <img src="imgsalon-estucar.jpg" alt="Salón Estucar Interiores">
+        </div>
+      </aside>
+    </main>
+
+    <footer>ESTUDIO CARCABÓN</footer>
+
+  </div>
+
+</body>
+</html>
