@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pitch Particulares – Estucar Interiores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --terracota: #cf8b70;
+      --blanco: #ffffff;
+      --antracita: #3a3a3c;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px;
+      background: var(--terracota);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 1400px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+      padding: 40px 48px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* LOGO (icono + texto) */
+    .logo-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;  /* REDUCIDO (ANTES ERA 20px) */
+    }
+
+    .logo-header img {
+      height: 80px; /* mantenemos icono grande */
+      width: auto;
+      display: block;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;  /* más compacto */
+    }
+
+    .logo-text .line1 {
+      font-size: 25px;  /* REDUCIDO */
+      font-weight: 500;
+      letter-spacing: 0.17em;
+      color: var(--terracota);
+    }
+
+    .logo-text .line2 {
+      font-size: 13px;  /* REDUCIDO */
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--terracota);
+      margin-top: 4px;
+    }
+
+    .card-content {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .headline {
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--terracota);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--antracita);
+      margin-bottom: 16px;
+    }
+
+    .subheading {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--terracota);
+      margin-top: 18px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    ul li {
+      font-size: 14px;
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 6px;
+      color: var(--antracita);
+    }
+
+    ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--terracota);
+    }
+
+    .cta {
+      margin-top: 22px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 999px;
+      background: var(--terracota);
+      color: var(--blanco);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+    }
+
+    .image-block {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.16);
+    }
+
+    .image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracota);
+      font-weight: 500;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- LOGO SIN FONDO + TEXTO -->
+    <div class="logo-header">
+      <img src="Logo sin texto - mini - SIN fondo.png" alt="Estucar Logo">
+      <div class="logo-text">
+        <span class="line1">ESTUCAR</span>
+        <span class="line2">INTERIORES</span>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <div>
+        <div class="headline">
+          Interiores calmados, funcionales y pensados para vivir mejor.
+        </div>
+
+        <div class="body-text">
+          Trabajo el interiorismo desde la distribución, la luz y la proporción,
+          creando viviendas equilibradas y agradables de habitar.
+          Mi enfoque combina estética serena, orden visual y soluciones prácticas para el día a día.
+        </div>
+
+        <div class="subheading">Qué aporto</div>
+        <ul>
+          <li>Distribuciones claras y funcionales</li>
+          <li>Ambientes cálidos y coherentes</li>
+          <li>Acompañamiento completo: ideas, compras y montaje</li>
+          <li>Visualizaciones 3D para tomar decisiones con seguridad</li>
+        </ul>
+
+        <div class="cta">
+          <a
+            class="cta-button"
+            href="https://www.canva.com/design/DAG6pwAd1HY/QllK2uqbCvKY4ZhK47WtUg/view"
+            target="_blank">
+            Ver Portfolio Express – Particulares
+          </a>
+        </div>
+      </div>
+
+      <div class="image-block">
+        <img src="Ramón Patuel - Salón 2.jpg" alt="Salón Estucar Interiores" />
+      </div>
+    </div>
+
+    <div class="card-footer">Estudio Carcabón</div>
+
+  </div>
+
+</body>
+</html>
