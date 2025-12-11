@@ -8,7 +8,7 @@
 
   <style>
     :root {
-      --musgo: #808b86;   /* VERDE CORRECTO */
+      --musgo: #808b86;
       --blanco: #ffffff;
       --antracita: #3a3a3c;
     }
@@ -40,7 +40,6 @@
     .logo-header {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 22px;
       padding-left: 4px;
     }
@@ -49,8 +48,6 @@
       height: 72px;
       width: auto;
       display: block;
-      margin: 0;
-      padding: 0;
     }
 
     .logo-text {
@@ -167,6 +164,22 @@
       color: var(--musgo);
       font-weight: 500;
     }
+
+    /* 📱 MOBILE FIX — 1 columna */
+    @media (max-width: 900px) {
+      body { padding: 16px; }
+
+      .card {
+        max-width: 100%;
+        padding: 28px 20px 24px;
+      }
+
+      .card-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
   </style>
 </head>
 
@@ -174,7 +187,6 @@
 
   <div class="card">
 
-    <!-- LOGO -->
     <div class="logo-header">
       <img src="Logo sin texto - VERDE.png" alt="Estucar Interiores">
       <div class="logo-text">
@@ -208,7 +220,7 @@
 
         <div class="cta">
           <a class="cta-button"
-            href="https://www.canva.com/design/DAG6lPh__Z8/i2gtEUGdt9Tu1tJXW8E9bw/view?utm_content=DAG6lPh__Z8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h106a8f127d"
+            href="https://www.canva.com/design/DAG6lPh__Z8/i2gtEUGdt9Tu1tJXW8E9bw/view"
             target="_blank">
             Ver Portfolio Express – Profesionales
           </a>
@@ -216,7 +228,7 @@
       </div>
 
       <div class="image-block">
-	<img src="Recibidor.png" alt="Recibidor Estucar Interiores" />
+        <img src="Recibidor.png" alt="Recibidor Estucar Interiores" />
       </div>
     </div>
 
@@ -226,4 +238,3 @@
 
 </body>
 </html>
-
