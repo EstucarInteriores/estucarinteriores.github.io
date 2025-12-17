@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estucar Interiores – Tarjeta digital</title>
+
+  <!-- PREVIEW WHATSAPP / REDES -->
+  <meta property="og:title" content="Estucar Interiores – Estudio Carcabón">
+  <meta property="og:description" content="Interiorismo con criterio y soluciones bien pensadas. Distribución, diseño del espacio e iluminación para viviendas y proyectos profesionales.">
+  <meta property="og:image" content="https://estucarinteriores.github.io/preview-estucar.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://estucarinteriores.github.io/">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --terracota: #c7745c;
+      --verde: #808b86;
+      --antracita: #343434;
+      --blanco: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 32px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--antracita);
+      padding: 26px 28px 30px;
+      border-radius: 22px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      color: var(--blanco);
+    }
+
+    /* CABECERA */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-logo img {
+      width: 105px;
+      height: auto;
+      display: block;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.05;
+      margin-top: 4px;
+    }
+
+    .header-text .line1 {
+      font-size: 23px;
+      letter-spacing: 0.18em;
+      font-weight: 500;
+      color: var(--blanco);
+    }
+
+    .header-text .line2 {
+      font-size: 11px;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-top: 4px;
+    }
+
+    /* CLAIM */
+    .claim-1 {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.45;
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blanco);
+    }
+
+    .claim-2 {
+      font-size: 14px;
+      line-height: 1.7;
+      opacity: 0.95;
+      display: block;
+      color: var(--blanco);
+    }
+
+    /* BOTONES */
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 0;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      color: var(--blanco);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-terracota { background: var(--terracota); }
+    .btn-verde { background: var(--verde); }
+    .btn:hover { filter: brightness(1.1); }
+
+    .btn-icon {
+      height: 22px;
+      width: auto;
+      margin-right: 10px;
+      display: inline-block;
+      opacity: 0.95;
+    }
+
+    .divider {
+      margin: 18px 0 12px;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .contact {
+      font-size: 12px;
+      line-height: 1.65;
+      color: var(--blanco);
+    }
+
+    .contact strong {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact a {
+      color: var(--blanco);
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-align: right;
+    }
+
+    /* Mobile pequeño: que la tarjeta “respire” */
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px 18px 22px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="header">
+      <div class="header-logo">
+        <img src="logo-blanco.png" alt="Estucar Interiores">
+      </div>
+
+      <div class="header-text">
+        <span class="line1">ESTUCAR</span>
+        <span class="line2">INTERIORES</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="claim-1">Interiorismo con criterio arquitectónico.</span>
+      <span class="claim-2">
+        Distribución, diseño del espacio e iluminación para viviendas y proyectos profesionales.
+      </span>
+    </div>
+
+    <div class="buttons">
+      <!-- 👇 aquí forzamos versión nueva del pitch -->
+      <a class="btn btn-terracota" href="pitch-particulares-.html?v=5" target="_blank">
+        <img class="btn-icon" src="logo-blanco.png" alt="">
+        Particulares
+      </a>
+
+      <a class="btn btn-verde" href="pitch-profesionales.html?v=5" target="_blank">
+        <img class="btn-icon" src="logo-blanco.png" alt="">
+        Profesionales
+      </a>
+    </div>
+
+    <hr class="divider">
+
+    <div class="contact">
+      <strong>ESTUCAR INTERIORES (Estudio Carcabón)</strong>
+      Carmen Martínez Riesgo-Carcabón<br>
+      Web: <a href="https://www.estucarinteriores.com" target="_blank">www.estucarinteriores.com</a><br>
+      Email: <a href="mailto:contacto@estucarinteriores.com">contacto@estucarinteriores.com</a><br>
+      Tel./WhatsApp: +34 650 50 27 97
+    </div>
+
+    <div class="footer">ESTUDIO CARCABÓN</div>
+
+  </div>
+
+</body>
+</html>
