@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Estucar Interiores – Particulares</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --terracota:#c7745c;
+      --bg:#c7745c;
+      --card:#fbf7f4;
+      --text:#3a3a3c;
+      --line:rgba(58,58,60,.12);
+      --shadow:0 18px 45px rgba(0,0,0,.18);
+      --radius:24px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+
+    body{
+      font-family:"Montserrat",sans-serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .card{
+      width:100%;
+      max-width:1400px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:40px 48px 36px;
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+
+    /* LOGO (icono a la izquierda del nombre) */
+    .logo-header{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .logo-header img{
+      height:90px;
+      width:auto;
+      display:block;
+      flex:0 0 auto;
+    }
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .logo-text .line1{
+      font-size:30px;
+      font-weight:500;
+      letter-spacing:.18em;
+      color:var(--terracota);
+    }
+    .logo-text .line2{
+      font-size:14px;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      color:var(--terracota);
+      margin-top:6px;
+    }
+
+    /* GRID principal */
+    .card-content{
+      display:grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap:40px;
+      align-items:stretch; /* importante para poder centrar verticalmente la imagen */
+    }
+
+    .headline{
+      font-size:26px;
+      line-height:1.35;
+      color:var(--terracota);
+      font-weight:500;
+      margin-bottom:14px;
+      max-width:28ch;
+    }
+
+    .body-text{
+      font-size:15px;
+      line-height:1.75;
+      margin-bottom:14px;
+      max-width:72ch;
+    }
+
+    ul{ list-style:none; padding-left:0; }
+    ul li{
+      font-size:14px;
+      line-height:1.65;
+      padding-left:14px;
+      position:relative;
+      margin-bottom:6px;
+    }
+    ul li::before{
+      content:"–";
+      position:absolute;
+      left:0;
+      color:var(--terracota);
+    }
+
+    .benefits{
+      margin-top:12px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .benefit-title{
+      font-size:15px;
+      font-weight:500;
+      color:var(--terracota);
+      margin-bottom:6px;
+    }
+
+    /* COLUMNA DERECHA: centrado vertical */
+    .right{
+      display:flex;
+      align-items:center;   /* centra verticalmente respecto al bloque izquierdo */
+      justify-content:center;
+    }
+
+    .image-block{
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 16px 32px rgba(0,0,0,.16);
+      aspect-ratio: 4 / 3;    /* marco estable */
+      max-height:520px;
+    }
+    .image-block img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:50% 50%;
+      display:block;
+    }
+
+    /* DIVISOR y CTA a ancho completo (fuera del grid) */
+    .divider-full{
+      width:100%;
+      border-top:1px solid var(--line);
+      margin-top:4px;
+    }
+
+    .cta-full{
+      width:100%;
+      margin-top:14px;
+    }
+
+    .cta-button{
+      display:block;
+      width:100%;                 /* hasta el final de la imagen */
+      padding:14px 20px;
+      border-radius:999px;
+      background:var(--terracota);
+      color:#fff;
+      font-size:13px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      text-decoration:none;
+      text-align:center;
+    }
+
+    .card-footer{
+      display:flex;
+      justify-content:flex-end;
+      font-size:12px;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      color:var(--terracota);
+      font-weight:500;
+      margin-top:4px;
+    }
+
+    /* MÓVIL */
+    @media (max-width:520px){
+      body{ padding:16px; }
+      .card{ padding:26px 18px 22px; }
+
+      .card-content{
+        grid-template-columns:1fr;
+        gap:22px;
+        align-items:start;
+      }
+
+      /* en móvil, la imagen va debajo y ya no centramos verticalmente */
+      .right{ align-items:stretch; }
+
+      .headline{
+        font-size:22px;
+        max-width:none;
+      }
+
+      .logo-header img{ height:72px; }
+      .logo-text .line1{ font-size:28px; }
+      .logo-text .line2{ font-size:13px; }
+
+      .image-block{
+        aspect-ratio:16/10;
+        max-height:360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+
+    <div class="logo-header">
+      <img src="Logo sin texto - mini - SIN fondo.png" alt="Estucar Interiores">
+      <div class="logo-text">
+        <span class="line1">ESTUCAR</span>
+        <span class="line2">INTERIORES</span>
+      </div>
+    </div>
+
+    <div class="card-content">
+
+      <!-- IZQUIERDA -->
+      <div>
+        <div class="headline">Interiores calmados, funcionales y pensados para vivir mejor.</div>
+
+        <div class="body-text">
+          Trabajo el interiorismo desde la distribución, la luz y la proporción, creando viviendas equilibradas y agradables de habitar.
+          Mi enfoque combina estética serena, orden visual y soluciones prácticas para el día a día.
+        </div>
+
+        <div class="benefits">
+
+          <div>
+            <div class="benefit-title">Qué puedo aportar a tu hogar</div>
+            <ul>
+              <li>Distribuciones claras y funcionales, adaptadas a la vida diaria</li>
+              <li>Ambientes serenos, equilibrados y coherentes</li>
+              <li>Criterio en la selección de materiales, mobiliario e iluminación</li>
+              <li>Propuestas claras para tomar decisiones con seguridad</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="benefit-title">Qué puedes conseguir sin salir de casa</div>
+            <ul>
+              <li>Diseño por estancias</li>
+              <li>Proyecto completo de interiorismo</li>
+              <li>Home Staging · Virtual</li>
+              <li>Gestión de compras y planificación (opcional)</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="benefit-title">Si quieres acompañamiento, también puedo ayudarte</div>
+            <ul>
+              <li>Coordinación con obra / acompañamiento puntual</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="benefit-title">...y para proyectos de reforma:</div>
+            <ul>
+              <li>Desarrollo del interiorismo en colaboración con una constructora de confianza</li>
+              <li>Reformas parciales o integrales, con funciones y responsabilidades definidas desde el inicio</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DERECHA -->
+      <div class="right">
+        <div class="image-block">
+          <img src="salon.jpg" alt="Visualización de salón">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Línea divisoria a ancho completo -->
+    <div class="divider-full"></div>
+
+    <!-- Botón a ancho completo -->
+    <div class="cta-full">
+      <a class="cta-button"
+         href="https://www.canva.com/design/DAG6pwAd1HY/QllK2uqbCvKY4ZhK47WtUg/view"
+         target="_blank" rel="noopener">
+        Ver Portfolio Express – Particulares
+      </a>
+    </div>
+
+    <div class="card-footer">Estudio Carcabón</div>
+  </div>
+</body>
+</html>
