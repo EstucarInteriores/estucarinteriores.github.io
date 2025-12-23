@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Estucar Interiores – Profesionales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --musgo:#808b86;
+      --bg:var(--musgo);
+      --card:#fbf7f4;
+      --text:#3a3a3c;
+      --line:rgba(58,58,60,.12);
+      --shadow:0 18px 45px rgba(0,0,0,.18);
+      --radius:24px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+
+    body{
+      font-family:"Montserrat",sans-serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .card{
+      width:100%;
+      max-width:1400px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:40px 48px 36px;
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+
+    .logo-header{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .logo-header img{
+      height:90px;
+      width:auto;
+      display:block;
+      flex:0 0 auto;
+      background: transparent;
+      mix-blend-mode: multiply;
+    }
+
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .logo-text .line1{
+      font-size:30px;
+      font-weight:500;
+      letter-spacing:.18em;
+      color:var(--musgo);
+    }
+    .logo-text .line2{
+      font-size:14px;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      color:var(--musgo);
+      margin-top:6px;
+    }
+
+    .card-content{
+      display:grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap:40px;
+      align-items:stretch;
+    }
+
+    .headline{
+      font-size:26px;
+      line-height:1.35;
+      color:var(--musgo);
+      font-weight:500;
+      margin-bottom:14px;
+      max-width:32ch;
+    }
+
+    .body-text{
+      font-size:15px;
+      line-height:1.75;
+      margin-bottom:14px;
+      max-width:76ch;
+    }
+
+    ul{ list-style:none; }
+    ul li{
+      font-size:14px;
+      line-height:1.65;
+      padding-left:14px;
+      position:relative;
+      margin-bottom:6px;
+    }
+    ul li::before{
+      content:"–";
+      position:absolute;
+      left:0;
+      color:var(--musgo);
+    }
+
+    .benefits{
+      margin-top:12px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .benefit-title{
+      font-size:15px;
+      font-weight:500;
+      color:var(--musgo);
+      margin-bottom:6px;
+    }
+
+    .right{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .image-block{
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 16px 32px rgba(0,0,0,.16);
+      aspect-ratio:4/3;
+      max-height:520px;
+    }
+    .image-block img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* === Ajustes compactos (idénticos a tu particulares) === */
+    .divider-full{
+      width:100%;
+      border-top:1px solid var(--line);
+      margin-top:6px;
+    }
+
+    .cta-full{
+      width:100%;
+      margin-top:6px;
+    }
+
+    .cta-button{
+      display:block;
+      width:100%;
+      padding:14px 20px;
+      border-radius:999px;
+      background:var(--musgo);
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      text-decoration:none;
+      text-align:center;
+    }
+
+    .section-title{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--musgo);
+      font-weight:600;
+      margin-top:6px;
+    }
+
+    .contact-block{
+      width:100%;
+      margin-top:6px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .contact-button{
+      display:block;
+      width:100%;
+      padding:14px 20px;
+      border-radius:999px;
+      background:transparent;
+      border:1px solid rgba(128,139,134,.55);
+      color:var(--musgo);
+      font-size:12px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      text-decoration:none;
+      text-align:center;
+    }
+
+    .contact-email{
+      font-size:12px;
+      line-height:1.65;
+    }
+    .contact-email a{
+      color:var(--musgo);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .card-footer{
+      display:flex;
+      justify-content:flex-end;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--musgo);
+      font-weight:600;
+      margin-top:6px;
+    }
+
+    @media (max-width:520px){
+      body{ padding:16px; }
+      .card{ padding:26px 18px 22px; }
+      .card-content{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+      .right{ align-items:stretch; }
+      .headline{ font-size:22px; }
+      .logo-header img{ height:72px; }
+      .logo-text .line1{ font-size:28px; }
+      .logo-text .line2{ font-size:13px; }
+      .image-block{
+        aspect-ratio:16/10;
+        max-height:360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+
+    <div class="logo-header">
+      <img src="Logo sin texto - VERDE.png" alt="Estucar Interiores">
+      <div class="logo-text">
+        <span class="line1">ESTUCAR</span>
+        <span class="line2">INTERIORES</span>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <div>
+        <div class="headline">Interiorismo técnico para apoyar proyectos y facilitar una ejecución coherente.</div>
+
+        <div class="body-text">
+          Desarrollo propuestas de distribución, interiorismo, mobiliario e iluminación como apoyo al proyecto, aportando claridad en decisiones y coherencia estética durante el proceso. Trabajo con un enfoque práctico y ordenado, orientado a facilitar la coordinación entre proyecto, obra y cliente final.
+        </div>
+
+        <div class="benefits">
+          <div>
+            <div class="benefit-title">Cómo puedo apoyar tu proyecto</div>
+            <ul>
+              <li>Propuestas de distribución y mobiliario alineadas con el proyecto y sus condicionantes técnicos.</li>
+              <li>Definición de criterios de interiorismo, materiales e iluminación como apoyo al desarrollo del proyecto.</li>
+              <li>Documentación gráfica y listados orientativos para facilitar mediciones, presupuestos y coordinación.</li>
+              <li>Coherencia estética entre arquitectura, instalaciones e iluminación a lo largo del proceso.</li>
+              <li>Visualizaciones 3D como herramienta de apoyo a la toma de decisiones y a la presentación al cliente final.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="image-block">
+          <img src="Recibidor.png" alt="Recibidor Estucar Interiores">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-full"></div>
+
+    <div class="section-title">¿Quieres ver más?</div>
+
+    <div class="cta-full">
+      <a class="cta-button"
+         href="https://www.canva.com/design/DAG7kSsz5yc/p4ldM_HcOFCSi18xtTiLVQ/view?utm_content=DAG7kSsz5yc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8f05a28ca5"
+         target="_blank" rel="noopener">
+        Ver Portfolio Express – Profesionales
+      </a>
+ 
+
+    <div class="divider-full"></div>
+</div>
+    <div class="contact-block">
+
+      <div class="section-title">¿Valoramos una posible colaboración?</div>
+
+      <a class="contact-button"
+         href="TU_URL_FORMULARIO_PROF"
+         target="_blank" rel="noopener">
+        Solicitud de colaboración profesional
+      </a>
+
+      <div class="divider-full"></div>
+
+      <div class="contact-email">
+        O si lo prefieres, puedes escribirme a
+        <a href="mailto:contacto@estucarinteriores.com">contacto@estucarinteriores.com</a>
+      </div>
+
+    </div>
+
+    <div class="card-footer">Estudio Carcabón</div>
+
+  </div>
+</body>
+</html>
