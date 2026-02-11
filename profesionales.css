@@ -1,0 +1,1006 @@
+/* ============================================================
+   PROFESIONALES — CSS ESPECÍFICO (LIMPIO, CONSOLIDADO, SIN PISADOS)
+   - Submenú verde (profesionales) fuera del hero
+   - Grid 2 columnas estable
+   - Proyectos: desktop con franja inferior / móvil con overlay blur
+   - Columna proyectos “a sangre” + SOLO ella redondea
+   - 1 solo scroll (html)
+   - FIX: landscape móvil no corta textos
+   ============================================================ */
+
+/* ============================================================
+   0) PARÁMETROS (TOCAR SOLO AQUÍ)
+   ============================================================ */
+:root{
+  /* Color */
+  --pc: #5f6f61;
+  --pc-rule: rgba(85,110,95,0.65);
+  --pc-rule-strong: rgba(85,110,95,0.95);
+
+  /* Texto */
+  --ink: rgba(25,25,25,0.88);
+  --ink-soft: rgba(25,25,25,0.66);
+
+  /* Layout */
+  --textw: 720px;                  /* ancho óptico columna izquierda */
+  --col-pad: clamp(18px, 3vw, 34px);
+
+  /* Tabs (desktop) */
+  --tabs-gap: 100px;
+  --tabs-pad-x: 0px;
+  --tabs-fs: 18px;
+  --tabs-fs-active: 19px;
+  --tabs-ls: 0.22em;
+
+  /* Tabs (compact: <=980 o poca altura) */
+  --tabs-gap-compact: clamp(16px, 30vw, 600px);
+  --tabs-pad-x-compact: 16px;
+  --tabs-fs-compact: 15px;
+  --tabs-ls-compact: 0.18em;
+
+  /* Proyectos (desktop) */
+  --proj-cap-max: 80px;            /* franja inferior (máx) */
+  --proj-cap-pad-y: 8px;
+  --proj-cap-pad-x: 12px;
+
+  /* Proyectos (móvil) */
+  --proj-card-h-mobile: 210px;     /* alto de cada card en móvil */
+  --proj-overlay-maxh: 78px;       /* alto máximo overlay texto en móvil */
+}
+
+
+/* ============================================================
+   1) SCROLL (1 SOLO)
+   ============================================================ */
+html{
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body{
+  min-height: 100%;
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   2) LOGO REDONDO (solo Particulares)
+   ============================================================ */
+.page-profesionales .brand-mark img{
+  transform: translate(var(--logo-x, 1px), var(--logo-y, -1px)) scale(var(--logo-scale, 1.8));
+  transform-origin: center;
+}
+
+
+/* ============================================================
+   3) SUBMENÚ Particulares (FUERA del hero)
+   ============================================================ */
+.tabs.tabs--pro-top{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--tabs-gap);
+  padding: 10px var(--tabs-pad-x);
+
+  background: var(--pc);
+  opacity: .90;
+  border-top: 1px solid rgba(255,255,255,.18);
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.tabs.tabs--pro-top .tabs__item{
+  position: relative;
+  display: inline-block;
+
+  font-size: var(--tabs-fs);
+  font-weight: 300;
+  letter-spacing: var(--tabs-ls);
+  text-transform: uppercase;
+  line-height: 1;
+
+  color: rgba(255,255,255,.55);
+  text-decoration: none;
+  padding: 8px 30px;
+  margin-top: 0;
+}
+
+.tabs.tabs--pro-top .tabs__item:hover{
+  color: rgba(255,255,255,.90);
+}
+
+.tabs.tabs--pro-top .tabs__item.is-active{
+  color: rgba(255,255,255,.98);
+  font-size: var(--tabs-fs-active);
+  font-weight: 500;
+  letter-spacing: var(--tabs-ls);
+}
+
+.tabs.tabs--pro-top .tabs__item.is-active::before,
+.tabs.tabs--pro-top .tabs__item.is-active::after{
+  content: none;
+  display: none;
+}
+
+
+/* ============================================================
+   4) HERO PARTICULARES (base + línea inferior a sangre)
+   ============================================================ */
+.hero.hero--pro-legacy{
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+}
+
+/* Línea a sangre al final del hero */
+.hero--pro-legacy::after{
+  content:"";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100vw;
+  transform: translateX(-50%);
+  height: 1px;
+  background: var(--pc-rule);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero--pro-legacy .pro-hero-bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+}
+
+.hero--pro-legacy .pro-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(220, 220, 222, 0.87);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero--pro-legacy .pro-hero-inner{
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+
+/* ============================================================
+   5) COLUMNA IZQUIERDA (bloques de texto)
+   ============================================================ */
+.hero--pro-legacy .pro-block{
+  padding-top: 0;
+  margin: 10px 0 10px;
+}
+.hero--pro-legacy .pro-block + .pro-block{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero--pro-legacy .pro-h2{
+  margin: 10px auto 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  color: var(--pc);
+  text-transform: uppercase;
+}
+
+/* Solo el H2 del bloque 2 */
+.hero--pro-legacy .pro-block + .pro-block .pro-h2{
+  margin-top: 10px;
+}
+
+.hero--pro-legacy .pro-text{
+  margin: 10px auto 10px;
+  max-width: var(--textw);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+  text-transform: none;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.hero--pro-legacy .pro-text strong{
+  color: var(--pc);
+  font-weight: bolder;
+}
+
+/* Lista (bloque 2) */
+.hero--pro-legacy .pro-list{
+  max-width: var(--textw);
+  margin: 10px auto 8px;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.hero--pro-legacy .pro-list li{ margin: 0 0 6px; }
+.hero--pro-legacy .pro-list li::marker{ color: var(--pc); }
+
+.hero--pro-legacy .pro-list li strong{ color: var(--pc); }
+
+/* Resultado (bloque 3) */
+.hero--pro-legacy .pro-block--viviendas{
+  padding-top: 0;
+  margin-top: 10px;
+}
+.hero--pro-legacy .pro-block--viviendas .pro-h2{
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+/* ============================================================
+   6) CENTRADO SOLO DEL CONTENIDO (sin tocar el contenedor)
+   ============================================================ */
+.hero--pro-legacy .pro-hero-col--texto{ position: relative; }
+
+.hero--pro-legacy .pro-left__inner{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* desktop */
+  align-items: center;
+}
+
+.hero--pro-legacy .pro-left__inner > *{
+  width: 100%;
+  text-align: left;
+}
+
+
+/* ============================================================
+   7) GRID 2 COLUMNAS (desktop “a sangre” controlada)
+   ============================================================ */
+.hero--pro-legacy .pro-hero-grid{
+  position: relative;
+  left: 50%;
+  width: 85vw;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hero--pro-legacy .pro-hero-grid__inner{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: minmax(300px, 0.55fr) minmax(0, 1.45fr);
+  column-gap: 60px;
+  align-items: stretch;
+
+  min-width: 0;
+}
+
+/* Columnas */
+.hero--pro-legacy .pro-hero-col{
+  box-sizing: border-box;
+  border: 1px solid rgba(95,111,97,.55);
+  border-radius: 8px;
+  background: rgba(236, 236, 236, 0.95);
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  padding: var(--col-pad);
+}
+
+/* Columna proyectos: SOLO ella redondea */
+.hero--pro-legacy .pro-hero-col--proyectos{
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+
+  border-radius: 8px;
+  overflow: hidden; /* clave: el redondeo es del contenedor */
+}
+
+
+/* ============================================================
+   8) PROYECTOS (desktop) — estructura + franja inferior
+   ============================================================ */
+.hero--pro-legacy .pro-hero-col--proyectos #proyectos{
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.hero--pro-legacy .pro-hero-col--proyectos .section{
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.hero--pro-legacy .pro-hero-col--proyectos .section-inner{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-width: 100%;
+  margin-top: 0px;
+  padding: 0; /* a sangre real */
+}
+
+/* Título del bloque derecho */
+.hero--pro-legacy .pro-hero-col--proyectos .pro-projTitle{
+  margin: 0;
+  padding: 14px 16px 12px;
+  color: var(--pc);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Grid: sin huecos */
+.hero--pro-legacy .pro-hero-col--proyectos .proj-grid{
+  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  min-height: 0;
+}
+
+/* Card: SIEMPRE recta (no redondeo interno) */
+.hero--pro-legacy .pro-hero-col--proyectos .proj{
+  display: grid;
+  grid-template-rows: 1fr;
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+  background: rgba(233, 233, 231, .62);
+
+  border-radius: 0;   /* ✅ */
+  border-left: 0;
+  border-right: 0;
+}
+
+/* Link e info en la misma celda */
+.hero--pro-legacy .pro-hero-col--proyectos a.proj-link,
+.hero--pro-legacy .pro-hero-col--proyectos .proj .pbody{
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.hero--pro-legacy .pro-hero-col--proyectos a.proj-link{
+  position: relative;
+  min-height: 0;
+  display: block;
+}
+
+/* Imagen 100% */
+.hero--pro-legacy .pro-hero-col--proyectos a.proj-link img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--img-x, 50%) var(--img-y, 70%);
+  z-index: 1;
+  display: block;
+  border-top: 1px solid rgba(95,111,97,.65);
+}
+
+/* Franja inferior (desktop) */
+.hero--pro-legacy .pro-hero-col--proyectos .proj .pbody{
+  align-self: end;
+  justify-self: stretch;
+  position: relative;
+  z-index: 5;
+
+  box-sizing: border-box;
+  padding: var(--proj-cap-pad-y) var(--proj-cap-pad-x);
+  text-align: center;
+
+  background: rgba(233, 233, 231, .89);
+  backdrop-filter: blur(2px);
+  border-top: 1px solid rgba(95,111,97,.65);
+
+  height: auto;
+  min-height: 52px;
+  max-height: var(--proj-cap-max);
+  overflow: hidden;
+}
+
+.hero--pro-legacy .pro-hero-col--proyectos .proj .pbody h3{
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--pc);
+  text-transform: uppercase;
+  text-align: center;
+
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.15;
+}
+
+.hero--pro-legacy .pro-hero-col--proyectos .proj .pbody p{
+  margin: 5px;
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(25,25,25,.92);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+/* ============================================================
+   9) RESPONSIVE — estado medio
+   ============================================================ */
+@media (max-width: 1180px){
+  .hero--pro-legacy .pro-hero-grid{ width: 100%; }
+  .hero--pro-legacy .pro-hero-grid__inner{ column-gap: 36px; }
+}
+
+
+/* ============================================================
+   10) RESPONSIVE — <=980 (1 columna + tabs compact + overlay blur)
+   + FIX: NO cortar textos en landscape
+   ============================================================ */
+@media (max-width: 980px){
+
+  /* Variables móvil */
+  :root{
+    --col-pad: 14px;
+    --proj-cap-pad-y: 6px;
+    --proj-cap-max: clamp(76px, 9vh, 102px);
+  }
+
+  /* FIX 1: evitar cortes del texto izquierdo por centrado vertical rígido */
+  .hero--pro-legacy .pro-left__inner{
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  /* Tabs compact */
+  .tabs.tabs--pro-top{
+    gap: var(--tabs-gap-compact);
+    padding-left: var(--tabs-pad-x-compact);
+    padding-right: var(--tabs-pad-x-compact);
+  }
+  .tabs.tabs--pro-top .tabs__item{
+    font-size: var(--tabs-fs-compact);
+    letter-spacing: var(--tabs-ls-compact);
+  }
+  .tabs.tabs--pro-top .tabs__item.is-active{
+    font-size: var(--tabs-fs-compact);
+    letter-spacing: var(--tabs-ls-compact);
+  }
+
+  /* Grid: quitar desplazamientos */
+  .hero--pro-legacy .pro-hero-grid{
+    left: auto;
+    transform: none;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .hero--pro-legacy .pro-hero-grid__inner{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 14px;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    column-gap: 0;
+  }
+
+  .hero--pro-legacy .pro-hero-inner{
+    padding: 0 14px 18px;
+  }
+
+  /* Columna: sin inflado */
+  .hero--pro-legacy .pro-hero-col{
+    min-height: 0;
+    height: auto;
+    padding: 16px;
+  }
+
+  .hero--pro-legacy .pro-h2{
+    font-size: 14px;
+    letter-spacing: .18em;
+    margin: 10 auto 10px;
+  }
+  .hero--pro-legacy .pro-text,
+  .hero--pro-legacy .pro-list{
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .hero--pro-legacy .pro-text{ margin: 4px auto 8px; }
+  .hero--pro-legacy .pro-list{ margin: 8px auto 8px; }
+  .hero--pro-legacy .pro-block{ margin: 0 0 14px; }
+
+  /* Proyectos móvil: card con overlay blur (sin redondeo interno) */
+  .hero--pro-legacy .pro-hero-col--proyectos{ padding: 0; }
+  .hero--pro-legacy .pro-hero-col--proyectos .section-inner{ padding: 0; margin-top: 0; }
+
+  .hero--pro-legacy .pro-hero-col--proyectos .proj{
+    position: relative;
+    height: var(--proj-card-h-mobile);
+    overflow: hidden;
+
+    border-radius: 0; /* ✅ SIEMPRE */
+  }
+
+  .hero--pro-legacy .pro-hero-col--proyectos .proj-link{
+    display: block;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero--pro-legacy .pro-hero-col--proyectos .proj-link > img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero--pro-legacy .pro-hero-col--proyectos .pbody{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+
+    padding: 10px 12px;
+    background: rgba(236,236,236,.72);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(95,111,97,.35);
+    text-align: center;
+
+    max-height: var(--proj-overlay-maxh);
+    overflow: hidden;
+  }
+}
+
+
+/* ============================================================
+   11) MÓVIL MUY PEQUEÑO
+   ============================================================ */
+@media (max-width: 420px){
+  :root{ --proj-card-h-mobile: 200px; }
+}
+
+
+/* ============================================================
+   12) LANDSCAPE móvil: dar más altura al overlay (evita cortes)
+   ============================================================ */
+@media (max-width: 980px) and (orientation: landscape){
+  :root{
+    --proj-overlay-maxh: 110px;
+  }
+
+  .hero--pro-legacy .pro-hero-grid{
+    left: auto;
+    transform: none;
+    width: min(92vw, 760px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero--pro-legacy .pro-hero-grid__inner{
+    max-width: min(92vw, 760px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* ============================================================
+   13) PANTALLAS DE POCA ALTURA
+   - Mantener: no recortar contenido final
+   - Importante: NO “aplastar” overlays en móvil
+   ============================================================ */
+@media (max-height: 760px){
+  .hero.hero--pro-legacy{ overflow: visible; }
+}
+
+@media (max-height: 720px){
+
+  .hero--pro-legacy .pro-hero-col--proyectos .proj-grid{
+    grid-template-rows: none;
+    grid-auto-rows: minmax(80px, auto);
+  }
+
+  /* Tabs compact por poca altura */
+  .tabs.tabs--pro-top{
+    gap: var(--tabs-gap-compact);
+    padding-left: var(--tabs-pad-x-compact);
+    padding-right: var(--tabs-pad-x-compact);
+  }
+  .tabs.tabs--pro-top .tabs__item{
+    font-size: var(--tabs-fs-compact);
+    letter-spacing: var(--tabs-ls-compact);
+  }
+  .tabs.tabs--pro-top .tabs__item.is-active{
+    font-size: var(--tabs-fs-compact);
+    letter-spacing: var(--tabs-ls-compact);
+  }
+
+  /* Franja inferior más contenida (desktop) */
+  .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody{
+        min-height: 20px;
+        max-height: 25px;
+        padding: 6px 10px;
+  }
+}
+
+/* FIX 2: si es móvil y poca altura, NO aplicar “modo mini” agresivo */
+@media (max-width: 980px) and (max-height: 720px){
+  .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody{
+    max-height: var(--proj-overlay-maxh);
+    min-height: 0;
+    padding: 10px 12px;
+  }
+  .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody p{
+    font-size: 13px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-height: 700px){
+
+  /* Franja “mini” (solo para ventanas realmente bajas, desktop) */
+  .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody{
+        min-height: 20px;
+        max-height: 25px;
+        padding: 6px 10px;
+  }
+
+  .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody p{
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  /* Tabs compact por poca altura */
+  .tabs.tabs--pro-top{
+    gap: var(--tabs-gap-compact);
+    padding-left: var(--tabs-pad-x-compact);
+    padding-right: var(--tabs-pad-x-compact);
+  }
+  .tabs.tabs--pro-top .tabs__item{
+    font-size: var(--tabs-fs-compact);
+    letter-spacing: var(--tabs-ls-compact);
+  }
+  .tabs.tabs--pro-top .tabs__item.is-active{
+    font-size: var(--tabs-fs-compact);
+    letter-spacing: var(--tabs-ls-compact);
+  }
+}
+
+
+/* ============================================================
+   14) CONTACT STRIP (final)
+   ============================================================ */
+.contact-strip{ margin-top: -20px; }
+
+.contact-strip strong,
+.contact-strip .alt-title strong,
+.contact-strip b{
+  color: var(--pc);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.contact-strip .cta-row,
+.contact-strip .cta-row--final,
+.contact-strip .cta-row--hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto 15px;
+}
+
+.contact-strip .btn-outline.profesionales{
+  background: rgba(85,110,95,0.90);
+  color: rgba(255,255,255,1);
+  border: 1px solid rgba(95,111,97,.55);
+}
+.contact-strip .btn-outline.profesionales:hover{
+  background: rgba(85,110,95,0.90);
+  border-color: rgba(85,110,95,0.90);
+  color: #fff;
+}
+
+.contact-strip .alt-contact--final{ text-align: center; }
+
+.contact-strip .meta.meta-icons{
+  display: inline-block;
+  color: var(--pc);
+  margin: -0px auto 0;
+  border-bottom: none;
+  background-image: none;
+}
+
+.contact-strip .meta.meta-icons .meta-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+}
+
+.contact-strip .meta.meta-icons .ico{
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 16px;
+  opacity: .95;
+}
+
+.contact-strip .meta.meta-icons .ico-svg{
+  width: 16px;
+  height: 16px;
+  display: block;
+  fill: var(--pc);
+}
+
+
+.contact-strip .meta.meta-icons a:hover{
+  color: var(--pc);
+  text-decoration-color: rgba(95,111,97,.95);
+}
+
+
+/* ============================================================
+   15) BLOQUE FINAL (líneas + dominio + banner)
+   ============================================================ */
+.between-wrap{ margin-top: -40px; }
+
+.between-wrap .rule--bleed{
+  height: 1px;
+  background: var(--pc-rule);
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.site-line{
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer-banner--bleed{
+  width: 100vw;
+ width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 0px 0 0;
+  line-height: 0;
+  overflow: hidden;
+  margin-bottom: 0px;
+}
+
+.footer-banner--bleed img{
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+/* ============================================================
+   PROFESIONALES — CONTACTO (copiado de Dormitorio juvenil)
+   Blindado: sin clases dj-*, y SVG bloqueado contra estilos globales
+   ============================================================ */
+
+/* Sección */
+.pro-contact{
+  padding: 18px 0 0;
+}
+
+/* CTA */
+.pro-contactCta{
+  margin:20px 15px 25px;
+  text-align:center;
+  font-weight:400;
+  color:rgba(47,47,49,0.74);
+  font-size:15px;
+  line-height:1.55;
+}
+.pro-contactQ{
+  color:var(--pc);
+  font-weight:700;
+}
+.below-inner {
+    background: transparent;
+    max-width: 690px;
+    margin: 0 auto;
+    padding: 10px 0px 16px;
+}
+/* Centrado del botón */
+.pro-contactCenter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 6px 0 0;
+}
+
+/* Título “escríbeme directamente” */
+.pro-directTitle{
+  margin:15px 15px;
+  text-align:center;
+  color:rgba(47,47,49,0.94);
+  font-weight:400;
+  font-size:13px;
+  line-height:1.6;
+}
+.pro-directTitle strong{
+  color:var(--pc);
+  font-weight:bolder;
+  letter-spacing:0.08em;
+}
+
+/* Grid contacto */
+.pro-directGrid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:8px;
+  justify-items:center;
+  margin: 0 auto;
+  padding: 0 15px;
+  font-weight:500;
+  font-size:15px;
+  line-height:1.1;
+  text-align:left;
+  color:rgba(47,47,49,0.94);
+}
+
+/* Link contacto */
+.pro-directItem{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:max-content;
+  margin:0 auto;
+  text-align:center;
+  text-decoration:none;
+}
+.pro-directItem:hover .pro-directText{
+  text-decoration: underline;
+  text-decoration-color: rgba(95,111,97,0.35);
+  text-underline-offset: 3px;
+}
+
+/* Icono: blindaje total */
+.pro-ico{
+  width:18px !important;
+  height:18px !important;
+  min-width:18px !important;
+  min-height:18px !important;
+  max-width:18px !important;
+  max-height:18px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex:0 0 18px !important;
+  line-height:0 !important;
+  overflow:hidden !important;
+}
+
+/* Esto neutraliza CUALQUIER regla global tipo svg{width:100%} */
+.pro-ico svg,
+.pro-icoSvg{
+  width:18px !important;
+  height:18px !important;
+  min-width:18px !important;
+  min-height:18px !important;
+  max-width:18px !important;
+  max-height:18px !important;
+  display:block !important;
+  fill:var(--pc) !important;
+}
+
+/* Texto */
+.pro-directText{
+  display:inline-block;
+  line-height:1;
+  font-size:12px;
+  letter-spacing:0.10em;
+  font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:rgba(47,47,49,0.78);
+}
+
+/* Cierre (líneas + dominio + banner) */
+.pro-end{ padding:10px 0 0; }
+
+.pro-ruleBleed{
+  height:1px;
+  background:var(--pc-rule);
+  position:relative;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  margin:0;
+}
+
+.pro-siteLine{
+  text-align:center;
+  padding:10px 0;
+  font-size:12px;
+  letter-spacing:0.10em;
+  color:rgba(47,47,49,0.78);
+}
+.pro-siteLink{ color:inherit; text-decoration:none; }
+.pro-siteLink:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(95,111,97,0.35);
+  text-underline-offset: 3px;
+}
+
+.pro-bannerBleed{
+  width:100vw;
+  margin-left:50%;
+  transform:translateX(-50%);
+  line-height:0;
+  overflow:hidden;
+}
+.pro-bannerBleed img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0;
+  transform:none;
+}
+
+
+/* FIX: evitar doble subrayado en contactos (solo subrayado verde) */
+.pro-directItem,
+.pro-directItem:hover,
+.pro-directItem:focus,
+.pro-directItem:focus-visible{
+  text-decoration: none !important; /* mata el a:hover global */
+}
+
+.pro-directText{
+  text-decoration: none; /* estado normal sin línea */
+}
+
+/* único subrayado: el nuestro, verde */
+.pro-directItem:hover .pro-directText{
+  text-decoration-line: underline;
+  text-decoration-color: rgba(95,111,97,0.35);
+  text-underline-offset: 3px;
+}
