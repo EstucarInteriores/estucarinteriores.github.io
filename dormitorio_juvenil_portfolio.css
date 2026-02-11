@@ -1,0 +1,678 @@
+:root{
+  /* Terracota fijo */
+  --pl-tc: #c7745c;
+  --pl-rule: rgba(199,116,92,.70);
+
+  --pl-ink: rgba(25,25,25,0.86);
+  --pl-ink-soft: rgba(25,25,25,0.62);
+  --pl-bg: var(--page-bg, #f2f2f2);
+
+  --pl-maxw: 1040px;
+  --pl-pad: clamp(16px, 3vw, 28px);
+}
+
+.page-portfolio-long{
+  background: var(--pl-bg);
+}
+
+/* Línea a sangre */
+.pl-ruleBleed{
+  height: 1px;
+  background: var(--pl-tc);
+  width: 100%;
+}
+
+.pl-ruleBleed--beforeContact{
+  margin-top: 10px;
+}
+
+/* Wrapper */
+.pl-wrap{
+  max-width: var(--pl-maxw);
+  margin: 0 auto;
+  padding: 0 var(--pl-pad);
+}
+
+/* Scroll suave */
+html{ scroll-behavior: smooth; }
+#contexto, #docs, #propuesta, #resultado, #contacto{ scroll-margin-top: 120px; }
+
+/* Negritas terracota (portfolio) */
+.page-portfolio-long .pl-wrap strong,
+.page-portfolio-long .pl-wrap b{
+  color: var(--pl-tc) !important;
+  font-weight: 600 !important;
+}
+
+.topbar .brand,
+.topbar .brand:hover,
+.topbar .brand:focus,
+.topbar .brand:active{
+  text-decoration: none;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+/* Por si la “línea” está aplicada a los textos internos */
+.topbar .brand .brand-name,
+.topbar .brand .brand-sub{
+  text-decoration: none;
+}
+.topbar .brand:hover .brand-name,
+.topbar .brand:hover .brand-sub{
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+/* ============================================================
+   HERO
+   ============================================================ */
+.pl-hero{
+  position: relative;
+  margin: 18px 0 10px;
+  border: 1px solid rgba(199,116,92,.45);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(236,236,236,0.92);
+}
+
+.pl-hero__media{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-height: 360px;
+}
+
+.pl-hero__media img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pl-hero__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(233, 233, 233, 0.56) 40%, rgba(233, 233, 233, 0.88) 75%, rgba(233, 233, 233, 0.99) 100%);
+  pointer-events: none;
+}
+
+.pl-hero__inner{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px var(--pl-pad) 16px;
+}
+
+.pl-h1{
+  margin: 0 0 10px;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(25,25,25,0.72);
+}
+
+.pl-lead{
+  margin: 0 0 12px;
+  max-width: 78ch;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--pl-ink);
+}
+
+.pl-lead--center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Meta */
+.pl-hero__meta{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 12px;
+  margin: 10px 0 10px;
+}
+
+.pl-metaItem{
+  display: grid;
+  gap: 3px;
+  padding: 8px 10px;
+  border: 1px solid rgba(199,116,92,.35);
+  border-radius: 8px;
+  background: rgba(245,245,245,.72);
+}
+
+.pl-metaLabel{
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pl-tc);
+  font-weight: 600;
+}
+
+.pl-metaVal{
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(25,25,25,0.78);
+}
+
+/* ============================================================
+   MENÚ SECCIONES: solo texto terracota suave + · (sin subrayar)
+   ============================================================ */
+.pl-hero .pl-sectionNav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  padding-top: 10px;
+  margin-top: 2px;
+  background: transparent;
+}
+
+.pl-hero .pl-sectionNav .pl-sectionNav__item{
+  display: inline;
+  width: auto;
+
+  border: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 10.5px;
+  line-height: 1.7;
+
+  color: rgba(199,116,92,.88); /* antes .72 */
+  text-shadow: 0 1px 6px rgba(0,0,0,.22);
+}
+
+.pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
+  content: " · ";
+  color: rgba(199,116,92,.80);
+  text-shadow: 0 1px 6px rgba(0,0,0,.22);
+  margin: 0 .7em;
+}
+
+.pl-hero .pl-sectionNav .pl-sectionNav__item:hover{
+  color: rgba(199,116,92,.92);
+}
+/* Overlay debajo */
+.pl-hero__overlay{
+  z-index: 1;
+}
+
+/* Contenido del hero por encima del overlay */
+.pl-hero__inner{
+  z-index: 2;
+  position: absolute; /* ya lo tienes, pero lo dejo explícito */
+}
+
+/* Menú todavía un punto por encima (por si hay filtros/blur) */
+.pl-hero .pl-sectionNav{
+  position: relative;
+  z-index: 3;
+}
+
+/* ============================================================
+   SECCIONES / TEXTO (criterio unificado)
+   ============================================================ */
+.pl-section{
+  padding: 0px 0;
+  position: relative;
+}
+
+.pl-section + .pl-section{
+  border-top: 1px solid var(--pl-rule);
+}
+10:08 09/02/2026
+.pl-inner{ padding: 0; }
+
+.pl-h2{
+  margin: 50px 0 10px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pl-tc);
+}
+
+/* Entradilla breve (misma en todas) */
+.pl-intro{
+  margin: 0 auto 14px;
+  max-width: 78ch;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--pl-ink-soft);
+  text-align: center;
+  letter-spacing: .02em;
+}
+
+.pl-p{
+  margin: 0 auto 30px;
+  max-width: 84ch;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--pl-ink);
+  text-align: justify;
+  text-align-last: left;
+}
+
+/* ============================================================
+   FIGURES
+   ============================================================ */
+.pl-fig{
+  margin: 20px;
+  border: 1px solid rgba(199,116,92,.35);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(245,245,245,.72);
+}
+
+.pl-zoom{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pl-fig img{
+  width: 100%;
+  display: block;
+}
+
+.pl-cap{
+  padding: 10px 12px;
+  font-size: 12px;
+  letter-spacing: .10em;
+  color: rgba(25,25,25,0.74);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(199,116,92,.25);
+  text-align: center;
+}
+
+/* ============================================================
+   DOCSHEET (RECOPILACION + HOTSPOTS)
+   ============================================================ */
+.pl-fig--docsheet{
+  margin-top: 14px;
+}
+
+/* Contenedor relativo para colocar hotspots */
+.pl-docsheet{
+  position: relative;
+}
+
+.pl-docsheet img{
+  position: relative;
+  z-index: 1;
+}
+
+/* Hotspots: enlaces transparentes encima */
+.pl-hot{
+  position: absolute;
+  display: block;
+  background: transparent;
+  border-radius: 8px;
+ z-index: 3;           /* por encima del img */
+  cursor: zoom-in;
+}
+
+/* Hover/Focus: indicación sutil (no molesta) */
+.pl-hot:hover{
+  outline: 1px solid rgba(199,116,92,.65);
+  outline-offset: 2px;
+}
+
+.pl-hot:focus-visible{
+  outline: 2px solid rgba(199,116,92,.85);
+  outline-offset: 3px;
+}
+
+/*
+  Coordenadas en % (ajustadas al montaje que mostraste: axo grande izq,
+  columna derecha con planta arriba + 2x2 de vistas abajo)
+*/
+.pl-hot--axo{
+  left: 0%;
+  top: 0%;
+  width: 60%;
+  height: 100%;
+}
+
+.pl-hot--planta{
+  left: 62%;
+  top: 0%;
+  width: 31.5%;
+  height: 48%;
+}
+
+/* Bloque 2x2 de vistas en la parte derecha inferior */
+.pl-hot--v1{
+  left: 62%;
+  top: 50%;
+  width: 15.5%;
+  height: 22%;
+}
+
+.pl-hot--v2{
+  left: 78%;
+  top: 50%;
+  width: 15.5%;
+  height: 22%;
+}
+
+.pl-hot--v3{
+  left: 62%;
+  top: 72%;
+  width: 15.5%;
+  height: 25%;
+}
+
+.pl-hot--v4{
+  left: 78%;
+  top: 72%;
+  width: 15.5%;
+  height: 25%;
+}
+
+/* Links discretos a planos complementarios */
+.pl-docLinks{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 10px;
+ font-size: 10px;
+}
+
+.pl-docLink{
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(199,116,92,.78);
+  transition: color .12s ease;
+}
+
+.pl-docLink:hover{
+  color: rgba(199,116,92,.95);
+}
+
+.pl-docSep{
+  margin: 0 .8em;
+  color: rgba(199,116,92,.55);
+}
+
+
+.page-particulares .par-contact {
+    padding: 30px 0 0;
+}
+
+/* ============================================================
+   GRIDS: propuesta / resultado
+   ============================================================ */
+.pl-grid{
+  display: grid;
+  gap: 14px;
+  margin: 0px;
+}
+
+.pl-grid--proposal{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pl-grid--proposal .pl-fig img{
+  height: 420px;
+  object-fit: cover;
+}
+
+.pl-grid--result{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.pl-grid--result .pl-fig img{
+  height: 360px;
+  object-fit: cover;
+}
+
+/* ============================================================
+   LIGHTBOX FULLSCREEN
+   - Fondo: tu bg de página, más oscuro y opaco
+   - Botón cerrar: blanco semitransparente + borde terracota + X terracota
+   ============================================================ */
+.pl-lb{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+.pl-lb.is-open{
+  display: block;
+}
+
+.pl-lb__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+}
+
+.pl-lb__backdrop::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--pl-bg);
+  opacity: .92;
+}
+
+@supports (mix-blend-mode: multiply){
+  .pl-lb__backdrop{
+    background: var(--pl-bg);
+  }
+  .pl-lb__backdrop::before{
+    background: rgba(0,0,0,.55);
+    mix-blend-mode: multiply;
+    opacity: 1;
+  }
+}
+
+.pl-lb__frame{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 28px);
+}
+
+.pl-lb__img{
+  max-width: min(1100px, 92vw);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+
+  border-radius: 10px;
+  border: 1px solid rgba(199,116,92,.45);
+  background: rgba(245,245,245,.72);
+  box-shadow: 0 22px 60px rgba(0,0,0,.22);
+}
+
+.pl-lb__close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(199,116,92,.70);
+  color: rgba(199,116,92,.92);
+
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease;
+}
+
+.pl-lb__close:hover{
+  background: rgba(255,255,255,.90);
+  border-color: rgba(199,116,92,.85);
+  transform: translateY(-1px);
+}
+
+.pl-lb__close:focus-visible{
+  outline: 2px solid rgba(199,116,92,.85);
+  outline-offset: 3px;
+}
+
+/* Lock scroll cuando el lightbox está abierto */
+.pl-lock{
+  overflow: hidden;
+}
+
+/* ============================================================
+   MÓVIL: hero en flujo (sin solapes) + menú texto igual
+   ============================================================ */
+@media (max-width: 760px){
+
+  .pl-wrap{ padding: 0 14px; }
+
+  /* Hero en flujo */
+  .pl-hero__overlay{ display: none; }
+
+  .pl-hero__media{
+    aspect-ratio: 4 / 3;
+    min-height: 260px;
+  }
+
+  .pl-hero__inner{
+    position: static;
+    padding: 16px 14px 14px;
+    background: rgba(245,245,245,.78);
+  }
+
+  .pl-h1{
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .pl-lead{
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .pl-hero__meta{
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 10px 0 12px;
+  }
+
+  .pl-metaItem{ padding: 10px 12px; }
+
+  /* Menú secciones */
+  .pl-hero .pl-sectionNav .pl-sectionNav__item{
+    font-size: 10px;
+    letter-spacing: .22em;
+  }
+
+  .pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
+    margin: 0 .55em;
+  }
+
+  /* Secciones */
+  .pl-section{ padding: 24px 0; }
+  .pl-intro{ margin-bottom: 12px; }
+  .pl-p{ line-height: 1.7; }
+
+  .pl-grid--proposal,
+  .pl-grid--result{
+    grid-template-columns: 1fr;
+  }
+
+  .pl-grid--proposal .pl-fig img,
+  .pl-grid--result .pl-fig img{
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Lightbox: imagen más alta */
+  .pl-lb__img{
+    max-width: 92vw;
+    max-height: 82vh;
+  }
+}
+
+/* iPhone SE */
+@media (max-width: 380px){
+  .pl-hero .pl-sectionNav{
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Columna */
+.pl-col{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Mostrar imagen completa (sin recorte) */
+.pl-col--full .pl-fig img{
+  width: 100%;
+  height: auto;          /* clave: no altura fija */
+  object-fit: contain;   /* clave: no recorta */
+  display: block;
+  background: rgba(245,245,245,.72); /* opcional: igual que tu sistema */
+}
+
+/* IMPORTANTE: anular cualquier altura forzada que venga de grids previos */
+.pl-col--full .pl-fig{
+  overflow: hidden; /* ok */
+}
+/* ============================================================
+   BOTÓN VOLVER · PORTFOLIO LARGO PARTICULARES
+   ============================================================ */
+
+.pl-back{
+  max-width: var(--pl-maxw, 980px);
+  margin: 30px auto 30px;
+  padding: 0 var(--pl-padx, 30px);
+display: flex;
+    justify-content: center;
+}
+
+.pl-back-btn{
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--terracota);
+  border: 1px solid rgba(199,116,92,.45);
+  background: transparent;
+
+  transition: all .2s ease;
+}
+
+.pl-back-btn:hover{
+  background: rgba(199,116,92,.08);
+}
+
