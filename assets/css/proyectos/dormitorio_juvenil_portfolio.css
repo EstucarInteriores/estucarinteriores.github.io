@@ -286,6 +286,7 @@ html{ scroll-behavior: smooth; }
 .pl-fig img{
   width: 100%;
   display: block;
+  height: auto;
 }
 
 .pl-cap{
@@ -313,6 +314,7 @@ html{ scroll-behavior: smooth; }
 .pl-docsheet img{
   position: relative;
   z-index: 1;
+  height: auto;
 }
 
 /* Hotspots: enlaces transparentes encima */
@@ -675,4 +677,41 @@ display: flex;
 .pl-back-btn:hover{
   background: rgba(199,116,92,.08);
 }
+/* ============================================================
+   MARTILLO — PORTFOLIO LARGO: impedir deformación sí o sí
+   ============================================================ */
 
+/* 1) Quita cualquier estiramiento por height/aspect-ratio */
+.page-portfolio-long img{
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: 50% 50% !important;
+  display: block !important;
+}
+
+/* 2) Si hay wrappers que están imponiendo altura fija, desactívalo */
+.page-portfolio-long figure,
+.page-portfolio-long .pl-media,
+.page-portfolio-long .pl-card,
+.page-portfolio-long .pl-figure{
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* 3) Si existe una regla tipo “img{height:100%}” en alguna zona, la anulamos */
+.page-portfolio-long [class*="pl"] img{
+  height: auto !important;
+}
+
+/* Si tus tiles son fondos (background-image) */
+.page-portfolio-long .pl-tile,
+.page-portfolio-long .pl-thumb{
+  background-size: contain !important;  /* (cover recorta, contain no) */
+  background-position: 50% 50% !important;
+  background-repeat: no-repeat !important;
+  height: auto !important;
+}
