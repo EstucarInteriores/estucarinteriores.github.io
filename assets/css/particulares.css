@@ -918,7 +918,7 @@ body{
 
 .page-particulares .par-bannerBleed img{
   width: 100%;
-  height: cover;
+  height: auto;          /* ✅ clave: mantiene proporción */
   display: block;
 }
 /* ============================================================
