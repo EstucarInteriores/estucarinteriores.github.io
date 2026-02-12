@@ -547,13 +547,11 @@ margin-top:0px;
 }
 
   h1{ 
-font-size:14px; 
+font-size:16px; 
 line-height:1.25; 
 margin-bottom:12px; 
 padding:0; 
 letter-spacing:-.01em; 
-color: var(--antracita);
-margin: 20px auto 20px;
 }
 
   .below-inner{ 
@@ -594,7 +592,7 @@ line-height:1.35;
     object-fit: cover;
 
     /* ✅ móvil: ancla abajo */
-    object-position: 50% 100%;
+    object-position: 50% 50%;
   }
 
   /* el resto igual */
@@ -635,7 +633,7 @@ margin-bottom:12px;
 padding:0; 
 letter-spacing:-.01em; 
 color: var(--antracita);
-margin-top: 20px;
+margin: 20px auto 20px;
 }
 
   .below-inner{ 
@@ -675,7 +673,6 @@ line-height:1.35;
     margin-bottom: 0; /* opcional: quita el “tirón” negativo en móvil */
   }
 }
-
 /* =========================================
    MÓVIL EN HORIZONTAL (landscape)
    Ajuste de altura + encuadre del hero
