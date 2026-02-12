@@ -646,6 +646,7 @@ line-height:1.35;
     transform: none;
     margin-bottom: 0; /* opcional: quita el “tirón” negativo en móvil */
   }
+ }
 }
 /* HOME — iconos contacto (igual que resto) */
 .below .alt-contact .meta-row .ico{
