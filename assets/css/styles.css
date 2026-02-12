@@ -646,22 +646,4 @@ line-height:1.35;
     transform: none;
     margin-bottom: 0; /* opcional: quita el “tirón” negativo en móvil */
   }
- }
-}
-/* HOME — iconos contacto (igual que resto) */
-.below .alt-contact .meta-row .ico{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:18px;
-  height:18px;
-  color: rgba(47,47,49,.85); /* antracita */
-  transform: translateY(1px);
-}
-
-.below .alt-contact .meta-row .ico svg{
-  width:18px;
-  height:18px;
-  display:block;
-  fill: currentColor;
 }
