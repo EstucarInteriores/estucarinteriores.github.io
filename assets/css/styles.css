@@ -436,7 +436,44 @@ h1{
   margin-bottom: 0;
   display: block;
 }
+/* =========================================
+   HOME/END — línea a sangre + website centrado
+========================================= */
 
+.pro-ruleBleed{
+  height: 1px;
+  background: rgba(47,47,49,.35); /* ajusta si quieres más suave */
+  border: 0;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
+}
+
+.pro-siteLine{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 10px 16px;
+  text-align: center; /* ✅ centrado */
+}
+
+.pro-siteLink{
+  display: inline-block; /* ✅ que respete el text-align center */
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(47,47,49,.70);
+  text-decoration: none;
+}
+
+.pro-siteLink:hover{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 /* Banner a sangre */
 .footer-banner--bleed{
   width: 100vw;
