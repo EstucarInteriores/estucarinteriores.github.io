@@ -566,3 +566,40 @@ html{ scroll-behavior: smooth; }
     margin-right: auto;
   }
 }
+/* ===========================
+   DOCSHEET (LÁMINA) — FIX REAL MÓVIL
+   =========================== */
+.pl-fig--docsheet{ margin-top: 14px; }
+
+.pl-docsheet{
+  position: relative;
+}
+
+/* Desktop: normal */
+.pl-docsheet > img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Móvil: marco con ratio (NO px) */
+@media (max-width: 760px){
+  .pl-fig--docsheet{
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  /* Marco: controla la “altura percibida” */
+  .pl-fig--docsheet .pl-docsheet{
+    aspect-ratio: 4 / 5;   /* ajusta 3/4, 4/5, 1/1 según te guste */
+    overflow: hidden;
+  }
+
+  .pl-fig--docsheet .pl-docsheet > img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* se ve completa, sin recorte */
+    object-position: 50% 50%;
+    display: block;
+  }
+}
