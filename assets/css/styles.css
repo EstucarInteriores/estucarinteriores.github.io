@@ -280,7 +280,7 @@ body{
   background: transparent;
   max-width: 690px;
   margin: 0 auto;
-  padding: 30px 18px 46px;
+  padding: 30px 18px 0px;
 }
 
 .below-grid{
@@ -366,7 +366,7 @@ h1{
 }
 .btn-outline.profesionales:hover{ background:rgba(111,125,120,.12); }
 
-.alt-contact{ margin-top:20px; }
+.alt-contact{ margin:20px auto 20px; }
 
 .alt-title{
   font-size:15px;
@@ -547,11 +547,13 @@ margin-top:0px;
 }
 
   h1{ 
-font-size:16px; 
+font-size:14px; 
 line-height:1.25; 
 margin-bottom:12px; 
 padding:0; 
 letter-spacing:-.01em; 
+color: var(--antracita);
+margin: 20px auto 20px;
 }
 
   .below-inner{ 
