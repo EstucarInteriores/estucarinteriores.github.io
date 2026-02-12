@@ -1002,3 +1002,9 @@ body{
   display: block;
   object-fit: contain; /* por si alguien le metió height fijo */
 }
+
+.page-particulares .footer-banner--bleed,
+.page-particulares .footer-banner{
+  height: auto !important;
+  line-height: 0;
+}
