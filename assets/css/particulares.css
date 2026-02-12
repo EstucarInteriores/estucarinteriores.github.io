@@ -994,3 +994,11 @@ body{
     max-height: none !important;
   }
 }
+/* PART — Banner final: evitar deformación (nunca estirar) */
+.page-particulares .footer-banner--bleed img,
+.page-particulares .footer-banner img{
+  width: 100%;
+  height: auto !important;
+  display: block;
+  object-fit: contain; /* por si alguien le metió height fijo */
+}
