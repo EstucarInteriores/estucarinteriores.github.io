@@ -1,7 +1,6 @@
 /* ============================================================
    HOME STAGING · PORTFOLIO LARGO (PARTICULARES)
    Ruta: assets/css/proyectos/proyecto-home-staging-ramon-patuel_portfolio.css
-   Base: sistema pl-* del portfolio largo de Particulares
    ============================================================ */
 
 :root{
@@ -40,8 +39,8 @@ html{ scroll-behavior: smooth; }
 /* Negritas terracota (portfolio) */
 .page-portfolio-long .pl-wrap strong,
 .page-portfolio-long .pl-wrap b{
-  color: var(--pl-tc) !important;
-  font-weight: 600 !important;
+  color: var(--pl-tc);
+  font-weight: 600;
 }
 
 /* Quitar subrayados raros en marca */
@@ -57,9 +56,9 @@ html{ scroll-behavior: smooth; }
 .topbar .brand .brand-sub{ text-decoration: none; }
 .topbar .brand:hover .brand-name,
 .topbar .brand:hover .brand-sub{
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-  background-image: none !important;
+  border-bottom: 0;
+  box-shadow: none;
+  background-image: none;
 }
 
 /* ============================================================
@@ -138,7 +137,6 @@ html{ scroll-behavior: smooth; }
   gap: 8px 12px;
   margin: 10px 0 10px;
 }
-
 .pl-metaItem{
   display: grid;
   gap: 3px;
@@ -147,7 +145,6 @@ html{ scroll-behavior: smooth; }
   border-radius: 8px;
   background: rgba(245,245,245,.72);
 }
-
 .pl-metaLabel{
   font-size: 11px;
   letter-spacing: .18em;
@@ -155,7 +152,6 @@ html{ scroll-behavior: smooth; }
   color: var(--pl-tc);
   font-weight: 600;
 }
-
 .pl-metaVal{
   font-size: 12px;
   line-height: 1.35;
@@ -174,16 +170,14 @@ html{ scroll-behavior: smooth; }
   position: relative;
   z-index: 3;
 }
-
 .pl-hero .pl-sectionNav .pl-sectionNav__item{
   display: inline;
   width: auto;
-  border: 0;
-  border-bottom: 0;
-  border-radius: 0;
-  background: transparent;
   padding: 0;
   margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   box-shadow: none;
 
   text-decoration: none;
@@ -195,14 +189,12 @@ html{ scroll-behavior: smooth; }
   color: rgba(199,116,92,.88);
   text-shadow: 0 1px 6px rgba(0,0,0,.22);
 }
-
 .pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
   content: " · ";
   color: rgba(199,116,92,.80);
   text-shadow: 0 1px 6px rgba(0,0,0,.22);
   margin: 0 .7em;
 }
-
 .pl-hero .pl-sectionNav .pl-sectionNav__item:hover{
   color: rgba(199,116,92,.92);
 }
@@ -212,7 +204,6 @@ html{ scroll-behavior: smooth; }
    ============================================================ */
 .pl-section{ padding: 0; position: relative; }
 .pl-section + .pl-section{ border-top: 1px solid var(--pl-rule); }
-
 .pl-inner{ padding: 0; }
 
 .pl-h2{
@@ -224,7 +215,6 @@ html{ scroll-behavior: smooth; }
   text-transform: uppercase;
   color: var(--pl-tc);
 }
-
 .pl-intro{
   margin: 0 auto 14px;
   max-width: 78ch;
@@ -234,7 +224,6 @@ html{ scroll-behavior: smooth; }
   text-align: center;
   letter-spacing: .02em;
 }
-
 .pl-p{
   margin: 0 auto 30px;
   max-width: 84ch;
@@ -255,18 +244,16 @@ html{ scroll-behavior: smooth; }
   overflow: hidden;
   background: rgba(245,245,245,.72);
 }
-
 .pl-zoom{
   display: block;
   text-decoration: none;
   color: inherit;
 }
-
 .pl-fig img{
   width: 100%;
   display: block;
+  height: auto;
 }
-
 .pl-cap{
   padding: 10px 12px;
   font-size: 12px;
@@ -278,6 +265,58 @@ html{ scroll-behavior: smooth; }
 }
 
 /* ============================================================
+   DOCSHEET (lámina + hotspots)
+   ============================================================ */
+.pl-fig--docsheet{ margin-top: 14px; }
+
+.pl-docsheet{
+  position: relative;
+}
+.pl-docsheet__img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hotspots: enlaces invisibles encima */
+.pl-hot{
+  position: absolute;
+  display: block;
+  z-index: 3;
+  cursor: zoom-in;
+  border-radius: 10px;
+  background: transparent;
+}
+.pl-hot:hover{
+  outline: 1px solid rgba(199,116,92,.65);
+  outline-offset: 2px;
+}
+.pl-hot:focus-visible{
+  outline: 2px solid rgba(199,116,92,.85);
+  outline-offset: 3px;
+}
+
+/* Coordenadas */
+.pl-hot--amueblada{
+  left: 4%;
+  top: 10%;
+  width: 55%;
+  height: 82%;
+}
+.pl-hot--acotada{
+  left: 65%;
+  top: 10%;
+  width: 27%;
+  height: 40%;
+}
+.pl-hot--zonificacion{
+  left: 65%;
+  top: 50%;
+  width: 27%;
+  height: 40%;
+}
+
+/* ============================================================
    GRIDS
    ============================================================ */
 .pl-grid{
@@ -285,7 +324,6 @@ html{ scroll-behavior: smooth; }
   gap: 14px;
   margin: 0;
 }
-
 .pl-grid--proposal{
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -294,13 +332,14 @@ html{ scroll-behavior: smooth; }
   object-fit: cover;
 }
 
-/* docs 2-up sin recorte duro */
-.pl-grid--docs2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.pl-grid--docs2 .pl-fig img{
-  height: auto;
-  object-fit: contain;
+/* ============================================================
+   LÍNEA NORMAL (NO a sangre)
+   ============================================================ */
+.pl-rule{
+  height: 1px;
+  background: rgba(199,116,92,.70);
+  width: 100%;
+  margin: 22px 0 8px;
 }
 
 /* ============================================================
@@ -313,7 +352,6 @@ html{ scroll-behavior: smooth; }
   display: flex;
   justify-content: center;
 }
-
 .pl-back-btn{
   display: inline-block;
   padding: 4px 8px;
@@ -326,7 +364,7 @@ html{ scroll-behavior: smooth; }
   color: var(--pl-tc);
   border: 1px solid rgba(199,116,92,.45);
   background: transparent;
-  transition: all .2s ease;
+  transition: background .2s ease;
 }
 .pl-back-btn:hover{ background: rgba(199,116,92,.08); }
 
@@ -353,7 +391,6 @@ html{ scroll-behavior: smooth; }
   background: var(--pl-bg);
   opacity: .92;
 }
-
 @supports (mix-blend-mode: multiply){
   .pl-lb__backdrop{ background: var(--pl-bg); }
   .pl-lb__backdrop::before{
@@ -362,7 +399,6 @@ html{ scroll-behavior: smooth; }
     opacity: 1;
   }
 }
-
 .pl-lb__frame{
   position: absolute;
   inset: 0;
@@ -370,7 +406,6 @@ html{ scroll-behavior: smooth; }
   place-items: center;
   padding: clamp(14px, 3vw, 28px);
 }
-
 .pl-lb__img{
   max-width: min(1100px, 92vw);
   max-height: 86vh;
@@ -381,7 +416,6 @@ html{ scroll-behavior: smooth; }
   background: rgba(245,245,245,.72);
   box-shadow: 0 22px 60px rgba(0,0,0,.22);
 }
-
 .pl-lb__close{
   position: absolute;
   top: 14px;
@@ -399,18 +433,15 @@ html{ scroll-behavior: smooth; }
   place-items: center;
   transition: background .12s ease, border-color .12s ease, transform .12s ease;
 }
-
 .pl-lb__close:hover{
   background: rgba(255,255,255,.90);
   border-color: rgba(199,116,92,.85);
   transform: translateY(-1px);
 }
-
 .pl-lb__close:focus-visible{
   outline: 2px solid rgba(199,116,92,.85);
   outline-offset: 3px;
 }
-
 .pl-lock{ overflow: hidden; }
 
 /* ============================================================
@@ -420,60 +451,65 @@ html{ scroll-behavior: smooth; }
 
   .pl-wrap{ padding: 0 14px; }
 
+  /* Hero en flujo */
   .pl-hero__overlay{ display: none; }
-
   .pl-hero__media{
     aspect-ratio: 4 / 3;
     min-height: 260px;
   }
-
   .pl-hero__inner{
     position: static;
     padding: 16px 14px 14px;
     background: rgba(245,245,245,.78);
   }
-
   .pl-h1{
     text-align: center;
     font-size: 18px;
     line-height: 1.25;
     margin-bottom: 8px;
   }
-
   .pl-lead{
     font-size: 15px;
     margin-bottom: 12px;
   }
-
   .pl-hero__meta{
     grid-template-columns: 1fr;
     gap: 10px;
     margin: 10px 0 12px;
   }
-
   .pl-metaItem{ padding: 10px 12px; }
-
-  .pl-hero .pl-sectionNav .pl-sectionNav__item{
-    font-size: 10px;
-    letter-spacing: .22em;
-  }
-
-  .pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
-    margin: 0 .55em;
-  }
 
   .pl-section{ padding: 24px 0; }
   .pl-intro{ margin-bottom: 12px; }
   .pl-p{ line-height: 1.7; }
 
-  .pl-grid--proposal,
-  .pl-grid--docs2{
-    grid-template-columns: 1fr;
-  }
-
+  .pl-grid--proposal{ grid-template-columns: 1fr; }
   .pl-grid--proposal .pl-fig img{
     height: auto;
     object-fit: contain;
+  }
+
+  /* === FIX REAL DOCSHEET iPhone ===
+     La lámina NO puede crecer a infinito.
+     Creamos un “marco” (vh) y metemos la imagen contenida.
+  */
+  .pl-fig--docsheet{
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .pl-fig--docsheet .pl-docsheet{
+    height: 62vh;
+    max-height: 62vh;
+    overflow: hidden;
+  }
+
+  .pl-fig--docsheet .pl-docsheet__img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: 50% 50%;
+    display: block;
   }
 
   .pl-lb__img{
@@ -489,71 +525,28 @@ html{ scroll-behavior: smooth; }
     margin-right: auto;
   }
 }
-.pl-rule{
-  height: 1px;
-  background: rgba(199,116,92,.70);
-  width: 100%;
-  margin: 22px 0 8px;
-}
 
-/* Docsheet: lámina + hotspots */
-.pl-fig--docsheet{ margin-top: 14px; }
-
-.pl-docsheet{
-  position: relative;
-}
-
-.pl-docsheet img{
-  width: 100%;
-  display: block;
-}
-
-/* Hotspots: enlaces invisibles encima */
-.pl-hot{
-  position: absolute;
-  display: block;
-  z-index: 3;
-  cursor: zoom-in;
-  border-radius: 10px;
-  background: transparent;
-}
-
-/* Feedback sutil */
-.pl-hot:hover{
-  outline: 1px solid rgba(199,116,92,.65);
-  outline-offset: 2px;
-}
-.pl-hot:focus-visible{
-  outline: 2px solid rgba(199,116,92,.85);
-  outline-offset: 3px;
-}
-
-/* ====== COORDENADAS (ajusta si hace falta) ======
-   En tu lámina:
-   - Izquierda: planta amueblada grande
-   - Derecha arriba: planta acotada
-   - Derecha abajo: zonificación
-*/
-.pl-hot--amueblada{
-      left: 4%;
-    top: 10%;
-    width: 55%;
-    height: 82%;
-}
-
-.pl-hot--acotada{
-  left: 65%;
-    top: 10%;
-    width: 27%;
-    height: 40%;
-}
-
-.pl-hot--zonificacion{
-    left: 65%;
-    top: 50%;
-    width: 27%;
-    height: 40%;
-}
-
-/* Ajuste fino del bloque contacto si el global mete más aire */
+/* Ajuste fino contacto si el global mete más aire */
 .page-particulares .par-contact{ padding: 30px 0 0; }
+
+/* 2-up: igualar altura sin afectar figuras sueltas */
+.pl-grid--proposal .pl-fig .pl-zoom{
+  display: block;
+}
+
+.pl-grid--proposal .pl-fig img{
+  width: 100%;
+  height: 360px;          /* ajusta: 320–420 según gusto */
+  object-fit: cover;      /* iguala alto y rellena */
+  object-position: 50% 50%;
+  display: block;
+}
+
+/* móvil: vuelve a auto para no forzar recortes raros */
+@media (max-width: 760px){
+  .pl-grid--proposal .pl-fig img{
+    height: auto;
+    object-fit: contain;
+  }
+}
+

@@ -598,8 +598,8 @@ html, body{ background: var(--dj-page-bg); }
   object-fit:contain;
   object-position:center;
   background:transparent;
-  box-shadow:0 4px 12px rgba(255,255,255,0.8);
-  border-radius:8px;
+  box-shadow: 0 4px 8px rgba(255,255,255,0.8);
+  border-radius:4px;
 }
 .page-project .dj-fs__close{
   position:absolute;
@@ -682,7 +682,14 @@ html, body{ background: var(--dj-page-bg); }
   letter-spacing:0.06em;
   text-align:center;
 }
-
+/* DOCSHEET: la lámina completa nunca se estira */
+.pl-docsheet img{
+  width: 100%;
+  height: auto !important;     /* anula cualquier height heredado */
+  max-width: 100%;
+  display: block;
+  object-fit: contain;         /* seguridad extra */
+}
 /* ============================================================
    10) RESPONSIVE
    ============================================================ */
@@ -761,5 +768,31 @@ html, body{ background: var(--dj-page-bg); }
     background:rgba(233,233,231,0.92);
     box-shadow:0 1px 4px rgba(0,0,0,0.10);
     border-color:rgba(184,107,75,0.55);
+  }
+
+  .pl-fig--docsheet .pl-docsheet{
+    max-height: 62vh;
+    overflow: hidden; /* mantiene todo dentro del marco */
+  }
+  .pl-fig--docsheet .pl-docsheet img{
+    max-height: 62vh;
+  }
+
+}
+/* DOCSHEET — móvil real: evitar láminas gigantes */
+@media (max-width: 760px){
+  .pl-fig--docsheet .pl-docsheet img{
+    width: 100%;
+    height: auto !important;
+    max-height: 62vh;          /* clave: no invade la pantalla */
+    object-fit: contain;
+    object-position: 50% 50%;
+    margin: 0 auto;
+  }
+
+  /* opcional: que el marco no sume demasiado aire */
+  .pl-fig--docsheet{
+    margin-left: 12px;
+    margin-right: 12px;
   }
 }

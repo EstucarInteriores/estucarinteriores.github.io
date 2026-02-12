@@ -489,3 +489,24 @@ html{ scroll-behavior: smooth; }
   outline: 2px solid rgba(94,111,97,.55);
   outline-offset: 3px;
 }
+/* 2-up: igualar altura sin afectar figuras sueltas */
+.pl-grid--proposal .pl-fig .pl-zoom{
+  display: block;
+}
+
+.pl-grid--proposal .pl-fig img{
+  width: 100%;
+  height: 360px;          /* ajusta: 320–420 según gusto */
+  object-fit: cover;      /* iguala alto y rellena */
+  object-position: 50% 50%;
+  display: block;
+}
+
+/* móvil: vuelve a auto para no forzar recortes raros */
+@media (max-width: 760px){
+  .pl-grid--proposal .pl-fig img{
+    height: auto;
+    object-fit: contain;
+  }
+}
+

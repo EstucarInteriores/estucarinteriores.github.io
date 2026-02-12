@@ -1,5 +1,4 @@
 :root{
-  /* Terracota fijo */
   --pl-tc: #c7745c;
   --pl-rule: rgba(199,116,92,.70);
 
@@ -11,62 +10,47 @@
   --pl-pad: clamp(16px, 3vw, 28px);
 }
 
-.page-portfolio-long{
-  background: var(--pl-bg);
-}
+.page-portfolio-long{ background: var(--pl-bg); }
 
-/* Línea a sangre */
-.pl-ruleBleed{
-  height: 1px;
-  background: var(--pl-tc);
-  width: 100%;
-}
-
-.pl-ruleBleed--beforeContact{
-  margin-top: 10px;
-}
-
-/* Wrapper */
+/* ============================================================
+   WRAP + REGLA A SANGRE
+============================================================ */
 .pl-wrap{
   max-width: var(--pl-maxw);
   margin: 0 auto;
   padding: 0 var(--pl-pad);
 }
 
-/* Scroll suave */
+.pl-ruleBleed{
+  height: 1px;
+  background: var(--pl-tc);
+  width: 100%;
+}
+.pl-ruleBleed--beforeContact{ margin-top: 10px; }
+
+/* Scroll */
 html{ scroll-behavior: smooth; }
 #contexto, #docs, #propuesta, #resultado, #contacto{ scroll-margin-top: 120px; }
 
-/* Negritas terracota (portfolio) */
+/* Negritas terracota */
 .page-portfolio-long .pl-wrap strong,
 .page-portfolio-long .pl-wrap b{
-  color: var(--pl-tc) !important;
-  font-weight: 600 !important;
+  color: var(--pl-tc);
+  font-weight: 600;
 }
 
+/* Evitar subrayados en brand */
 .topbar .brand,
 .topbar .brand:hover,
 .topbar .brand:focus,
-.topbar .brand:active{
-  text-decoration: none;
-  border-bottom: 0;
-  box-shadow: none;
-}
+.topbar .brand:active{ text-decoration:none; border-bottom:0; box-shadow:none; }
 
-/* Por si la “línea” está aplicada a los textos internos */
 .topbar .brand .brand-name,
-.topbar .brand .brand-sub{
-  text-decoration: none;
-}
-.topbar .brand:hover .brand-name,
-.topbar .brand:hover .brand-sub{
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-  background-image: none !important;
-}
+.topbar .brand .brand-sub{ text-decoration:none; }
+
 /* ============================================================
    HERO
-   ============================================================ */
+============================================================ */
 .pl-hero{
   position: relative;
   margin: 18px 0 10px;
@@ -81,7 +65,6 @@ html{ scroll-behavior: smooth; }
   aspect-ratio: 16 / 9;
   min-height: 360px;
 }
-
 .pl-hero__media img{
   position: absolute;
   inset: 0;
@@ -93,7 +76,13 @@ html{ scroll-behavior: smooth; }
 .pl-hero__overlay{
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(233, 233, 233, 0.56) 40%, rgba(233, 233, 233, 0.88) 75%, rgba(233, 233, 233, 0.99) 100%);
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(233,233,233,.56) 40%,
+    rgba(233,233,233,.88) 75%,
+    rgba(233,233,233,.99) 100%
+  );
   pointer-events: none;
 }
 
@@ -102,6 +91,7 @@ html{ scroll-behavior: smooth; }
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
   padding: 16px var(--pl-pad) 16px;
 }
 
@@ -121,12 +111,7 @@ html{ scroll-behavior: smooth; }
   line-height: 1.55;
   color: var(--pl-ink);
 }
-
-.pl-lead--center{
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
+.pl-lead--center{ text-align:center; margin-left:auto; margin-right:auto; }
 
 /* Meta */
 .pl-hero__meta{
@@ -135,7 +120,6 @@ html{ scroll-behavior: smooth; }
   gap: 8px 12px;
   margin: 10px 0 10px;
 }
-
 .pl-metaItem{
   display: grid;
   gap: 3px;
@@ -144,7 +128,6 @@ html{ scroll-behavior: smooth; }
   border-radius: 8px;
   background: rgba(245,245,245,.72);
 }
-
 .pl-metaLabel{
   font-size: 11px;
   letter-spacing: .18em;
@@ -152,100 +135,57 @@ html{ scroll-behavior: smooth; }
   color: var(--pl-tc);
   font-weight: 600;
 }
-
 .pl-metaVal{
   font-size: 12px;
   line-height: 1.35;
   color: rgba(25,25,25,0.78);
 }
 
-/* ============================================================
-   MENÚ SECCIONES: solo texto terracota suave + · (sin subrayar)
-   ============================================================ */
+/* Menú secciones */
 .pl-hero .pl-sectionNav{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
-  padding-top: 10px;
-  margin-top: 2px;
-  background: transparent;
+  position: relative;
+  z-index: 3;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:0;
+  padding-top:10px;
+  margin-top:2px;
 }
-
 .pl-hero .pl-sectionNav .pl-sectionNav__item{
-  display: inline;
-  width: auto;
-
-  border: 0;
-  border-bottom: 0;
-  border-radius: 0;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: .22em;
-  font-size: 10.5px;
-  line-height: 1.7;
-
-  color: rgba(199,116,92,.88); /* antes .72 */
+  display:inline;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:10.5px;
+  line-height:1.7;
+  color: rgba(199,116,92,.88);
   text-shadow: 0 1px 6px rgba(0,0,0,.22);
 }
-
 .pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
-  content: " · ";
+  content:" · ";
   color: rgba(199,116,92,.80);
   text-shadow: 0 1px 6px rgba(0,0,0,.22);
   margin: 0 .7em;
 }
 
-.pl-hero .pl-sectionNav .pl-sectionNav__item:hover{
-  color: rgba(199,116,92,.92);
-}
-/* Overlay debajo */
-.pl-hero__overlay{
-  z-index: 1;
-}
-
-/* Contenido del hero por encima del overlay */
-.pl-hero__inner{
-  z-index: 2;
-  position: absolute; /* ya lo tienes, pero lo dejo explícito */
-}
-
-/* Menú todavía un punto por encima (por si hay filtros/blur) */
-.pl-hero .pl-sectionNav{
-  position: relative;
-  z-index: 3;
-}
-
 /* ============================================================
-   SECCIONES / TEXTO (criterio unificado)
-   ============================================================ */
-.pl-section{
-  padding: 0px 0;
-  position: relative;
-}
+   SECCIONES / TEXTO
+============================================================ */
+.pl-section{ padding: 0; position: relative; }
+.pl-section + .pl-section{ border-top: 1px solid var(--pl-rule); }
 
-.pl-section + .pl-section{
-  border-top: 1px solid var(--pl-rule);
-}
-10:08 09/02/2026
 .pl-inner{ padding: 0; }
 
 .pl-h2{
   margin: 50px 0 10px;
-  text-align: center;
+  text-align:center;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--pl-tc);
 }
-
-/* Entradilla breve (misma en todas) */
 .pl-intro{
   margin: 0 auto 14px;
   max-width: 78ch;
@@ -255,7 +195,6 @@ html{ scroll-behavior: smooth; }
   text-align: center;
   letter-spacing: .02em;
 }
-
 .pl-p{
   margin: 0 auto 30px;
   max-width: 84ch;
@@ -267,8 +206,8 @@ html{ scroll-behavior: smooth; }
 }
 
 /* ============================================================
-   FIGURES
-   ============================================================ */
+   FIGURES (base)
+============================================================ */
 .pl-fig{
   margin: 20px;
   border: 1px solid rgba(199,116,92,.35);
@@ -277,18 +216,24 @@ html{ scroll-behavior: smooth; }
   background: rgba(245,245,245,.72);
 }
 
+/* El enlace es el “marco” clicable de la imagen */
 .pl-zoom{
   display: block;
   text-decoration: none;
   color: inherit;
 }
 
+/* Si existe un <a.pl-zoom> vacío (tu caso), lo ocultamos */
+.pl-zoom:empty{ display:none; }
+
+/* Imagen por defecto: nunca deformar */
 .pl-fig img{
   width: 100%;
-  display: block;
   height: auto;
+  display: block;
 }
 
+/* Caption */
 .pl-cap{
   padding: 10px 12px;
   font-size: 12px;
@@ -300,101 +245,46 @@ html{ scroll-behavior: smooth; }
 }
 
 /* ============================================================
-   DOCSHEET (RECOPILACION + HOTSPOTS)
-   ============================================================ */
-.pl-fig--docsheet{
-  margin-top: 14px;
-}
+   DOCSHEET + HOTSPOTS
+============================================================ */
+.pl-fig--docsheet{ margin-top: 14px; }
 
-/* Contenedor relativo para colocar hotspots */
-.pl-docsheet{
-  position: relative;
-}
+.pl-docsheet{ position: relative; }
+.pl-docsheet img{ position: relative; z-index: 1; }
 
-.pl-docsheet img{
-  position: relative;
-  z-index: 1;
-  height: auto;
-}
-
-/* Hotspots: enlaces transparentes encima */
 .pl-hot{
   position: absolute;
-  display: block;
+  display:block;
   background: transparent;
   border-radius: 8px;
- z-index: 3;           /* por encima del img */
+  z-index: 3;
   cursor: zoom-in;
 }
-
-/* Hover/Focus: indicación sutil (no molesta) */
 .pl-hot:hover{
   outline: 1px solid rgba(199,116,92,.65);
   outline-offset: 2px;
 }
-
 .pl-hot:focus-visible{
   outline: 2px solid rgba(199,116,92,.85);
   outline-offset: 3px;
 }
 
-/*
-  Coordenadas en % (ajustadas al montaje que mostraste: axo grande izq,
-  columna derecha con planta arriba + 2x2 de vistas abajo)
-*/
-.pl-hot--axo{
-  left: 0%;
-  top: 0%;
-  width: 60%;
-  height: 100%;
-}
+/* Hotspots coords */
+.pl-hot--axo{ left:0%; top:0%; width:60%; height:100%; }
+.pl-hot--planta{ left:62%; top:0%; width:31.5%; height:48%; }
+.pl-hot--v1{ left:62%; top:50%; width:15.5%; height:22%; }
+.pl-hot--v2{ left:78%; top:50%; width:15.5%; height:22%; }
+.pl-hot--v3{ left:62%; top:72%; width:15.5%; height:25%; }
+.pl-hot--v4{ left:78%; top:72%; width:15.5%; height:25%; }
 
-.pl-hot--planta{
-  left: 62%;
-  top: 0%;
-  width: 31.5%;
-  height: 48%;
-}
-
-/* Bloque 2x2 de vistas en la parte derecha inferior */
-.pl-hot--v1{
-  left: 62%;
-  top: 50%;
-  width: 15.5%;
-  height: 22%;
-}
-
-.pl-hot--v2{
-  left: 78%;
-  top: 50%;
-  width: 15.5%;
-  height: 22%;
-}
-
-.pl-hot--v3{
-  left: 62%;
-  top: 72%;
-  width: 15.5%;
-  height: 25%;
-}
-
-.pl-hot--v4{
-  left: 78%;
-  top: 72%;
-  width: 15.5%;
-  height: 25%;
-}
-
-/* Links discretos a planos complementarios */
 .pl-docLinks{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:0;
   margin: 10px;
- font-size: 10px;
+  font-size: 10px;
 }
-
 .pl-docLink{
   font-size: 11px;
   letter-spacing: .14em;
@@ -403,70 +293,64 @@ html{ scroll-behavior: smooth; }
   color: rgba(199,116,92,.78);
   transition: color .12s ease;
 }
-
-.pl-docLink:hover{
-  color: rgba(199,116,92,.95);
-}
-
-.pl-docSep{
-  margin: 0 .8em;
-  color: rgba(199,116,92,.55);
-}
-
-
-.page-particulares .par-contact {
-    padding: 30px 0 0;
-}
+.pl-docLink:hover{ color: rgba(199,116,92,.95); }
+.pl-docSep{ margin: 0 .8em; color: rgba(199,116,92,.55); }
 
 /* ============================================================
    GRIDS: propuesta / resultado
-   ============================================================ */
+============================================================ */
 .pl-grid{
   display: grid;
   gap: 14px;
-  margin: 0px;
+  margin: 0;
 }
 
 .pl-grid--proposal{
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.pl-grid--proposal .pl-fig img{
-  height: 420px;
+/* ✅ Desktop: cards con altura controlada y cover */
+.pl-grid--proposal .pl-fig .pl-zoom{
+  aspect-ratio: 16 / 9;
+  background: rgba(245,245,245,.72);
+}
+.pl-grid--proposal .pl-fig .pl-zoom > img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display:block;
 }
 
 .pl-grid--result{
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
-
-.pl-grid--result .pl-fig img{
-  height: 360px;
+.pl-grid--result .pl-fig .pl-zoom{
+  aspect-ratio: 16 / 9;
+  background: rgba(245,245,245,.72);
+}
+.pl-grid--result .pl-fig .pl-zoom > img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display:block;
 }
 
 /* ============================================================
-   LIGHTBOX FULLSCREEN
-   - Fondo: tu bg de página, más oscuro y opaco
-   - Botón cerrar: blanco semitransparente + borde terracota + X terracota
-   ============================================================ */
+   LIGHTBOX (solo lightbox)
+============================================================ */
 .pl-lb{
   position: fixed;
   inset: 0;
   z-index: 9999;
   display: none;
 }
-
-.pl-lb.is-open{
-  display: block;
-}
+.pl-lb.is-open{ display:block; }
 
 .pl-lb__backdrop{
-  position: absolute;
-  inset: 0;
+  position:absolute;
+  inset:0;
   background: rgba(0,0,0,.55);
 }
-
 .pl-lb__backdrop::before{
   content:"";
   position:absolute;
@@ -475,31 +359,21 @@ html{ scroll-behavior: smooth; }
   opacity: .92;
 }
 
-@supports (mix-blend-mode: multiply){
-  .pl-lb__backdrop{
-    background: var(--pl-bg);
-  }
-  .pl-lb__backdrop::before{
-    background: rgba(0,0,0,.55);
-    mix-blend-mode: multiply;
-    opacity: 1;
-  }
-}
-
 .pl-lb__frame{
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
   padding: clamp(14px, 3vw, 28px);
 }
 
+/* ✅ Esto es lo único que controla el tamaño del fullscreen */
 .pl-lb__img{
   max-width: min(1100px, 92vw);
   max-height: 86vh;
   width: auto;
   height: auto;
-
+  object-fit: contain;
   border-radius: 10px;
   border: 1px solid rgba(199,116,92,.45);
   background: rgba(245,245,245,.72);
@@ -507,125 +381,27 @@ html{ scroll-behavior: smooth; }
 }
 
 .pl-lb__close{
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:44px;
+  height:44px;
+  border-radius:999px;
   background: rgba(255,255,255,.78);
   border: 1px solid rgba(199,116,92,.70);
   color: rgba(199,116,92,.92);
-
   font-size: 28px;
   line-height: 1;
-
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  transition: background .12s ease, border-color .12s ease, transform .12s ease;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
 }
 
-.pl-lb__close:hover{
-  background: rgba(255,255,255,.90);
-  border-color: rgba(199,116,92,.85);
-  transform: translateY(-1px);
-}
-
-.pl-lb__close:focus-visible{
-  outline: 2px solid rgba(199,116,92,.85);
-  outline-offset: 3px;
-}
-
-/* Lock scroll cuando el lightbox está abierto */
-.pl-lock{
-  overflow: hidden;
-}
+.pl-lock{ overflow:hidden; }
 
 /* ============================================================
-   MÓVIL: hero en flujo (sin solapes) + menú texto igual
-   ============================================================ */
-@media (max-width: 760px){
-
-  .pl-wrap{ padding: 0 14px; }
-
-  /* Hero en flujo */
-  .pl-hero__overlay{ display: none; }
-
-  .pl-hero__media{
-    aspect-ratio: 4 / 3;
-    min-height: 260px;
-  }
-
-  .pl-hero__inner{
-    position: static;
-    padding: 16px 14px 14px;
-    background: rgba(245,245,245,.78);
-  }
-
-  .pl-h1{
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.25;
-    margin-bottom: 8px;
-  }
-
-  .pl-lead{
-    font-size: 15px;
-    margin-bottom: 12px;
-  }
-
-  .pl-hero__meta{
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin: 10px 0 12px;
-  }
-
-  .pl-metaItem{ padding: 10px 12px; }
-
-  /* Menú secciones */
-  .pl-hero .pl-sectionNav .pl-sectionNav__item{
-    font-size: 10px;
-    letter-spacing: .22em;
-  }
-
-  .pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
-    margin: 0 .55em;
-  }
-
-  /* Secciones */
-  .pl-section{ padding: 24px 0; }
-  .pl-intro{ margin-bottom: 12px; }
-  .pl-p{ line-height: 1.7; }
-
-  .pl-grid--proposal,
-  .pl-grid--result{
-    grid-template-columns: 1fr;
-  }
-
-  .pl-grid--proposal .pl-fig img,
-  .pl-grid--result .pl-fig img{
-    height: auto;
-    object-fit: contain;
-  }
-
-  /* Lightbox: imagen más alta */
-  .pl-lb__img{
-    max-width: 92vw;
-    max-height: 82vh;
-  }
-}
-
-/* iPhone SE */
-@media (max-width: 380px){
-  .pl-hero .pl-sectionNav{
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-/* Columna */
+   COLUMNA FULL (imágenes completas, sin recorte)
+============================================================ */
 .pl-col{
   display: grid;
   grid-template-columns: 1fr;
@@ -633,85 +409,108 @@ html{ scroll-behavior: smooth; }
   margin-top: 16px;
 }
 
-/* Mostrar imagen completa (sin recorte) */
+/* Si usas .pl-col--full para una imagen que NO debe recortar */
 .pl-col--full .pl-fig img{
   width: 100%;
-  height: auto;          /* clave: no altura fija */
-  object-fit: contain;   /* clave: no recorta */
-  display: block;
-  background: rgba(245,245,245,.72); /* opcional: igual que tu sistema */
+  height: auto;
+  object-fit: contain;
+  display:block;
 }
 
-/* IMPORTANTE: anular cualquier altura forzada que venga de grids previos */
-.pl-col--full .pl-fig{
-  overflow: hidden; /* ok */
-}
 /* ============================================================
-   BOTÓN VOLVER · PORTFOLIO LARGO PARTICULARES
-   ============================================================ */
-
+   BOTÓN VOLVER
+============================================================ */
 .pl-back{
-  max-width: var(--pl-maxw, 980px);
-  margin: 30px auto 30px;
-  padding: 0 var(--pl-padx, 30px);
-display: flex;
-    justify-content: center;
+  max-width: var(--pl-maxw);
+  margin: 30px auto;
+  padding: 0 var(--pl-pad);
+  display:flex;
+  justify-content:center;
 }
-
 .pl-back-btn{
-  display: inline-block;
+  display:inline-block;
   padding: 4px 8px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .22em;
   text-transform: uppercase;
-  text-decoration: none;
-  color: var(--terracota);
+  text-decoration:none;
+  color: var(--pl-tc);
   border: 1px solid rgba(199,116,92,.45);
   background: transparent;
-
-  transition: all .2s ease;
 }
+.pl-back-btn:hover{ background: rgba(199,116,92,.08); }
 
-.pl-back-btn:hover{
-  background: rgba(199,116,92,.08);
-}
 /* ============================================================
-   MARTILLO — PORTFOLIO LARGO: impedir deformación sí o sí
-   ============================================================ */
+   RESPONSIVE
+============================================================ */
+@media (max-width: 760px){
 
-/* 1) Quita cualquier estiramiento por height/aspect-ratio */
-.page-portfolio-long img{
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
-  object-fit: contain !important;
-  object-position: 50% 50% !important;
-  display: block !important;
+  .pl-wrap{ padding: 0 14px; }
+
+  /* Hero en flujo */
+  .pl-hero__overlay{ display:none; }
+  .pl-hero__media{ aspect-ratio: 4 / 3; min-height: 260px; }
+  .pl-hero__inner{
+    position: static;
+    padding: 16px 14px 14px;
+    background: rgba(245,245,245,.78);
+  }
+
+  .pl-h1{ text-align:center; font-size:18px; margin-bottom:8px; }
+  .pl-lead{ font-size:15px; }
+
+  .pl-hero__meta{ grid-template-columns: 1fr; gap: 10px; }
+
+  /* Grids a 1 columna */
+  .pl-grid--proposal,
+  .pl-grid--result{
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ Móvil: ver la imagen completa en cards (sin recorte) */
+  .pl-grid--proposal .pl-fig .pl-zoom,
+  .pl-grid--result .pl-fig .pl-zoom{
+    aspect-ratio: auto;
+  }
+  .pl-grid--proposal .pl-fig img,
+  .pl-grid--result .pl-fig img{
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Lightbox */
+  .pl-lb__img{
+    max-width: 92vw;
+    max-height: 82vh;
+  }
 }
 
-/* 2) Si hay wrappers que están imponiendo altura fija, desactívalo */
-.page-portfolio-long figure,
-.page-portfolio-long .pl-media,
-.page-portfolio-long .pl-card,
-.page-portfolio-long .pl-figure{
-  height: auto !important;
-  min-height: 0 !important;
+@media (max-width: 380px){
+  .pl-hero .pl-sectionNav{
+    max-width: 320px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+/* 2-up: igualar altura sin afectar figuras sueltas */
+.pl-grid--proposal .pl-fig .pl-zoom{
+  display: block;
 }
 
-/* 3) Si existe una regla tipo “img{height:100%}” en alguna zona, la anulamos */
-.page-portfolio-long [class*="pl"] img{
-  height: auto !important;
+.pl-grid--proposal .pl-fig img{
+  width: 100%;
+  height: 360px;          /* ajusta: 320–420 según gusto */
+  object-fit: cover;      /* iguala alto y rellena */
+  object-position: 50% 50%;
+  display: block;
 }
 
-/* Si tus tiles son fondos (background-image) */
-.page-portfolio-long .pl-tile,
-.page-portfolio-long .pl-thumb{
-  background-size: contain !important;  /* (cover recorta, contain no) */
-  background-position: 50% 50% !important;
-  background-repeat: no-repeat !important;
-  height: auto !important;
+/* móvil: vuelve a auto para no forzar recortes raros */
+@media (max-width: 760px){
+  .pl-grid--proposal .pl-fig img{
+    height: auto;
+    object-fit: contain;
+  }
 }
