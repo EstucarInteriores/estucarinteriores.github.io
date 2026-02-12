@@ -499,7 +499,7 @@ html{ scroll-behavior: smooth; }
   }
 
   .pl-fig--docsheet .pl-docsheet{
-    height: 62vh;
+    height: auto;
     max-height: 62vh;
     overflow: hidden;
   }
