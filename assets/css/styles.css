@@ -457,7 +457,7 @@ h1{
 .pro-siteLine{
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 10px 16px;
+  padding: 0px 0px;
   text-align: center; /* ✅ centrado */
 }
 
@@ -465,7 +465,6 @@ h1{
   display: inline-block; /* ✅ que respete el text-align center */
   font-size: 10px;
   letter-spacing: .18em;
-  text-transform: uppercase;
   color: rgba(47,47,49,.70);
   text-decoration: none;
 }
