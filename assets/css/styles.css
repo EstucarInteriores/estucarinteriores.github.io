@@ -543,16 +543,11 @@ line-height:1.35;
   .btn-outline{ font-size:8px; padding:5px 8px; }
 }
 
-}
 /* =========================
    ESTADO 3 — MÓVIL
    (tu encuadre actual, anclado abajo)
 ========================= */
 @media (max-width: 800px){
-
- .html{
-margin-left: 20px;
-}
 
   .hero-img{
     height: 60vh;
@@ -602,12 +597,7 @@ margin-bottom:12px;
 padding:0; 
 letter-spacing:-.01em; 
 color: var(--antracita);
-maring-top: 20px;
-}
-
-.p{ 
-font-size:10px; 
-letter-spacing:.18em; 
+margin-top: 20px;
 }
 
   .below-inner{ 
@@ -646,4 +636,23 @@ line-height:1.35;
     transform: none;
     margin-bottom: 0; /* opcional: quita el “tirón” negativo en móvil */
   }
+}
+/* =========================
+   CONTACT ICONS (HOME) — SVG
+========================= */
+.meta-icons .ico{
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--antracita);
+  opacity: .75;
+  flex: 0 0 18px;
+}
+.meta-icons .ico svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
 }
