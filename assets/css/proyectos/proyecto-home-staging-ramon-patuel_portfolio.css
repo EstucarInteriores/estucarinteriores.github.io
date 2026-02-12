@@ -347,10 +347,12 @@ html{ scroll-behavior: smooth; }
    ============================================================ */
 .pl-back{
   max-width: var(--pl-maxw, 980px);
-  margin: 30px auto 30px;
+  margin: 26px auto 22px;
   padding: 0 var(--pl-pad, 28px);
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 .pl-back-btn{
   display: inline-block;
