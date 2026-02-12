@@ -541,7 +541,26 @@ html{ scroll-behavior: smooth; }
   object-position: 50% 50%;
   display: block;
 }
+/* Comparativa 2-up: misma altura SIN altura fija */
+.pl-fig--compare .pl-compare{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 
+/* el “marco” define la altura por ratio */
+.pl-fig--compare .pl-zoom{
+  display: block;
+  aspect-ratio: 4 / 5;   /* ⇦ MÁS ALTO */
+  overflow: hidden;
+}
+
+/* imagen rellena el marco */
+.pl-fig--compare .pl-zoom img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 /* móvil: vuelve a auto para no forzar recortes raros */
 @media (max-width: 760px){
   .pl-grid--proposal .pl-fig img{
@@ -550,3 +569,10 @@ html{ scroll-behavior: smooth; }
   }
 }
 
+.pl-fig--compare .pl-compare{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+.pl-fig--compare .pl-zoom{ display:block; }
+.pl-fig--compare img{ width:100%; display:block; }
