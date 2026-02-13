@@ -329,11 +329,6 @@
 
     if(!track || slides.length === 0) return;
 
-    // Aplica data-pos -> --slide-pos (sin estilos inline en HTML)
-    slides.forEach(s => {
-      const p = s.dataset.pos;
-      if(p) s.style.setProperty('--slide-pos', p);
-    });
 
     let index = 0;
 
