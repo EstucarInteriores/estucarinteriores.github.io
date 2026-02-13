@@ -153,7 +153,7 @@ html, body{ background: var(--dj-page-bg); }
   cursor: zoom-in;
 }
 /* Posición por slide (100% CSS, sin tocar HTML/JS) */
-.page-project .dj-hero__slide:nth-child(1) img{ object-position: 50% 20%; }
+.page-project .dj-hero__slide:nth-child(1) img{ object-position: 50% 80%; }
 .page-project .dj-hero__slide:nth-child(2) img{ object-position: 50% 40%; }
 .page-project .dj-hero__slide:nth-child(3) img{ object-position: 50% 40%; }
 .page-project .dj-hero__slide:nth-child(4) img{ object-position: 50% 40%; }
