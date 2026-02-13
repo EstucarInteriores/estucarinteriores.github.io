@@ -544,7 +544,7 @@ html{ scroll-behavior: smooth; }
 
   /* LISTADO (la “caja” no mete padding lateral en móvil) */
   .page-servicios .svc-box{
-    margin: 18px auto 12px;
+    margin: 50px auto 12px;
     padding: 0;
     max-width: none;
   }
