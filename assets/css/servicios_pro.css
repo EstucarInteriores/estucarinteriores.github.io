@@ -310,3 +310,38 @@ opacity:0.6;
 /* Anclas */
 html{ scroll-behavior: smooth; }
 .page-servicios-pro .svc-service{ scroll-margin-top: var(--scroll-offset, 140px); }
+/* ============================================================
+   SERVICIOS — Ajustes móvil (portrait + landscape)
+   ============================================================ */
+
+/* MÓVIL / TABLET COMPACTO (vertical) */
+@media (max-width: 980px){
+  .page-servicios .svc-box{
+    /* antes: 60px auto 20px */
+    margin: 28px auto 14px;
+
+    /* mantiene “sin caja”, pero da aire lateral seguro */
+    padding: 0 16px;
+    max-width: 720px;
+  }
+}
+
+/* MÓVIL EN HORIZONTAL (poca altura) */
+@media (max-height: 520px) and (orientation: landscape){
+  .page-servicios .svc-box{
+    /* recorta aún más el margen superior para que no “coma” viewport */
+    margin: 16px auto 10px;
+
+    /* en landscape suele hacer falta apretar laterales */
+    padding: 0 14px;
+    max-width: 760px;
+  }
+}
+
+/* Extra opcional: teléfonos muy estrechos */
+@media (max-width: 380px){
+  .page-servicios .svc-box{
+    padding: 0 12px;
+  }
+}
+

@@ -178,8 +178,8 @@
 
 .page-servicios .svc-miniTitle{
   margin: 0 0 8px;
-  font-size: 11px;
-  font-weight: 550;
+  font-size: 10px;
+  font-weight: 450;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(199,116,92,0.92);
@@ -461,3 +461,38 @@ html{ scroll-behavior: smooth; }
     font-size: 14px;
     line-height: 1.55;
 }
+/* ============================================================
+   SERVICIOS — Ajustes móvil (portrait + landscape)
+   ============================================================ */
+
+/* MÓVIL / TABLET COMPACTO (vertical) */
+@media (max-width: 980px){
+  .page-servicios .svc-box{
+    /* antes: 60px auto 20px */
+    margin: 28px auto 14px;
+
+    /* mantiene “sin caja”, pero da aire lateral seguro */
+    padding: 0 16px;
+    max-width: 720px;
+  }
+}
+
+/* MÓVIL EN HORIZONTAL (poca altura) */
+@media (max-height: 520px) and (orientation: landscape){
+  .page-servicios .svc-box{
+    /* recorta aún más el margen superior para que no “coma” viewport */
+    margin: 16px auto 10px;
+
+    /* en landscape suele hacer falta apretar laterales */
+    padding: 0 14px;
+    max-width: 760px;
+  }
+}
+
+/* Extra opcional: teléfonos muy estrechos */
+@media (max-width: 380px){
+  .page-servicios .svc-box{
+    padding: 0 12px;
+  }
+}
+
