@@ -467,6 +467,14 @@ html{ scroll-behavior: smooth; }
 
 /* MÓVIL / TABLET COMPACTO (vertical) */
 @media (max-width: 980px){
+
+.page-servicios{
+    --padx: 18px;         /* padding lateral único */
+    --hero-py: 14px;
+    --svc-py: 18px;       /* aire vertical por servicio */
+    --inc-gap: 12px;      /* gap listas */
+  }
+
   .page-servicios .svc-box{
     /* antes: 60px auto 20px */
     margin: 28px auto 14px;
@@ -479,6 +487,14 @@ html{ scroll-behavior: smooth; }
 
 /* MÓVIL EN HORIZONTAL (poca altura) */
 @media (max-height: 520px) and (orientation: landscape){
+
+.page-servicios{
+    --padx: 18px;         /* padding lateral único */
+    --hero-py: 14px;
+    --svc-py: 18px;       /* aire vertical por servicio */
+    --inc-gap: 12px;      /* gap listas */
+  }
+
   .page-servicios .svc-box{
     /* recorta aún más el margen superior para que no “coma” viewport */
     margin: 16px auto 10px;
@@ -493,6 +509,103 @@ html{ scroll-behavior: smooth; }
 @media (max-width: 380px){
   .page-servicios .svc-box{
     padding: 0 12px;
+  }
+}
+  /* CONTENEDOR GENERAL */
+  .page-servicios{
+    padding-top: 18px;
+    padding-bottom: 0;
+  }
+
+  .page-servicios .svc-inner{
+    padding: 0 var(--padx);
+  }
+
+  /* HERO */
+  .page-servicios .svc-hero{
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+
+  .page-servicios .svc-kicker{
+    margin: 0 0 10px;
+    font-size: 9px;
+    letter-spacing: .22em;
+    text-align: center;
+  }
+
+  .page-servicios .svc-intro{
+    margin: 0 auto;
+    max-width: 42ch;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left; /* o justify si lo prefieres, pero consistente */
+  }
+
+  /* LISTADO (la “caja” no mete padding lateral en móvil) */
+  .page-servicios .svc-box{
+    margin: 18px auto 12px;
+    padding: 0;
+    max-width: none;
+  }
+
+  /* SERVICIO */
+  .page-servicios .svc-service{
+    margin: 0;                 /* fuera márgenes laterales */
+    padding: var(--svc-py) 0;  /* ritmo vertical uniforme */
+  }
+
+  /* TÍTULO */
+  .page-servicios .svc-title{
+    font-size: 11px;
+    margin: 0 0 10px;
+  }
+
+  .page-servicios .svc-title::after{
+    margin-top: 8px;
+  }
+
+  /* TEXTO */
+  .page-servicios .svc-desc{
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 10px 0 0;
+  }
+
+  /* INCLUYE / NO INCLUYE */
+  .page-servicios .svc-incgrid{
+    margin-top: 12px;
+    grid-template-columns: 1fr;
+    gap: var(--inc-gap);
+  }
+
+  .page-servicios .svc-incCol,
+  .page-servicios .svc-incCol + .svc-incCol{
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page-servicios .svc-miniTitle{
+    font-size: 9px;
+    margin: 0 0 6px;
+  }
+
+  .page-servicios .svc-list{
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  /* NOTA FINAL */
+  .page-servicios .svc-note{
+    padding: 14px 0 14px;
+  }
+
+  .page-servicios .svc-noteText{
+    margin: 0 auto;
+    max-width: 50ch;
+    font-size: 12.5px;
+    line-height: 1.55;
+    text-align: left;
   }
 }
 
