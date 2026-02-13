@@ -242,7 +242,7 @@
 
   .page-servicios .svc-intro{
     max-width: 100%;
-    margin: 0px 60px 0px;
+    margin: 20px 60px 0px;
     font-size: 13px;
     line-height: 1.6;
     text-align: center;
@@ -535,7 +535,7 @@ html{ scroll-behavior: smooth; }
   }
 
   .page-servicios .svc-intro{
-    margin: 0 60px 0;
+    margin: 20px 60px 0px;
     max-width: 42ch;
     font-size: 13px;
     line-height: 1.6;
