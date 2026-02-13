@@ -115,7 +115,7 @@
 /* Cada servicio = capítulo */
 .page-servicios .svc-service{
   padding: 0;
-  margin: 0px 20px 0px;
+  margin: 0px 0px 0px;
 }
 
 /* UNA sola línea separadora entre servicios (no arriba del primero) */
@@ -253,7 +253,7 @@
 /* Cada servicio = capítulo */
 .page-servicios .svc-service{
   padding: 0px;
-  margin: 50px 20px 0px;
+  margin: 50px 0px 0px;
 }
 
   .page-servicios .svc-block{
@@ -552,7 +552,7 @@ html{ scroll-behavior: smooth; }
   /* SERVICIO */
   .page-servicios .svc-service{
     margin: 0;                 /* fuera márgenes laterales */
-    padding:0 20px 0; /* ritmo vertical uniforme */
+    padding:0 0px 0; /* ritmo vertical uniforme */
   }
 
   /* TÍTULO */
@@ -627,7 +627,7 @@ html{ scroll-behavior: smooth; }
 
   .page-servicios .svc-service{
     margin: 0 !important;
-    padding: 0 20px 0;
+    padding: 0 0px 0;
   }
 
   /* 3) Evita “doble aire” por reglas antiguas */
