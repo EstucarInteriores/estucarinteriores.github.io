@@ -245,7 +245,7 @@
     margin: 0px 60px 0px;
     font-size: 13px;
     line-height: 1.6;
-    text-align: justify;
+    text-align: center;
   }
 
   /* BLOQUES DE SERVICIO */
@@ -539,7 +539,7 @@ html{ scroll-behavior: smooth; }
     max-width: 42ch;
     font-size: 13px;
     line-height: 1.6;
-    text-align: justify;
+    text-align: center;
 }
 
   /* LISTADO (la “caja” no mete padding lateral en móvil) */
