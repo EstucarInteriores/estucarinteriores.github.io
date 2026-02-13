@@ -82,12 +82,11 @@
 
 /* Intro: “nota”, estrecha, pequeña, sin fondo */
 .page-servicios .svc-intro{
-  margin: 20px 60px 0px;
-  max-width: 760px;
-  font-size: 18px;
-  line-height: 1.65;
-  color: var(--ink-soft);
-  text-align: center;
+  margin: 0 30px 0;
+    max-width: 42ch;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: justify;
 }
 
 /* Línea bajo el hero (si la usas en el HTML con hr, queda editorial) */
