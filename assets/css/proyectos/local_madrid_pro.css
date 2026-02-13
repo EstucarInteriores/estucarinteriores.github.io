@@ -1,7 +1,7 @@
 /* ============================================================
-   DORMITORIO JUVENIL — PRO — CSS ESPECÍFICO
-   Ruta: assets/css/proyectos/dormitorio_juvenil_pro.css
-   Base: mismo sistema DJ (hero + box + FS) con paleta PRO (verde)
+   LOCAL MADRID — PRO — CSS ESPECÍFICO
+   Ruta: assets/css/proyectos/local_madrid_pro.css
+   Base: sistema DJ (hero + box + FS) con paleta PRO (verde)
    ============================================================ */
 
 /* ============================================================
@@ -9,18 +9,17 @@
    ============================================================ */
 :root{
   /* Marca (PRO) */
-  --dj-terracota: #5f6f61; /* (sí, se llama terracota en variables, pero aquí es tu verde PRO) */
+  --dj-terracota: #5f6f61; /* variable histórica, aquí es VERDE PRO */
   --dj-antracita: #2f2f31;
   --dj-page-bg: #dcdcdc;
   --dj-rule: #5f6f61;
 
-  /* Encadre imagen hero */
+  /* Hero (proporción de la imagen “pasillo” 1418×1063 ≈ 4:3) */
+  --dj-hero-ar: 1418 / 1063;
+
+  /* Encuadre por defecto */
   --dj-hero-fit: cover;
   --dj-hero-pos: 50% 50%;
-
-  /* HERO (desktop) */
-  --dj-hero-h: 720px;
-  --dj-hero-minh: 520px;
 
   /* UI superior */
   --dj-top-gradient-a: rgba(0,0,0,0.34);
@@ -31,7 +30,7 @@
   /* Caja flotante (desktop) */
   --dj-box-top: 60px;
   --dj-box-right: 80px;
-  --dj-box-w: 330px;              /* un poco más ancho para lista */
+  --dj-box-w: 330px;
   --dj-box-bg: rgba(233,233,231,0.75);
   --dj-box-border: rgba(85,110,95,0.40);
   --dj-box-blur: 3px;
@@ -42,15 +41,13 @@
   --dj-hero-arrow-bg: rgba(255,255,255,0.92);
   --dj-hero-arrow-border: rgba(85,110,95,0.95);
   --dj-hero-arrow-x: 18px;
-  --dj-hero-cta-gap: 10px;
-  --dj-hero-cta-top: calc(
-    50% + (var(--dj-hero-arrow-size) / 2) + var(--dj-hero-cta-gap)
-  );
 
   /* Botones proyecto en HERO */
   --dj-hero-projbtn-h: 22px;
   --dj-hero-projbtn-px: 10px;
   --dj-hero-projbtn-fz: 9px;
+  --dj-hero-cta-gap: 10px;
+  --dj-hero-cta-top: calc(50% + (var(--dj-hero-arrow-size) / 2) + var(--dj-hero-cta-gap));
 
   /* Dots */
   --dj-dots-bg: rgba(255,255,255,0.45);
@@ -65,9 +62,7 @@
   --dj-content-pad-x: 0px;
 
   /* Botones contenido */
-  --dj-btn-h: 34px;
   --dj-btn-px: 14px;
-  --dj-btn-fz: 11px;
   --dj-btn-letter: 0.12em;
 
   /* FULLSCREEN */
@@ -92,40 +87,40 @@
   --dj-fs-cap-fz: 11px;
 }
 
+/* Logo redondo (PRO) */
 .page-project--pro{
-  --logo-scale: 1.8;   /* prueba 1.4–2.2 */
-  --logo-x: 1px;        /* derecha + / izquierda - */
-  --logo-y: -1px;       /* abajo + / arriba - */
+  --logo-scale: 1.8;
+  --logo-x: 1px;
+  --logo-y: -1px;
 }
-/* ============================================================
-   2) LOGO REDONDO (solo Particulares)
-   ============================================================ */
 .page-project--pro .brand-mark img{
-  transform: translate(var(--logo-x, 1px), var(--logo-y, -1px)) scale(var(--logo-scale, 2.8));
+  transform: translate(var(--logo-x, 1px), var(--logo-y, -1px)) scale(var(--logo-scale, 1.8));
   transform-origin: center;
+}
+.brand-mark{
+  border-radius: 999px;
+  overflow: hidden;
 }
 
 html, body{ background: var(--dj-page-bg); }
 
-
-.brand-mark{
-  border-radius: 999px;
-  overflow: hidden;   /* ← esto es lo que hace que el zoom “se vea” */
-}
-
-
 /* ============================================================
-   1) HERO
+   1) HERO (proporción fija, sin recortes “raros” por vh)
    ============================================================ */
 .page-project .dj-hero{
   position: relative;
   width: 100%;
-  height: var(--dj-hero-h);
-  min-height: var(--dj-hero-minh);
+  aspect-ratio: var(--dj-hero-ar);
+  height: auto;
+  min-height: 0;
   overflow: hidden;
   background: var(--dj-page-bg);
   isolation: isolate;
+
+  /* evita que “reviente” en pantallas de poca altura (header incluido) */
+  max-height: calc(100vh - 140px);
 }
+
 .page-project .dj-hero__carousel{ position:absolute; inset:0; }
 .page-project .dj-hero__viewport{ position:absolute; inset:0; overflow:hidden; }
 
@@ -142,16 +137,20 @@ html, body{ background: var(--dj-page-bg); }
 @media (prefers-reduced-motion: reduce){
   .page-project .dj-hero__track{ transition:none; }
 }
-.page-project .dj-hero__slide{ flex:0 0 100%; height:100%; position:relative; }
+.page-project .dj-hero__slide{
+  flex:0 0 100%;
+  height:100%;
+  position:relative;
+}
 
 .page-project .dj-hero__slide img{
   width:100%;
-  height:auto;
+  height:100%;
   display:block;
-    object-fit: cover;
-  object-position: var(--slide-pos, var(--dj-hero-pos));
-  background:var(--dj-page-bg);
-  cursor:zoom-in;
+  object-fit: var(--dj-hero-fit, cover);
+  object-position: var(--slide-pos, var(--dj-hero-pos, 50% 50%));
+  background: var(--dj-page-bg);
+  cursor: zoom-in;
 }
 
 /* ============================================================
@@ -210,6 +209,7 @@ html, body{ background: var(--dj-page-bg); }
   box-shadow:0 4px 8px rgba(255,255,255,0.8);
   z-index:8;
 }
+
 .page-project .dj-hero__title{
   margin:0 0 8px;
   font-size:14px;
@@ -219,7 +219,7 @@ html, body{ background: var(--dj-page-bg); }
   color:rgba(85,110,95,0.95);
 }
 
-/* OJO: ahora el lead puede contener HTML */
+/* el lead puede contener HTML */
 .page-project .dj-hero__lead{
   margin:0;
   font-size:14px;
@@ -228,52 +228,30 @@ html, body{ background: var(--dj-page-bg); }
   text-align:justify;
 }
 
-/* ============================================================
-   3.1) LISTA “FICHA” (box + móvil)
-   ============================================================ */
+/* Lista ficha */
 .page-project .dj-lead-list{
-   margin: 0;
-  padding-left: 18px;      /* espacio para el punto */
-  list-style: disc;
+  margin:0;
+  padding-left:18px;
+  list-style:disc;
 }
-
-.page-project .dj-lead-list li{
-  margin: 0 0 6px;
-  color: rgba(47,47,49,0.78);
-}
-
-/* Color del bullet */
-.page-project .dj-lead-list li::marker{
-  color: var(--dj-terracota); /* verde */
-}
-
+.page-project .dj-lead-list li{ margin:0 0 6px; color: rgba(47,47,49,0.78); }
 .page-project .dj-lead-list li:last-child{ margin-bottom:0; }
+.page-project .dj-lead-list li::marker{ color: var(--dj-terracota); }
 
 .page-project .dj-lead-label{
   font-weight:700;
   color:rgba(85,110,95,0.95);
   letter-spacing:0.02em;
 }
-.page-project .dj-lead-value{
-  color:rgba(47,47,49,0.78);
-}
+.page-project .dj-lead-value{ color:rgba(47,47,49,0.78); }
 
-/* Lead “Superficie” fuera de lista (como en la versión que ya validaste) */
-.page-project .dj-lead-surface {
-    margin: 10px 0 8px;
-    font-size: 14px;
-    line-height: 1.4;
-    text-align: center;
+.page-project .dj-lead-surface{
+  margin:10px 0 8px;
+  font-size:14px;
+  line-height:1.4;
+  text-align:center;
 }
-.page-project .dj-lead-surface .dj-lead-label{
-  font-weight: 700;
-  color: var(--dj-terracota); /* en PRO ya es verde */
-  letter-spacing: 0.02em;
-}
-.page-project .dj-lead-surface .dj-lead-value{
-  color: rgba(47,47,49,0.78);
-}
-
+.page-project .dj-lead-surface .dj-lead-label{ color: var(--dj-terracota); }
 
 /* ============================================================
    4) FLECHAS HERO
@@ -315,7 +293,8 @@ html, body{ background: var(--dj-page-bg); }
 .page-project .dj-hero__prevProj,
 .page-project .dj-hero__nextProj{
   position:absolute;
-  z-index:10;
+  z-index:30;
+  pointer-events:auto;
   display:none;
   align-items:center;
   justify-content:center;
@@ -331,7 +310,7 @@ html, body{ background: var(--dj-page-bg); }
   text-transform:uppercase;
   text-decoration:none;
   white-space:nowrap;
-  top: var(--dj-hero-cta-top);
+  top: clamp(80px, var(--dj-hero-cta-top), calc(100% - 90px));
 }
 .page-project .dj-hero__prevProj{ left:var(--dj-hero-arrow-x); }
 .page-project .dj-hero__nextProj{ right:var(--dj-hero-arrow-x); }
@@ -485,7 +464,6 @@ html, body{ background: var(--dj-page-bg); }
 }
 .page-project .dj-btn--big{
   height:25px;
-  padding:0 calc(var(--dj-btn-px) + 0px);
 }
 
 /* CTA */
@@ -542,7 +520,7 @@ html, body{ background: var(--dj-page-bg); }
   text-underline-offset: 3px;
 }
 
-/* Icono con ancho fijo */
+/* Iconos */
 .page-project .dj-ico{
   width:18px;
   height:18px;
@@ -594,7 +572,7 @@ html, body{ background: var(--dj-page-bg); }
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
-  padding: 0px 0 0;
+  padding: 0;
   line-height: 0;
   overflow: hidden;
   margin-bottom: -60px;
@@ -750,17 +728,11 @@ html, body{ background: var(--dj-page-bg); }
   }
 }
 
+/* Móvil: caja fuera + meta visible, UI compacta */
 @media (max-width: 760px){
-  .page-project .dj-hero{ height:auto; min-height:0; }
-  .page-project .dj-hero__carousel{ position:relative; inset:auto; }
-  .page-project .dj-hero__viewport{
-    position:relative;
-    width:100%;
-    aspect-ratio:16 / 9;
+  .page-project .dj-hero{
+    max-height: none;
   }
-  .page-project .dj-hero__track{ height:100%; }
-  .page-project .dj-hero__slide{ height:100%; }
-  .page-project .dj-hero__slide img{ height:auto; object-fit; cover; }
 
   .page-project .dj-hero__kicker{ font-size:8px; }
   .page-project .dj-hero__city{ font-size:6px; }
@@ -819,15 +791,4 @@ html, body{ background: var(--dj-page-bg); }
     box-shadow: 0 1px 4px rgba(0,0,0,0.10);
     border-color: rgba(85,110,95,0.65);
   }
-}
-
-/* Fix clic + top clamp */
-.page-project .dj-hero__prevProj,
-.page-project .dj-hero__nextProj{
-  z-index: 30;
-  pointer-events: auto;
-}
-.page-project .dj-hero__prevProj,
-.page-project .dj-hero__nextProj{
-  top: clamp(80px, var(--dj-hero-cta-top), calc(100% - 90px));
 }
