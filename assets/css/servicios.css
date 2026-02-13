@@ -608,4 +608,36 @@ html{ scroll-behavior: smooth; }
     text-align: left;
   }
 }
+/* ============================================================
+   FIX RITMO VERTICAL — MOBILE (servicios con separación uniforme)
+   ============================================================ */
+@media (max-width: 980px){
+
+  /* 1) svc-box NO marca ritmo (en tu HTML está dentro de cada servicio) */
+  .page-servicios .svc-box{
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* 2) Un único ritmo vertical uniforme por servicio */
+  .page-servicios{
+    --svc-py: 18px; /* ajusta aquí y todo cambia coherente */
+  }
+
+  .page-servicios .svc-service{
+    margin: 0 !important;
+    padding: var(--svc-py) 0 !important;
+  }
+
+  /* 3) Evita “doble aire” por reglas antiguas */
+  .page-servicios .svc-service + .svc-service{
+    padding: var(--svc-py) 0 !important; /* mismo que el resto */
+  }
+
+  /* 4) Reset de márgenes internos típicos (para que no “sume” distinto según contenido) */
+  .page-servicios .svc-title{ margin: 0 0 10px !important; }
+  .page-servicios .svc-desc{ margin: 10px 0 0 !important; }
+  .page-servicios .svc-incgrid{ margin-top: 12px !important; }
+}
 
