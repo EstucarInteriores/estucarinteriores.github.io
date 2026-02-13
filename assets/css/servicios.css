@@ -252,7 +252,7 @@
 
 /* Cada servicio = capítulo */
 .page-servicios .svc-service{
-  padding: var(--svc-py) 0;
+  padding: 0px;
   margin: 0px 20px 0px;
 }
 
@@ -552,7 +552,7 @@ html{ scroll-behavior: smooth; }
   /* SERVICIO */
   .page-servicios .svc-service{
     margin: 0;                 /* fuera márgenes laterales */
-    padding: var(--svc-py) 0;  /* ritmo vertical uniforme */
+    padding: 0;  /* ritmo vertical uniforme */
   }
 
   /* TÍTULO */
@@ -627,7 +627,7 @@ html{ scroll-behavior: smooth; }
 
   .page-servicios .svc-service{
     margin: 0 !important;
-    padding: var(--svc-py) 0 !important;
+    padding: 0px;
   }
 
   /* 3) Evita “doble aire” por reglas antiguas */
