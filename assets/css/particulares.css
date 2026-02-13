@@ -494,10 +494,10 @@ body{
 
   /* Tabs compact */
   .tabs.tabs--par-top{
-    gap: var(--tabs-gap-compact);
-    padding-left: var(--tabs-pad-x-compact);
-    padding-right: var(--tabs-pad-x-compact);
-  }
+            gap: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
   .tabs.tabs--par-top .tabs__item{
     font-size: var(--tabs-fs-compact);
     letter-spacing: var(--tabs-ls-compact);
