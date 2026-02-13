@@ -162,7 +162,7 @@ body{
 .menu{
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: 20px 25px 15px;
+    padding: 20px 10px 15px;
     margin-top: 5px;
     margin-bottom: 0px;
 }
