@@ -82,11 +82,12 @@
 
 /* Intro: “nota”, estrecha, pequeña, sin fondo */
 .page-servicios .svc-intro{
-  margin: 0 60px 0;
-    max-width: 42ch;
-    font-size: 13px;
-    line-height: 1.6;
-    text-align: justify;
+  margin: 20px 60px 0px;
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  text-align: center;
 }
 
 /* Línea bajo el hero (si la usas en el HTML con hr, queda editorial) */
@@ -534,12 +535,12 @@ html{ scroll-behavior: smooth; }
   }
 
   .page-servicios .svc-intro{
-    margin: 0  60px 0;
+    margin: 0 60px 0;
     max-width: 42ch;
     font-size: 13px;
     line-height: 1.6;
-    text-align: justify; /* o justify si lo prefieres, pero consistente */
-  }
+    text-align: justify;
+}
 
   /* LISTADO (la “caja” no mete padding lateral en móvil) */
   .page-servicios .svc-box{
@@ -551,7 +552,7 @@ html{ scroll-behavior: smooth; }
   /* SERVICIO */
   .page-servicios .svc-service{
     margin: 0;                 /* fuera márgenes laterales */
-    padding: 0;  /* ritmo vertical uniforme */
+    padding:0; /* ritmo vertical uniforme */
   }
 
   /* TÍTULO */
