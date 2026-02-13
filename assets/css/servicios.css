@@ -616,7 +616,7 @@ html{ scroll-behavior: smooth; }
   /* 1) svc-box NO marca ritmo (en tu HTML está dentro de cada servicio) */
   .page-servicios .svc-box{
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 20px 0 !important;
     max-width: none !important;
   }
 
