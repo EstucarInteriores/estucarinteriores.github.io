@@ -617,7 +617,7 @@ margin: 0px 0 20px;
    MÓVIL
    ============================================================ */
 @media (max-width: 760px){
-  .pl-wrap{ padding: 0 14px; }
+  .pl-wrap{ padding: 0 20px; }
   .pl-hero__overlay{ display: none; }
 
   .pl-hero__media{
