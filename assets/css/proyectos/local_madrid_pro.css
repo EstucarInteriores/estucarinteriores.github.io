@@ -146,9 +146,9 @@ html, body{ background: var(--dj-page-bg); }
 
 .page-project .dj-hero__slide img{
   width:100%;
-  height:100%;
+  height:auto;
   display:block;
-    object-fit: var(--dj-hero-fit);
+    object-fit: cover;
   object-position: var(--slide-pos, var(--dj-hero-pos));
   background:var(--dj-page-bg);
   cursor:zoom-in;
@@ -760,7 +760,7 @@ html, body{ background: var(--dj-page-bg); }
   }
   .page-project .dj-hero__track{ height:100%; }
   .page-project .dj-hero__slide{ height:100%; }
-  .page-project .dj-hero__slide img{ height:100%; }
+  .page-project .dj-hero__slide img{ height:auto; object-fit; cover; }
 
   .page-project .dj-hero__kicker{ font-size:8px; }
   .page-project .dj-hero__city{ font-size:6px; }
