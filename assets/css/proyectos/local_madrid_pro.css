@@ -759,7 +759,7 @@ html, body{ background: var(--dj-page-bg); }
     aspect-ratio:16 / 9;
   }
   .page-project .dj-hero__track{ height:100%; }
-  .page-project .dj-hero__slide{ height:100%; object-position: 50% 80%;"}
+  .page-project .dj-hero__slide{ height:100%; }
   .page-project .dj-hero__slide img{ height:auto; object-fit; cover; }
 
   .page-project .dj-hero__kicker{ font-size:8px; }
