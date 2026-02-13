@@ -429,7 +429,7 @@ body{
 }
 
 .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody h3{
-  margin-top: 15px;
+  margin-top: 0px;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: .02em;
@@ -657,8 +657,8 @@ body{
 
   /* Franja inferior más contenida (desktop) */
   .hero--pro-legacy .pro-hero-col--proyectos .proj .pbody{
-        min-height: 20px;
-        max-height: 25px;
+        min-height: fit-content;
+        max-height: fit-content;
         padding: 6px 10px;
   }
 }
