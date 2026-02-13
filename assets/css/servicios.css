@@ -518,7 +518,7 @@ html{ scroll-behavior: smooth; }
   }
 
   .page-servicios .svc-inner{
-    padding: 0 var(--padx);
+    padding: 0 20px;
   }
 
   /* HERO */
