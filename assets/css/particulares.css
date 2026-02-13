@@ -646,7 +646,7 @@ body{
 
   /* Tabs compact por poca altura */
   .tabs.tabs--par-top{
-    gap: var(--tabs-gap-compact);
+    gap: 0px;
     padding-left: var(--tabs-pad-x-compact);
     padding-right: var(--tabs-pad-x-compact);
   }
