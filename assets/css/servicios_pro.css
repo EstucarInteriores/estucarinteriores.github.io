@@ -238,6 +238,7 @@ opacity:0.6;
   line-height: 1.4;
   color: var(--ink-soft);
   text-align: justify;
+  font-style: italic;
 }
 
 /* Negritas en verde SOLO dentro del main de servicios */
