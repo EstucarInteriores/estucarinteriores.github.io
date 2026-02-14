@@ -535,8 +535,7 @@ html{ scroll-behavior: smooth; }
   }
 
   .page-servicios .svc-intro{
-    margin: 20px 60px 0px;
-    max-width: 42ch;
+    margin: 30px auto 0px;
     font-size: 13px;
     line-height: 1.6;
     text-align: center;
