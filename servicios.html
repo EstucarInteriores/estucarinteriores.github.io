@@ -171,7 +171,7 @@
                 <h3 class="svc-miniTitle">INCLUYE</h3>
                 <ul class="svc-list">
                   <li>Análisis del estado actual y necesidades.</li>
-                  <li>Propuesta orientativa de distribución (no ejecutiva).</li>
+                  <li>Propuesta orientativa de distribución (no es un proyecto técnico de obra).</li>
                   <li>Criterios generales de mobiliario, iluminación y ambiente.</li>
                   <li>Referencias visuales (moodboard).</li>
                   <li>1 visualización 3D de apoyo.</li>
@@ -298,6 +298,9 @@
                   <li>Compras reales, montaje o atrezzo físico.</li>
                   <li>Sesión de fotografía.</li>
                   <li>Gestión inmobiliaria o fijación de precio.</li>
+                  <li>Proyecto de interiorismo (parcial o completo) o de reforma.</li>
+                  <li>Validación dimensional exacta o comprobación técnica del inmueble.</li>
+                  <li>Redistribuciones complejas del espacio.</li>
                 </ul>
               </div>
             </div>
@@ -412,24 +415,24 @@
 
   </main>
 
-  <script>
-  (function(){
-    function setScrollOffset(){
-      const topbar = document.querySelector('.topbar');
-      const tabs = document.querySelector('.tabs--par-top');
-      const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
-      const tabsH   = tabs ? tabs.getBoundingClientRect().height : 0;
+<script>
+(function(){
+  function setScrollOffset(){
+    const topbar = document.querySelector('.topbar');
+    const tabs = document.querySelector('.tabs--par-top');
+    const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+    const tabsH   = tabs ? tabs.getBoundingClientRect().height : 0;
 
-      // +12px de “aire” para que el título no se pegue al borde
-      const offset = Math.ceil(topbarH + tabsH + 12);
+    // +12px de “aire” para que el título no se pegue al borde
+    const offset = Math.ceil(topbarH + tabsH + 12);
 
-      document.documentElement.style.setProperty('--scroll-offset', offset + 'px');
-    }
+    document.documentElement.style.setProperty('--scroll-offset', offset + 'px');
+  }
 
-    window.addEventListener('load', setScrollOffset, { once:true });
-    window.addEventListener('resize', setScrollOffset);
-  })();
-  </script>
+  window.addEventListener('load', setScrollOffset, { once:true });
+  window.addEventListener('resize', setScrollOffset);
+})();
+</script>
 
 </body>
 </html>
