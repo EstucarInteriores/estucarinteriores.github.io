@@ -598,12 +598,10 @@ html{ scroll-behavior: smooth; }
   }
 
   .page-servicios .svc-noteText{
-    margin: 0 auto;
-    max-width: 50ch;
-    font-size: 12.5px;
+        font-size: 11px;
     line-height: 1.55;
     text-align: left;
-  }
+}
 }
 /* ============================================================
    FIX RITMO VERTICAL — MOBILE (servicios con separación uniforme)
