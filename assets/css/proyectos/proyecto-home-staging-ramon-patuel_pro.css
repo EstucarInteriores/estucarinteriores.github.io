@@ -37,7 +37,7 @@
 
 /* Scroll */
 html{ scroll-behavior: smooth; }
-#contexto, #planteamiento, #propuesta, #resultado, #contacto{}
+#contexto, #planteamiento, #propuesta, #resultado, #contacto{ scroll-margin-top: 120px; }
 
 /* Negritas */
 .page-portfolio-long .pl-wrap strong,
@@ -667,14 +667,11 @@ margin: 0px 0 20px;
 
 .pl-docsheet{
   position: relative;
-  height: auto;
 }
 
 .pl-docsheet img{
   width: 100%;
   display: block;
-  height: auto;
-  object-fit: cover;
 }
 
 /* Hotspots: enlaces invisibles encima */
