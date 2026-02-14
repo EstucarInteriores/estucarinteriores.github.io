@@ -70,17 +70,28 @@
 opacity:0.6;
 }
 
-/* Elementos del strip */
-#svc-strip-top > span{
+/* Strip superior clicable (mismo look que los span) */
+#svc-strip-top a{
+  display: inline-block;
   white-space: nowrap;
   font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 0;            /* área clicable sin cambiar el look */
 }
 
-/* Separador “·” SOLO aquí (no afecta a nada más) */
-#svc-strip-top > span + span::before{
+#svc-strip-top a:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(25,25,25,0.28);
+  text-underline-offset: 3px;
+}
+
+/* Separador “·” SOLO en el strip, ahora entre enlaces */
+#svc-strip-top a + a::before{
   content: " · ";
   margin: 0 .65em;
   color: rgba(25,25,25,0.38);
+  text-decoration: none;
 }
 
 /* Intro */
