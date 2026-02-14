@@ -227,7 +227,7 @@ html{ scroll-behavior: smooth; }
   color: var(--pl-tc);
 }
 .pl-intro{
-  margin: 0px 145px 14px;
+  margin: 0px 25px 14px;
   font-size: 12.5px;
   line-height: 1.7;
   color: var(--pl-ink-soft);
