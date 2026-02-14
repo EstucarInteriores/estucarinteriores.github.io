@@ -632,7 +632,7 @@ html{ scroll-behavior: smooth; }
 
   /* 4) Reset de márgenes internos típicos (para que no “sume” distinto según contenido) */
   .page-servicios .svc-title{ margin: 0 0 10px !important; }
-  .page-servicios .svc-desc{ margin: 10px 0 0 !important; }
+  .page-servicios .svc-desc{ margin: 20px 0 20px !important; }
   .page-servicios .svc-incgrid{ margin-top: 12px !important; }
 }
 
