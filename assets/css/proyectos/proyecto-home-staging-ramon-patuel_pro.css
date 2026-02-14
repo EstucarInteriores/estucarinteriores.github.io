@@ -676,7 +676,12 @@ html, body{ margin:0; padding:0; background: var(--dj-page-bg); }
   letter-spacing:0.06em;
   text-align:center;
 }
-
+.pl-docsheet img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
 /* ============================================================
    10) RESPONSIVE
    ============================================================ */
