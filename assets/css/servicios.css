@@ -82,9 +82,7 @@
 
 /* Intro: “nota”, estrecha, pequeña, sin fondo */
 .page-servicios .svc-intro{
-  margin: 20px 60px 0px;
-  max-width: 760px;
-  font-size: 18px;
+  margin: 20px auto 0px;
   line-height: 1.65;
   color: var(--ink-soft);
   text-align: center;
