@@ -565,3 +565,67 @@ html{ scroll-behavior: smooth; }
 #svc-strip-top > a.svc-stripLink:hover{
   opacity: .85;
 }
+/* ============================================================
+   MÓVIL — SERVICIOS PRO (arreglo de lectura + strip superior)
+   Pegar al FINAL del archivo
+   ============================================================ */
+
+@media (max-width: 740px){
+
+  /* “Papel” con menos aire lateral */
+  .page-servicios-pro .wrap{
+    padding: 16px 14px;
+  }
+
+  /* Strip superior: quita el padding fijo que estrangula la columna */
+  .page-servicios-pro .svc-strip-top{
+    padding: 0 !important;
+    margin: 6px 0 10px;
+  }
+
+  /* Permite que los links partan línea */
+  #svc-strip-top > a.svc-stripLink{
+    white-space: normal;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  /* Nota final: fuera márgenes fijos en móvil */
+  .page-servicios-pro .svc-noteText{
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 520px){
+
+  /* Strip superior: en columna, limpio, sin separadores "·" */
+  #svc-strip-top{
+    display: block !important;
+    text-align: center;
+    letter-spacing: .18em;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  #svc-strip-top > a.svc-stripLink{
+    display: block !important;
+    padding: 7px 0;
+  }
+
+  /* mata el separador en móvil para que no “ensucie” */
+  #svc-strip-top > a.svc-stripLink + a.svc-stripLink::before{
+    content: "" !important;
+    margin: 0 !important;
+  }
+
+  /* Tipos un pelín más contenidos */
+  .page-servicios-pro .svc-intro{
+    font-size: 12.8px;
+    line-height: 1.65;
+  }
+
+  .page-servicios-pro .svc-desc{
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+}
