@@ -250,7 +250,7 @@ html, body{ background: var(--dj-page-bg); }
 /* Lead del slide 1 */
 .page-project .dj-leadLine{ margin:0 0 8px; text-align:center; }
 .page-project .dj-lead-list{ margin:0; padding-left:18px; }
-.page-project .dj-lead-list li{ margin:0 0 6px; text.align: left;}
+.page-project .dj-lead-list li{ margin:0 0 6px; text-align: left;}
 .page-project .dj-lead-list li::marker{ color: var(--dj-terracota); }
 
 .page-project .dj-lead-label{
