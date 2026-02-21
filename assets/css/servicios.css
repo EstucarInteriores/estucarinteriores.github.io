@@ -468,8 +468,7 @@ html{ scroll-behavior: smooth; }
 
 /* 3) Texto de la nota: editorial, discreto */
 .page-servicios .svc-noteText{
-      max-width: 760px;
-    margin: 0 20px;
+    margin: 0px 120px 0px;
     font-size: 11px;
     line-height: 1.6;
     color: rgba(47, 47, 49, 0.62);
