@@ -498,3 +498,65 @@ html{ scroll-behavior: smooth; }
   max-width: var(--maxw, 1200px);
   margin: 0 auto;
 }
+/* ============================================================
+   MÓVIL — SERVICIOS (PARTICULARES)
+   - Quita márgenes/paddings fijos gigantes
+   - Ensancha columna útil
+   - Mantiene estética sobria (sin cards nuevas)
+   ============================================================ */
+
+@media (max-width: 740px){
+
+  /* “Papel” (canvas) más usable */
+  .page-servicios .main-canvas{
+    padding: 16px 14px 0 !important; /* antes 50px */
+    border-radius: 4px;
+  }
+
+  /* Contenedor interior: fuera márgenes laterales fijos */
+  .page-servicios .svc-inner{
+    margin: 0 !important;            /* antes: -25px 70px 0 */
+    padding: 0 8px !important;
+  }
+
+  /* Kicker e intro: menos aire vertical excesivo */
+  .page-servicios .svc-kicker{
+    margin: 18px 0 22px !important;
+    line-height: 1.35;
+  }
+
+  .page-servicios .svc-intro{
+    margin: 0 auto 22px !important;
+    max-width: 34ch;                 /* lectura más controlada */
+    text-align: center;
+  }
+
+  /* Bloque INCLUYE/NO INCLUYE: sin padding lateral grande */
+  .page-servicios .svc-incgrid{
+    padding: 0 !important;           /* antes: 0 80px / 0 10px suelto */
+    column-gap: 18px;
+    row-gap: 14px;
+  }
+
+  /* Mini títulos con menos sangría (tenías margin: 0 20px) */
+  .page-servicios .svc-miniTitle{
+    margin: 0 0 8px !important;
+  }
+
+  /* Nota fuera del canvas: adiós al margin 120px */
+  .page-servicios .svc-noteText{
+    margin: 0 14px !important;
+    text-align: center;
+  }
+
+  /* Anclas: baja el offset en móvil para que no “coma” el título */
+  .page-servicios .svc-service{
+    scroll-margin-top: 110px;
+  }
+}
+
+@media (max-width: 420px){
+  /* un pelín más de control para pantallas estrechas */
+  .page-servicios .svc-inner{ padding: 0 6px !important; }
+  .page-servicios .svc-intro{ max-width: 32ch; }
+}
