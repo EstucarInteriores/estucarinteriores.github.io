@@ -256,13 +256,12 @@ html, body{ background: var(--dj-page-bg); }
   color: rgba(95,111,97,0.95);
   font-weight:600;
   letter-spacing:0.10em;
-  text-transform: lowercase;
 }
 .page-project .dj-lead-list{
   margin:0;
   padding-left:18px;
 }
-.page-project .dj-lead-list li{ margin:0 0 6px; }
+.page-project .dj-lead-list li{ margin:0 0 6px; text-align: left; }
 .page-project .dj-lead-list li::marker{ color: rgba(95,111,97,0.95); }
 
 .page-project .dj-lead-label{
