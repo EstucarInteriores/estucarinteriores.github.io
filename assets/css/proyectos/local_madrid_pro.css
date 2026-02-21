@@ -237,7 +237,6 @@ html, body{ background: var(--dj-page-bg); }
 
 .page-project .dj-lead-label--surface{
   letter-spacing:0.10em;
-  text-transform: lowercase;
 }
 
 .page-project .dj-lead-value{
@@ -250,7 +249,7 @@ html, body{ background: var(--dj-page-bg); }
   padding-left:18px;
 }
 
-.page-project .dj-lead-list li{ margin:0 0 6px; }
+.page-project .dj-lead-list li{ margin:0 0 6px; text-align: left;}
 .page-project .dj-lead-list li::marker{ color: var(--dj-accent); }
 
 /* ============================================================
