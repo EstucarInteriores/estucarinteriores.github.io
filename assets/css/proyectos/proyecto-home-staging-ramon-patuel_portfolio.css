@@ -282,6 +282,7 @@ html{ scroll-behavior: smooth; }
   letter-spacing: .16em;
   text-transform: uppercase;
   color: rgba(47,47,49,0.78);
+  text-align: left;
 }
 
 .pl-intro{
