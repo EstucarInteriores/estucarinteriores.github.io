@@ -1,9 +1,14 @@
 /* ============================================================
-   PORTFOLIO LARGO (PRO) — LOCAL MADRID
+   PORTFOLIO LARGO (PRO) — HOME STAGING RAMÓN PATUEL
+   Ruta: assets/css/proyectos/proyecto-home-staging-ramon-patuel_portfolio_pro.css
+   Base: sistema PRO (Local Madrid Portfolio PRO) + zig-zag editorial
    ============================================================ */
 
+/* ============================================================
+   0) VARIABLES / CONTROLES
+   ============================================================ */
 :root{
-  --pl-tc: #5f6f61;
+  --pl-tc: #5f6f61;                /* verde PRO */
   --pl-rule: rgba(79,96,84,.55);
 
   --pl-ink: rgba(25,25,25,0.86);
@@ -13,75 +18,75 @@
   --pl-maxw: 1040px;
   --pl-pad: clamp(16px, 3vw, 28px);
 
-  /* Alturas “parejas” (desktop) */
-  --pl-h-before: 380px;
-  --pl-h-prop: 420px;
+  --pl-ease: cubic-bezier(.22,.61,.36,1);
+  --pl-zoom-dur: 1800ms;
 }
 
+html{ scroll-behavior: smooth; }
 .page-portfolio-long{ background: var(--pl-bg); }
 
-/* Línea a sangre */
-.pl-ruleBleed{
-  height: 1px;
-  background: var(--pl-tc);
-  width: 100%;
-}
-.pl-ruleBleed--beforeContact{ margin-top: 14px; }
-
-/* Wrapper */
 .pl-wrap{
   max-width: var(--pl-maxw);
   margin: 0 auto;
   padding: 0 var(--pl-pad);
 }
 
-/* Scroll */
-html{ scroll-behavior: smooth; }
-#contexto, #planteamiento, #propuesta, #resultado, #contacto{ scroll-margin-top: 120px; }
-
-/* Negritas */
-.page-portfolio-long .pl-wrap strong,
-.page-portfolio-long .pl-wrap b{
-  color: var(--pl-tc);
-  font-weight: 600;
+/* anchors (como Local Madrid) */
+#contexto, #planteamiento, #propuesta, #resultado, #contacto{
+  scroll-margin-top: 110px;
 }
 
-
-/* ===== ZOOM LOGO (solo escala la imagen dentro) ===== */
-.page-project--pro{
-  --logo-scale: 1.8;  /* sube/baja aquí */
-  --logo-x: 1px;      /* mueve izq/der */
-  --logo-y: -1px;      /* mueve arriba/abajo */
+/* Marca sin subrayados (blindaje contra styles.css) */
+.topbar .brand,
+.topbar .brand:hover,
+.topbar .brand:focus,
+.topbar .brand:active{
+  text-decoration: none;
+  border-bottom: 0;
+  box-shadow: none;
+}
+.topbar .brand .brand-name,
+.topbar .brand .brand-sub{ text-decoration: none; }
+.topbar .brand:hover .brand-name,
+.topbar .brand:hover .brand-sub{
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
 }
 
-/* el “marco” circular recorta el zoom */
-.page-project--pro .brand-mark{
-  border-radius: 999px;
-  overflow: hidden;
+.topbar .brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: translate(var(--logo-x, -1.6px), var(--logo-y, -0.8px)) scale(var(--logo-scale, 1.4));
+    transform-origin: center;
 }
-
-/* esto es el zoom real */
-.page-project--pro .brand-mark img{
-  transform: translate(var(--logo-x), var(--logo-y)) scale(var(--logo-scale));
-  transform-origin: center;
+/* ============================================================
+   1) LÍNEAS A SANGRE
+   ============================================================ */
+.pl-ruleBleed{
+  height: 1px;
+  background: var(--pl-tc);
+  width: 100%;
 }
+.pl-ruleBleed--beforeContact{ margin-top: 10px; }
 
 /* ============================================================
-   HERO
+   2) HERO
    ============================================================ */
 .pl-hero{
   position: relative;
-  margin: 18px 0 10px;
-  border: 1px solid rgba(79,96,84,.55);
-  border-radius: 8px;
-  overflow: hidden;
-  background: rgba(236,236,236,0.92);
+  margin: 18px 0 0;
 }
 
 .pl-hero__media{
   position: relative;
   aspect-ratio: 16 / 9;
   min-height: 360px;
+  overflow: hidden;
+  background: var(--pl-tc);
+  border-radius: 4px;
 }
 
 .pl-hero__media img{
@@ -91,6 +96,13 @@ html{ scroll-behavior: smooth; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 65%;
+  transform: scale(1);
+  transition: transform var(--pl-zoom-dur) var(--pl-ease);
+  will-change: transform;
+}
+
+@media (hover:hover){
+  .pl-hero__media:hover img{ transform: scale(1.04); }
 }
 
 .pl-hero__overlay{
@@ -102,6 +114,7 @@ html{ scroll-behavior: smooth; }
     rgba(240,240,240,0.55) 62%,
     rgba(240,240,240,0.92) 100%
   );
+  border-radius: 4px;
   pointer-events: none;
 }
 
@@ -111,42 +124,42 @@ html{ scroll-behavior: smooth; }
   right: 0;
   bottom: 0;
   padding: 16px var(--pl-pad) 16px;
-  z-index: 2;
 }
 
+/* Tipografía (PRO) */
 .pl-h1{
-  margin: 0 0 10px;
-  font-size: clamp(16px, 2vw, 20px);
-  font-weight: 500;
-  letter-spacing: .18em;
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(25,25,25,0.72);
+  color: rgba(25,25,25,.68);
 }
 
 .pl-lead{
   margin: 0 auto 12px;
-  max-width: 84ch;
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: var(--pl-ink);
+  max-width: 78ch;
+  font-size: 12.5px;
+  line-height: 1.55;
   text-align: center;
+  color: rgba(25,25,25,.72);
 }
 
-/* Meta */
 .pl-hero__meta{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px 12px;
-  margin: 10px 0 10px;
+  margin: 10px 0 0;
 }
 
 .pl-metaItem{
   display: grid;
   gap: 3px;
   padding: 8px 10px;
-  border: 1px solid rgba(79,96,84,.80);
-  border-radius: 8px;
-  background: rgba(245,245,245,.72);
+  border: 1px solid rgba(79,96,84,.35);
+  border-radius: 4px;
+  background: rgba(255,255,255,.92);
 }
 
 .pl-metaLabel{
@@ -156,57 +169,80 @@ html{ scroll-behavior: smooth; }
   color: var(--pl-tc);
   font-weight: 600;
 }
+
 .pl-metaVal{
   font-size: 12px;
   line-height: 1.35;
   color: rgba(25,25,25,0.78);
 }
+/* ============================================================
+   FIX — HEADER sticky siempre visible (anula auto-hide global)
+   ============================================================ */
+.page-portfolio-long.header--compact .topbar{
+  position: sticky;
+  top: 0;
+  z-index: 1200;
 
-/* Menú secciones */
-.pl-hero .pl-sectionNav{
+  /* neutraliza cualquier hide/show por scroll (global) */
+  transform: none !important;
+  translate: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* ============================================================
+   3) NAV DE SECCIONES — sticky (igual que Local Madrid)
+   ============================================================ */
+.pl-sectionNav--sticky{
+  position: sticky;
+  top: var(--pl-nav-top, 0px);
+  z-index: 300;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0;
-  padding-top: 10px;
-  margin-top: 2px;
-  background: transparent;
-  position: relative;
-  z-index: 3;
+
+  padding: 6px var(--pl-pad);
+  margin: 0;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: rgba(240, 240, 240, 0.92);
+  backdrop-filter: blur(3px);
+  border-top: 1px solid var(--pl-rule);
+  border-bottom: 1px solid var(--pl-rule);
 }
 
-.pl-hero .pl-sectionNav .pl-sectionNav__item{
-  display: inline;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  margin: 0;
+.pl-sectionNav__item{
   text-decoration: none;
-
   text-transform: uppercase;
   letter-spacing: .22em;
   font-size: 10.5px;
   line-height: 1.7;
-
-  color: rgba(79,96,84,.75);
+  color: rgba(79,96,84,.78);
   transition: color .12s ease;
 }
 
-.pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
-  content: " · ";
-  color: rgba(79,96,84,.75);
-  margin: 0 .7em;
+.pl-sectionNav__item + .pl-sectionNav__item::before{
+  content:" · ";
+  margin: 0 .75em;
+  color: rgba(79,96,84,.55);
 }
-.pl-hero .pl-sectionNav .pl-sectionNav__item:hover{
-  color: rgba(79,96,84,.95);
+
+.pl-sectionNav__item:hover{ color: rgba(79,96,84,.95); text-decoration: none;}
+.pl-sectionNav__item:focus-visible{
+  outline: 2px solid rgba(79,96,84,.55);
+  outline-offset: 4px;
 }
 
 /* ============================================================
-   SECCIONES
+   4) SECCIONES / TEXTO
    ============================================================ */
 .pl-section{ padding: 0; position: relative; }
 .pl-section + .pl-section{ border-top: 1px solid var(--pl-rule); }
-.pl-inner{ padding: 0;     margin: 0 auto 20px; }
+
+.pl-inner{ padding: 0; }
 
 .pl-h2{
   margin: 50px 0 10px;
@@ -217,170 +253,247 @@ html{ scroll-behavior: smooth; }
   text-transform: uppercase;
   color: var(--pl-tc);
 }
-.pl-h3{
-  margin: 32px 0 8px;
-  text-align: center;
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--pl-tc);
-}
+
 .pl-intro{
-  margin: 0px 100px 14px;
+  margin: 0 auto 14px;
+  max-width: 78ch;
   font-size: 12.5px;
   line-height: 1.7;
   color: var(--pl-ink-soft);
   text-align: center;
   letter-spacing: .02em;
 }
+
 .pl-p{
-  margin: 30px auto 10px;
-  max-width: 84ch;
-  font-size: 13.5px;
-  line-height: 1.85;
-  color: var(--pl-ink);
-  text-align: justify;
-  text-align-last: left;
+margin: 0 100px 10px;
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--pl-ink);
+    text-align: justify;
+    text-align-last: left;
+}
+
+.page-portfolio-long .pl-wrap strong,
+.page-portfolio-long .pl-wrap b{
+  color: var(--pl-tc);
+  font-weight: 600;
 }
 
 /* ============================================================
-   FIGURES (borde + radio correctos, incluido pie)
+   5) FIGURA “CAJA” GLOBAL — imagen + pie dentro de marco
    ============================================================ */
-.pl-fig{
+.page-portfolio-long--pro .pl-fig{
+  position: relative;
   border: 1px solid rgba(79,96,84,.55);
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
-  background: rgba(245,245,245,.72);
-  margin: 20px auto 0px;
+  background: rgba(255,255,255,.72);
+  margin: 0 auto 34px;
 }
 
-.pl-zoom{
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.pl-fig img{
+.page-portfolio-long--pro .pl-fig img{
   width: 100%;
-  display: block;
-  image-rendering: auto;
-}
-
-/* caption SIN transforms (evita blur) */
-.pl-cap{
-  padding: 10px 12px;
-  font-size: 12px;
-  letter-spacing: .10em;
-  color: rgba(25,25,25,0.84);
-  text-transform: uppercase;
-  border-top: 1px solid rgba(79,96,84,.80);
-  text-align: center;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* Contain (planos) */
-.pl-fig--contain{
-  background: rgba(245,245,245,.78);
-margin: 0px 0 20px;
-}
-.pl-fig--contain img{
   height: auto;
+  display: block;
+}
+
+.page-portfolio-long--pro .pl-cap{
+  margin: 0;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(79,96,84,.35);
+  background: rgba(255,255,255,.86);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(79,96,84,.92);
+  text-align: center;
+}
+
+/* ============================================================
+   6) DOCSHEET + HOTSPOTS (PRO)
+   ============================================================ */
+.pl-fig--docsheet{ margin-top: 14px; }
+
+.pl-docsheet{ position: relative; }
+.pl-docsheet img{ width: 100%; display: block; }
+
+.pl-hot{
+  position: absolute;
+  display: block;
+  z-index: 3;
+  cursor: zoom-in;
+  border-radius: 4px;
+  background: transparent;
+}
+.pl-hot:hover{
+  outline: 1px solid var(--pl-rule);
+  outline-offset: 2px;
+}
+.pl-hot:focus-visible{
+  outline: 2px solid rgba(79,96,84,.90);
+  outline-offset: 3px;
+}
+
+/* Coordenadas hotspots */
+.pl-hot--amueblada{ left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+.pl-hot--acotada{ left: 65%; top: 10%; width: 27%; height: 40%; }
+.pl-hot--zonificacion{ left: 65%; top: 50%; width: 27%; height: 40%; }
+
+/* ============================================================
+   7) ZIG-ZAG (PRO) — imagen + texto al lado (sin “cards”)
+   ============================================================ */
+.pl-split{
+  display: grid;
+  grid-template-columns: 1.15fr .45fr;
+  gap: clamp(16px, 3vw, 26px);
+  align-items: start;
+  margin: 0;
+}
+
+.pl-split--rev{ grid-template-columns: .45fr 1.15fr; }
+.pl-split--rev .pl-split__media{ order: 2; }
+.pl-split--rev .pl-split__text{ order: 1; }
+
+.pl-split__media{ margin: 0; }
+.pl-split__text{ margin: 0; padding-top: 6px; }
+
+.pl-h3{
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(25,25,25,0.78);
+  opacity: .7;
+  position: relative;
+  text-align:left;
+}
+
+.pl-p--tight{
+  margin: 0 0 14px;
+  max-width: none;
+  text-align: left;
+  text-align-last: auto;
+  line-height: 1.75;
+  opacity: .7;
+}
+
+/* Móvil: apila */
+@media (max-width: 980px){
+  .pl-split,
+  .pl-split--rev{ grid-template-columns: 1fr; }
+  .pl-split--rev .pl-split__media,
+  .pl-split--rev .pl-split__text{ order: initial; }
+  .pl-split__text{ padding-top: 0; }
+}
+
+/* ============================================================
+   8) BLOQUE DOBLE (COCINA + BAÑO): 2 columnas, misma altura
+   ============================================================ */
+.page-portfolio-long--pro .pl-pair{ margin: 0 0 30px; }
+
+.page-portfolio-long--pro .pl-pair__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2.8vw, 22px);
+  align-items: stretch;
+}
+
+.page-portfolio-long--pro .pl-fig--pair{
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.page-portfolio-long--pro .pl-pair__img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Single grande */
-.pl-fig--single{ margin: 10px 0 26px; }
+.page-portfolio-long--pro .pl-p--pairNoteTop{
+  margin: 8px 0 14px;
+  text-align: left;
+  color: rgba(25,25,25,0.62);
+}
 
-/* Alturas “parejas” (desktop) */
-@media (min-width: 860px){
-  .pl-fig--h380 img{
-    height: var(--pl-h-before);
-    object-fit: cover;
-    object-position: 50% 50%;
-  }
-  .pl-fig--h420 img{
-    height: var(--pl-h-prop);
-    object-fit: cover;
-    object-position: 50% 80%;
-  }
-
-.pl-grid--proposal > .pl-fig:only-child{
-    grid-column: 1 / -1;
-  }
+@media (max-width: 900px){
+  .page-portfolio-long--pro .pl-pair__grid{ grid-template-columns: 1fr; }
 }
 
 /* ============================================================
-   GRIDS
+   9) CONTACTO (botón dentro de secciones)
    ============================================================ */
-.pl-grid{
-  display: grid;
-  gap: 12px;
-  margin: 10px 0 26px;
+.pl-contact{
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 36px;
 }
-
-.pl-grid--before,
-.pl-grid--docs,
-.pl-grid--proposal{
-  grid-template-columns: 1fr;
+.pl-contact__btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(79,96,84,.78);
+  background: #fff;
+  color: rgba(79,96,84,.92);
+  text-decoration: none;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
-
-@media (min-width: 860px){
-  .pl-grid--before,
-  .pl-grid--docs,
-  .pl-grid--proposal{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
-  }
-
- .pl-grid--proposal > .pl-fig:only-child{
-    grid-column: 1 / -1;
-  }
-}
-
-/* ============================================================
-   RESULTADO (stack grande)
-   ============================================================ */
-.pl-resultStack{
-  display: grid;
-  gap: 16px;
-  margin: 10px 0 26px;
+.pl-contact__btn:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(79,96,84,.35);
+  text-underline-offset: 3px;
 }
 
 /* ============================================================
-   VOLVER
+   10) VOLVER
    ============================================================ */
 .pl-back{
   max-width: var(--pl-maxw);
-  margin: 30px auto 30px;
+  margin: 0 auto 30px;
   padding: 0 var(--pl-pad);
-  display: grid;
-  place-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .pl-back-btn{
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(79,96,84,.55);
-  background: rgba(245,245,245,.78);
-  color: rgba(25,25,25,0.78);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #4f6054;
+  background: rgb(245 245 245 / 0%);
+  color: #4f6054;
   text-decoration: none;
-  letter-spacing: .12em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
   transition: transform .12s ease, border-color .12s ease, background .12s ease;
   text-align: center;
 }
 .pl-back-btn:hover{
   transform: translateY(-1px);
-  border-color: rgba(79,96,84,.80);
-  background: rgba(245,245,245,.92);
+    border-color: #4f6054;
+    background: #4f6054;
+    color: #fff;
+    text-decoration: none;
 }
 
 /* ============================================================
-   LIGHTBOX
+   11) LIGHTBOX  (IGUAL QUE LOCAL MADRID PRO)
    ============================================================ */
 .pl-lb{
   position: fixed;
@@ -425,19 +538,19 @@ margin: 0px 0 20px;
   max-height: 86vh;
   width: auto;
   height: auto;
-  border-radius: 8px;
-  border: 1px solid rgba(79,96,84,.55);
-  background: rgba(245,245,245,.72);
+  border-radius: 4px;
+  border: 1px solid var(--pl-rule);
+  background: #fff;
   box-shadow: 0 22px 60px rgba(0,0,0,.22);
 }
 
 .pl-lb__close{
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 50px;
+  right: 80px;
   width: 44px;
   height: 44px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: rgba(255,255,255,.78);
   border: 1px solid rgba(79,96,84,.80);
   color: rgba(79,96,84,.92);
@@ -457,16 +570,21 @@ margin: 0px 0 20px;
   outline: 2px solid rgba(79,96,84,.95);
   outline-offset: 3px;
 }
+
 .pl-lock{ overflow: hidden; }
 
 /* ============================================================
-   CTA / CONTACTO (dj-*) — centrado a prueba de styles.css
+   12) CTA / CONTACTO (dj-*) — blindaje PRO + iconos
    ============================================================ */
 .page-portfolio-long .dj-wrap{
   width: min(var(--pl-maxw), calc(100% - (var(--pl-pad) * 2)));
   margin: 14px auto;
   text-align: center !important;
-    padding: 0 80px 0;
+  padding: 0 80px 0;
+}
+
+@media (max-width: 700px){
+  .page-portfolio-long .dj-wrap{ padding: 0 16px 0; }
 }
 
 .page-portfolio-long .dj-center{
@@ -476,30 +594,27 @@ margin: 0px 0 20px;
 }
 
 .page-portfolio-long .dj-btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 26px;
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(79,96,84,.78);
-  background: #fff;
-  color: var(--pl-tc);
-  text-decoration: none;
-  font-size: 10.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  white-space: nowrap;
+   display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    padding: 15px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 96, 84, .78);
+    background: rgba(79, 96, 84, .95);
+    color: #fff;
+    text-decoration: none;
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 30px;
 }
-.page-portfolio-long .dj-btn:hover{
-  text-decoration: underline;
-  text-decoration-color: rgba(79,96,84,.35);
-  text-underline-offset: 3px;
-}
-.page-portfolio-long .dj-btn--solid{
-  background: rgba(79,96,84,.92);
-  border-color: rgba(79,96,84,.92);
-  color: rgba(255,255,255,.96);
+.page-portfolio-long .dj-btn:hover {
+    text-decoration: none;
+    background: #fff;
+    border-color: rgba(79, 96, 84, .92);
+    color: #4f6054;
 }
 
 .page-portfolio-long .dj-ctaLine{
@@ -510,10 +625,7 @@ margin: 0px 0 20px;
   font-size: 13px;
   line-height: 1.55;
 }
-.page-portfolio-long .dj-ctaQ{
-  color: var(--pl-tc);
-  font-weight: 700;
-}
+.page-portfolio-long .dj-ctaQ{ color: var(--pl-tc); font-weight: 700; }
 
 .page-portfolio-long .dj-directTitle{
   margin: 10px 0 10px;
@@ -529,50 +641,51 @@ margin: 0px 0 20px;
   letter-spacing: .08em;
 }
 
-.page-portfolio-long .dj-directGrid{
-  display: grid !important;
+.page-portfolio-long--pro .dj-directGrid{
+  display: grid;
   grid-template-columns: 1fr;
-  gap: 8px;
-  justify-items: center !important;
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
-.page-portfolio-long .dj-directItem{
-  display: inline-flex;
+.page-portfolio-long--pro .dj-directItem{
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: max-content;
-  margin: 0 auto;
+  gap: 10px;
   text-decoration: none;
 }
 
-.page-portfolio-long .dj-ico{
-  width: 18px;
-  height: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 18px;
-}
-.page-portfolio-long .dj-icoSvg{
-  width: 18px;
-  height: 18px;
-  fill: var(--pl-tc);
-  display: block;
+.page-portfolio-long--pro .dj-ico{
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+  color: var(--pl-tc);
 }
 
-.page-portfolio-long .dj-directText{
-  font-size: 12px;
-  letter-spacing: .10em;
-  color: rgba(25,25,25,.74);
+.page-portfolio-long--pro .dj-icoSvg{
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
 }
-.page-portfolio-long .dj-directItem:hover .dj-directText{
+
+.page-portfolio-long--pro .dj-directText{
+  color: rgba(25,25,25,.78);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.page-portfolio-long--pro .dj-directItem:hover .dj-directText{
   text-decoration: underline;
   text-decoration-color: rgba(79,96,84,.35);
   text-underline-offset: 3px;
 }
 
-/* Cierre */
+/* cierre */
 .page-portfolio-long .dj-ruleBleed{
   height: 1px;
   background: var(--pl-tc);
@@ -582,19 +695,15 @@ margin: 0px 0 20px;
   transform: translateX(-50%);
   margin: 0;
 }
-
 .page-portfolio-long .dj-siteLine{
-  text-align: center !important;
+  text-align: center;
   padding: 10px 0;
   font-size: 12px;
   letter-spacing: .10em;
   color: rgba(25,25,25,.74);
+  text-transform: uppercase;
 }
-
-.page-portfolio-long .dj-siteLink{
-  color: inherit;
-  text-decoration: none;
-}
+.page-portfolio-long .dj-siteLink{ color: inherit; text-decoration: none; }
 .page-portfolio-long .dj-siteLink:hover{
   text-decoration: underline;
   text-decoration-color: rgba(79,96,84,.35);
@@ -609,114 +718,15 @@ margin: 0px 0 20px;
   overflow: hidden;
   margin-bottom: -60px;
 }
-.page-portfolio-long .dj-bannerBleed img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
+.page-portfolio-long .dj-bannerBleed img{ width: 100%; height: auto; display: block; }
 
 /* ============================================================
-   MÓVIL
+   13) RESPONSIVE
    ============================================================ */
-@media (max-width: 760px){
-  .pl-wrap{ padding: 0 14px; }
-  .pl-hero__overlay{ display: none; }
-
-  .pl-hero__media{
-    aspect-ratio: 4 / 3;
-    min-height: 260px;
-  }
-
-  .pl-hero__inner{
-    position: static;
-    padding: 16px 14px 14px;
-    background: rgba(245,245,245,.78);
-  }
-
-  .pl-h1{ text-align: center; font-size: 18px; line-height: 1.25; margin-bottom: 8px; }
+@media (max-width: 700px){
+  .pl-h1{ font-size: 18px; line-height: 1.25; margin-bottom: 8px; }
   .pl-lead{ font-size: 14.5px; margin-bottom: 12px; }
-
-  .pl-hero__meta{
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin: 10px 0 12px;
-  }
-
-  /* En móvil: no recortes forzados */
-  .pl-fig--h380 img,
-  .pl-fig--h420 img{
-    height: auto;
-    object-fit: contain;
-  }
-
+  .pl-hero__meta{ grid-template-columns: 1fr; gap: 10px; margin: 10px 0 12px; }
   .pl-lb__img{ max-width: 92vw; max-height: 82vh; }
-}
-
-/* ============================================================
-   HOME STAGING — DOCSHEET + HOTSPOTS (PRO)
-   ============================================================ */
-.pl-rule{
-  height: 1px;
-  background: var(--pl-rule);
-  width: 100%;
-  margin: 22px 0 8px;
-}
-
-/* Docsheet: lámina + hotspots */
-.pl-fig--docsheet{ margin-top: 14px; }
-
-.pl-docsheet{
-  position: relative;
-}
-
-.pl-docsheet img{
-  width: 100%;
-  display: block;
-}
-
-/* Hotspots: enlaces invisibles encima */
-.pl-hot{
-  position: absolute;
-  display: block;
-  z-index: 3;
-  cursor: zoom-in;
-  border-radius: 10px;
-  background: transparent;
-}
-
-/* Feedback sutil */
-.pl-hot:hover{
-  outline: 1px solid var(--pl-rule);
-  outline-offset: 2px;
-}
-.pl-hot:focus-visible{
-  outline: 2px solid rgba(79,96,84,.90);
-  outline-offset: 3px;
-}
-
-/* ====== COORDENADAS (ajusta si hace falta) ======
-   En tu lámina:
-   - Izquierda: planta amueblada grande
-   - Derecha arriba: planta acotada
-   - Derecha abajo: zonificación
-*/
-.pl-hot--amueblada{
-      left: 4%;
-    top: 10%;
-    width: 55%;
-    height: 82%;
-}
-
-.pl-hot--acotada{
-  left: 65%;
-    top: 10%;
-    width: 27%;
-    height: 40%;
-}
-
-.pl-hot--zonificacion{
-    left: 65%;
-    top: 50%;
-    width: 27%;
-    height: 40%;
+  .pl-p{ margin: 0 0 10px; text-align: left; }
 }

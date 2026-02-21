@@ -1,26 +1,49 @@
 /* ============================================================
    PORTFOLIO LARGO (PRO) — LOCAL MADRID
+   Ruta: assets/css/proyectos/local_madrid_portfolio_pro.css
+   - Figuras: marco + caption UNIDOS (la “caja” correcta)
+   - Zig-zag: texto ARRIBA al lado (no abajo)
+   - Estado inicial: escala TODO el módulo sin afectar al resto
+   - Sin reglas globales que rompan otras imágenes
    ============================================================ */
 
+/* ============================================================
+   0) VARIABLES / CONTROLES
+   ============================================================ */
 :root{
-  --pl-tc: #5f6f61;
+  --pl-tc: #4f6054;
   --pl-rule: rgba(79,96,84,.55);
 
   --pl-ink: rgba(25,25,25,0.86);
   --pl-ink-soft: rgba(25,25,25,0.62);
-  --pl-bg: var(--page-bg, #f2f2f2);
+  --pl-bg: var(--page-bg, #dcdcdc);
 
   --pl-maxw: 1040px;
   --pl-pad: clamp(16px, 3vw, 28px);
 
-  /* Alturas “parejas” (desktop) */
-  --pl-h-before: 380px;
-  --pl-h-prop: 420px;
+  /* Altura pareja para renders en desktop */
+  --pl-h420: 420px;
+
+  /* Ancho máximo solo para el módulo “Estado inicial” */
+  --pl-stateinit-maxw: 560px;
 }
 
+html{ scroll-behavior: smooth; }
 .page-portfolio-long{ background: var(--pl-bg); }
 
-/* Línea a sangre */
+/* offset anchors (nav sticky) */
+#contexto, #fase1, #fase2, #resultado, #contacto{ scroll-margin-top: 110px; }
+
+/* Énfasis */
+.page-portfolio-long .pl-wrap strong,
+.page-portfolio-long .pl-wrap b{
+  color: var(--pl-tc);
+  font-weight: 600;
+}
+
+/* ============================================================
+   1) LÍNEA A SANGRE
+   ============================================================ */
 .pl-ruleBleed{
   height: 1px;
   background: var(--pl-tc);
@@ -28,51 +51,36 @@
 }
 .pl-ruleBleed--beforeContact{ margin-top: 14px; }
 
-/* Wrapper */
+/* ============================================================
+   2) WRAPPER
+   ============================================================ */
 .pl-wrap{
   max-width: var(--pl-maxw);
   margin: 0 auto;
   padding: 0 var(--pl-pad);
 }
 
-/* Scroll */
-html{ scroll-behavior: smooth; }
-#contexto, #fase1, #fase2, #resultado, #contacto{ scroll-margin-top: 120px; }
-
-/* Negritas */
-.page-portfolio-long .pl-wrap strong,
-.page-portfolio-long .pl-wrap b{
-  color: var(--pl-tc);
-  font-weight: 600;
-}
-
-
-/* ===== ZOOM LOGO (solo escala la imagen dentro) ===== */
+/* ============================================================
+   3) LOGO (zoom dentro del marco)
+   ============================================================ */
 .page-project--pro{
-  --logo-scale: 1.8;  /* sube/baja aquí */
-  --logo-x: 1px;      /* mueve izq/der */
-  --logo-y: -1px;      /* mueve arriba/abajo */
+  --logo-scale: 1.4;
+  --logo-x: -1.8px;
+  --logo-y: -0.8px;
 }
-
-/* el “marco” circular recorta el zoom */
-.page-project--pro .brand-mark{
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-/* esto es el zoom real */
+.page-project--pro .brand-mark{ border-radius: 999px; overflow: hidden; }
 .page-project--pro .brand-mark img{
   transform: translate(var(--logo-x), var(--logo-y)) scale(var(--logo-scale));
   transform-origin: center;
 }
 
 /* ============================================================
-   HERO
+   4) HERO
    ============================================================ */
 .pl-hero{
   position: relative;
   margin: 18px 0 10px;
-  border: 1px solid rgba(79,96,84,.55);
+  border: 1px solid var(--pl-rule);
   border-radius: 8px;
   overflow: hidden;
   background: rgba(236,236,236,0.92);
@@ -83,7 +91,6 @@ html{ scroll-behavior: smooth; }
   aspect-ratio: 16 / 9;
   min-height: 360px;
 }
-
 .pl-hero__media img{
   position: absolute;
   inset: 0;
@@ -94,15 +101,10 @@ html{ scroll-behavior: smooth; }
 }
 
 .pl-hero__overlay{
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(240,240,240,0.10) 20%,
-    rgba(240,240,240,0.55) 62%,
-    rgba(240,240,240,0.92) 100%
-  );
-  pointer-events: none;
+ position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(240, 240, 240, 0.20) 10%, rgba(240, 240, 240, 0.85) 82%, rgba(240, 240, 240, 0.90) 100%);
+    pointer-events: none;
 }
 
 .pl-hero__inner{
@@ -110,8 +112,9 @@ html{ scroll-behavior: smooth; }
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 16px var(--pl-pad) 16px;
+  padding: 16px var(--pl-pad);
   z-index: 2;
+  text-align: center;
 }
 
 .pl-h1{
@@ -129,15 +132,13 @@ html{ scroll-behavior: smooth; }
   font-size: 14.5px;
   line-height: 1.65;
   color: var(--pl-ink);
-  text-align: center;
 }
 
-/* Meta */
 .pl-hero__meta{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px 12px;
-  margin: 10px 0 10px;
+  margin: 10px 0 0;
 }
 
 .pl-metaItem{
@@ -147,8 +148,8 @@ html{ scroll-behavior: smooth; }
   border: 1px solid rgba(79,96,84,.80);
   border-radius: 8px;
   background: rgba(245,245,245,.72);
+  text-align: left;
 }
-
 .pl-metaLabel{
   font-size: 11px;
   letter-spacing: .18em;
@@ -162,47 +163,53 @@ html{ scroll-behavior: smooth; }
   color: rgba(25,25,25,0.78);
 }
 
-/* Menú secciones */
-.pl-hero .pl-sectionNav{
+/* ============================================================
+   5) NAV DE SECCIONES (sticky, pegada arriba)
+   ============================================================ */
+.pl-sectionNav--sticky{
+  position: sticky;
+  top: 0;
+  z-index: 300;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0;
-  padding-top: 10px;
-  margin-top: 2px;
-  background: transparent;
-  position: relative;
-  z-index: 3;
+
+  padding: 6px var(--pl-pad);
+  margin: 0;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: rgb(255 255 255 / 36%);
+  backdrop-filter: blur(3px);
+  border-top: 1px solid var(--pl-rule);
+  border-bottom: 1px solid var(--pl-rule);
 }
 
-.pl-hero .pl-sectionNav .pl-sectionNav__item{
-  display: inline;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  margin: 0;
+.pl-sectionNav__item{
   text-decoration: none;
-
   text-transform: uppercase;
   letter-spacing: .22em;
   font-size: 10.5px;
   line-height: 1.7;
-
-  color: rgba(79,96,84,.75);
+  color: rgba(79,96,84,.78);
   transition: color .12s ease;
 }
-
-.pl-hero .pl-sectionNav .pl-sectionNav__item + .pl-sectionNav__item::before{
-  content: " · ";
-  color: rgba(79,96,84,.75);
-  margin: 0 .7em;
+.pl-sectionNav__item + .pl-sectionNav__item::before{
+  content:" · ";
+  margin: 0 .75em;
+  color: rgba(79,96,84,.55);
 }
-.pl-hero .pl-sectionNav .pl-sectionNav__item:hover{
-  color: rgba(79,96,84,.95);
+.pl-sectionNav__item:hover{ color: rgba(79,96,84,.95); }
+.pl-sectionNav__item:focus-visible{
+  outline: 2px solid rgba(79,96,84,.55);
+  outline-offset: 4px;
 }
 
 /* ============================================================
-   SECCIONES
+   6) SECCIONES / TEXTO
    ============================================================ */
 .pl-section{ padding: 0; position: relative; }
 .pl-section + .pl-section{ border-top: 1px solid var(--pl-rule); }
@@ -245,28 +252,26 @@ html{ scroll-behavior: smooth; }
 }
 
 /* ============================================================
-   FIGURES (borde + radio correctos, incluido pie)
+   7) FIGURES — MARCO + PIE UNIDOS (la caja correcta)
    ============================================================ */
 .pl-fig{
-  border: 1px solid rgba(79,96,84,.55);
-  border-radius: 10px;
-  overflow: hidden;
-  background: rgba(245,245,245,.72);
+  margin: 0 0 20px;
 }
 
-.pl-zoom{
-  display: block;
-  text-decoration: none;
-  color: inherit;
+.pl-fig--boxed{
+  border: 1px solid var(--pl-rule);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff; /* solo dentro del marco */
 }
+
+.pl-zoom{ display: block; text-decoration: none; color: inherit; }
 
 .pl-fig img{
   width: 100%;
   display: block;
-  image-rendering: auto;
 }
 
-/* caption SIN transforms (evita blur) */
 .pl-cap{
   padding: 10px 12px;
   font-size: 12px;
@@ -275,72 +280,127 @@ html{ scroll-behavior: smooth; }
   text-transform: uppercase;
   border-top: 1px solid rgba(79,96,84,.80);
   text-align: center;
-
+  background: #fff;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Contain (planos) */
-.pl-fig--contain{
-  background: rgba(245,245,245,.78);
-margin: 0px 0 20px;
-}
-.pl-fig--contain img{
+/* Solo para docs/plans: NO recortar, enseñar entero */
+.pl-fig--doc img{
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-/* Single grande */
+/* Solo para “Estado inicial”: escalar TODO el módulo (no la imagen suelta) */
+.pl-fig--stateInit{
+  max-width: min(var(--pl-stateinit-maxw), 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Altura pareja SOLO en desktop y SOLO donde se pide (pl-fig--h420) */
+@media (min-width: 860px){
+  .pl-fig--h420 img{
+    height: var(--pl-h420);
+    object-fit: cover;
+    object-position: 50% 60%;
+  }
+}
+
+/* Variantes de margen */
 .pl-fig--single{ margin: 10px 0 26px; }
 
-/* Alturas “parejas” (desktop) */
-@media (min-width: 860px){
-  .pl-fig--h380 img{
-    height: var(--pl-h-before);
-    object-fit: cover;
-    object-position: 50% 50%;
-  }
-  .pl-fig--h420 img{
-    height: var(--pl-h-prop);
-    object-fit: cover;
-    object-position: 50% 80%;
-  }
-
-.pl-grid--proposal > .pl-fig:only-child{
-    grid-column: 1 / -1;
-  }
-}
-
 /* ============================================================
-   GRIDS
+   8) GRIDS
    ============================================================ */
 .pl-grid{
   display: grid;
   gap: 12px;
   margin: 10px 0 26px;
 }
-
-.pl-grid--before,
-.pl-grid--docs,
-.pl-grid--proposal{
-  grid-template-columns: 1fr;
-}
+.pl-grid--docs{ grid-template-columns: 1fr; }
 
 @media (min-width: 860px){
-  .pl-grid--before,
-  .pl-grid--docs,
-  .pl-grid--proposal{
+  .pl-grid--docs{
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
   }
+}
 
- .pl-grid--proposal > .pl-fig:only-child{
+/* ============================================================
+   9) ZIG-ZAG (texto ARRIBA al lado)
+   ============================================================ */
+.pl-split{
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin: 16px 0 26px;
+}
+
+/* media + texto */
+.pl-split__media{
+  grid-column: 1 / span 8;
+  margin: 0;
+}
+.pl-split__text{
+  grid-column: 9 / -1;
+   align-self: start;
+  margin: 0;
+  padding: 0;
+}
+
+.pl-split--rev .pl-split__media{ grid-column: 5 / -1; }
+.pl-split--rev .pl-split__text{ grid-column: 1 / span 4; }
+
+.pl-split__kicker{
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(25,25,25,.70);
+  text-align: left;
+}
+
+/* En zig-zag el párrafo NO arranca con margen grande */
+.pl-split__text .pl-p{
+  margin: 0;
+  max-width: none;
+  text-align: left;
+  text-align-last: auto;
+}
+
+@media (max-width: 900px){
+  .pl-split{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .pl-split__media,
+  .pl-split__text,
+  .pl-split--rev .pl-split__media,
+  .pl-split--rev .pl-split__text{
     grid-column: 1 / -1;
   }
 }
 
 /* ============================================================
-   RESULTADO (stack grande)
+   10) COMPARATIVA
+   ============================================================ */
+.pl-compare{
+  display: grid;
+  gap: 12px;
+  margin: 10px 0 26px;
+}
+@media (min-width: 860px){
+  .pl-compare{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+/* ============================================================
+   11) RESULTADO
    ============================================================ */
 .pl-resultStack{
   display: grid;
@@ -349,28 +409,29 @@ margin: 0px 0 20px;
 }
 
 /* ============================================================
-   VOLVER
+   12) VOLVER
    ============================================================ */
 .pl-back{
   max-width: var(--pl-maxw);
-  margin: 0px auto 30px;
+  margin: 0 auto 30px;
   padding: 0 var(--pl-pad);
   display: grid;
   place-items: center;
 }
 .pl-back-btn{
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(79,96,84,.55);
-  background: rgba(245,245,245,.78);
-  color: rgba(25,25,25,0.78);
-  text-decoration: none;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-size: 11px;
-  transition: transform .12s ease, border-color .12s ease, background .12s ease;
-  text-align: center;
+display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #4f6054;
+    background: rgb(245 245 245 / 0%);
+    color: #4f6054;
+    text-decoration: none;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    text-align: center;
 }
 .pl-back-btn:hover{
   transform: translateY(-1px);
@@ -379,7 +440,7 @@ margin: 0px 0 20px;
 }
 
 /* ============================================================
-   LIGHTBOX
+   13) LIGHTBOX
    ============================================================ */
 .pl-lb{
   position: fixed;
@@ -389,25 +450,20 @@ margin: 0px 0 20px;
 }
 .pl-lb.is-open{ display: block; }
 
-.pl-lb__backdrop{
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.55);
-}
 .pl-lb__backdrop::before{
   content:"";
   position:absolute;
   inset:0;
-  background: var(--pl-bg);
+  background: #6b6b70;
   opacity: .92;
 }
 
 @supports (mix-blend-mode: multiply){
   .pl-lb__backdrop{ background: var(--pl-bg); }
   .pl-lb__backdrop::before{
-    background: rgba(0,0,0,.55);
-    mix-blend-mode: multiply;
-    opacity: 1;
+    background: rgba(0, 0, 0, .75);
+        mix-blend-mode: multiply;
+        opacity: 1;
   }
 }
 
@@ -425,27 +481,27 @@ margin: 0px 0 20px;
   width: auto;
   height: auto;
   border-radius: 8px;
-  border: 1px solid rgba(79,96,84,.55);
-  background: rgba(245,245,245,.72);
+  border: 1px solid var(--pl-rule);
+  background: #fff;
   box-shadow: 0 22px 60px rgba(0,0,0,.22);
 }
 
 .pl-lb__close{
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(79,96,84,.80);
-  color: rgba(79,96,84,.92);
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  transition: background .12s ease, border-color .12s ease, transform .12s ease;
+position: absolute;
+    top: 50px;
+    right: 80px;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .78);
+    border: 1px solid rgba(79, 96, 84, .80);
+    color: rgba(79, 96, 84, .92);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background .12s ease, border-color .12s ease, transform .12s ease;
 }
 .pl-lb__close:hover{
   background: rgba(255,255,255,.90);
@@ -459,35 +515,36 @@ margin: 0px 0 20px;
 .pl-lock{ overflow: hidden; }
 
 /* ============================================================
-   CTA / CONTACTO (dj-*) — centrado a prueba de styles.css
+   14) CTA / CONTACTO (dj-*)
    ============================================================ */
 .page-portfolio-long .dj-wrap{
   width: min(var(--pl-maxw), calc(100% - (var(--pl-pad) * 2)));
   margin: 14px auto;
-  text-align: center !important;
+  text-align: center;
 }
 
 .page-portfolio-long .dj-center{
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto 0px;
 }
 
 .page-portfolio-long .dj-btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 26px;
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(79,96,84,.78);
-  background: #fff;
-  color: var(--pl-tc);
-  text-decoration: none;
-  font-size: 10.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  white-space: nowrap;
+display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    padding: 15px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 96, 84, .78);
+    background: #fff;
+    color: var(--pl-tc);
+    text-decoration: none;
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 .page-portfolio-long .dj-btn:hover{
   text-decoration: underline;
@@ -495,27 +552,24 @@ margin: 0px 0 20px;
   text-underline-offset: 3px;
 }
 .page-portfolio-long .dj-btn--solid{
-  background: rgba(79,96,84,.92);
-  border-color: rgba(79,96,84,.92);
-  color: rgba(255,255,255,.96);
+     background: rgba(79, 96, 84, .92);
+    border-color: rgba(79, 96, 84, .92);
+    color: rgba(255, 255, 255, .96);
 }
 
 .page-portfolio-long .dj-ctaLine{
-  margin: 14px 0 12px;
-  text-align: center !important;
-  font-weight: 400;
-  color: rgba(25,25,25,.78);
-  font-size: 13px;
-  line-height: 1.55;
+     margin: 14px 100px 12px;
+    text-align: center;
+    font-weight: 400;
+    color: rgba(25, 25, 25, .78);
+    font-size: 15px;
+    line-height: 1.55;
 }
-.page-portfolio-long .dj-ctaQ{
-  color: var(--pl-tc);
-  font-weight: 700;
-}
+.page-portfolio-long .dj-ctaQ{ color: var(--pl-tc); font-weight: 700; }
 
 .page-portfolio-long .dj-directTitle{
   margin: 10px 0 10px;
-  text-align: center !important;
+  text-align: center;
   color: rgba(25,25,25,.88);
   font-weight: 400;
   font-size: 13px;
@@ -528,10 +582,10 @@ margin: 0px 0 20px;
 }
 
 .page-portfolio-long .dj-directGrid{
-  display: grid !important;
+  display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  justify-items: center !important;
+  justify-items: center;
 }
 
 .page-portfolio-long .dj-directItem{
@@ -552,12 +606,7 @@ margin: 0px 0 20px;
   justify-content: center;
   flex: 0 0 18px;
 }
-.page-portfolio-long .dj-icoSvg{
-  width: 18px;
-  height: 18px;
-  fill: var(--pl-tc);
-  display: block;
-}
+.page-portfolio-long .dj-icoSvg{ width: 18px; height: 18px; fill: var(--pl-tc); display: block; }
 
 .page-portfolio-long .dj-directText{
   font-size: 12px;
@@ -580,19 +629,15 @@ margin: 0px 0 20px;
   transform: translateX(-50%);
   margin: 0;
 }
-
 .page-portfolio-long .dj-siteLine{
-  text-align: center !important;
+  text-align: center;
   padding: 10px 0;
   font-size: 12px;
   letter-spacing: .10em;
   color: rgba(25,25,25,.74);
+text-transform: uppercase;
 }
-
-.page-portfolio-long .dj-siteLink{
-  color: inherit;
-  text-decoration: none;
-}
+.page-portfolio-long .dj-siteLink{ color: inherit; text-decoration: none; }
 .page-portfolio-long .dj-siteLink:hover{
   text-decoration: underline;
   text-decoration-color: rgba(79,96,84,.35);
@@ -607,23 +652,138 @@ margin: 0px 0 20px;
   overflow: hidden;
   margin-bottom: -60px;
 }
-.page-portfolio-long .dj-bannerBleed img{
-  width: 100%;
-  height: auto;
-  display: block;
+.page-portfolio-long .dj-bannerBleed img{ width: 100%; height: auto; display: block; }
+
+.pro-contact strong{
+color: var(--pc);
+font-weight: 500;
+}
+.below-inner {
+    background: transparent;
+    max-width: 690px;
+    margin: 0 auto;
+    padding: 20px 18px px;
 }
 
 /* ============================================================
-   MÓVIL
+   CONTACTO PRO — ICONOS (blindaje como Particulares)
+   - Normaliza tamaños (viewBox 24/32)
+   - Alinea icono + texto
+   ============================================================ */
+
+:root{
+  --pro-ico: 18px; /* tamaño único iconos */
+}
+
+/* La fila (link) */
+.page-profesionales.page-portfolio-long--pro .pro-directItem{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: max-content;
+  margin: 0 auto;
+
+  text-decoration: none !important;
+  border-bottom: none !important;
+  background-image: none !important;
+}
+
+/* Contenedor del icono (blindado) */
+.page-profesionales.page-portfolio-long--pro .pro-ico{
+  width: var(--pro-ico) !important;
+  height: var(--pro-ico) !important;
+  min-width: var(--pro-ico) !important;
+  min-height: var(--pro-ico) !important;
+  max-width: var(--pro-ico) !important;
+  max-height: var(--pro-ico) !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  flex: 0 0 var(--pro-ico) !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+
+  font-size: 0 !important;
+  color: var(--musgo) !important; /* musgo PRO */
+}
+
+/* SVG (blindaje real) */
+.page-profesionales.page-portfolio-long--pro .pro-ico svg,
+.page-profesionales.page-portfolio-long--pro .pro-icoSvg{
+  width: var(--pro-ico) !important;
+  height: var(--pro-ico) !important;
+  display: block !important;
+  fill: currentColor !important;
+}
+
+/* Por si algún reset mete fills en paths */
+.page-profesionales.page-portfolio-long--pro .pro-icoSvg path{
+  fill: currentColor !important;
+}
+
+/* Texto (si no está ya definido en profesionales.css) */
+.page-profesionales.page-portfolio-long--pro .pro-directText{
+  display: inline-block;
+  line-height: 1;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(47,47,49,0.78);
+  text-decoration: none;
+}
+
+/* Hover sobrio */
+@media (hover:hover){
+  .page-profesionales.page-portfolio-long--pro .pro-directItem:hover .pro-directText{
+    text-decoration: underline;
+    text-decoration-color: rgba(95,111,97,0.35);
+    text-underline-offset: 3px;
+  }
+}
+
+.pro-directGrid{
+display: grid;
+        display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    justify-items: center;
+    margin: 0 auto;
+    padding: 5px 15px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.1;
+    text-align: left;
+    color: rgba(47, 47, 49, 0.94);
+}
+
+.pro-directItem {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+.pro-ico svg, .pro-icoSvg {
+    width: 18px !important;
+    height: 18px !important;
+    display: block !important;
+    fill: var(--pc) !important;
+}
+/* ============================================================
+   15) MÓVIL
    ============================================================ */
 @media (max-width: 760px){
-  .pl-wrap{ padding: 0 20px; }
+  .pl-wrap{ padding: 0 14px; }
   .pl-hero__overlay{ display: none; }
 
-  .pl-hero__media{
-    aspect-ratio: 4 / 3;
-    min-height: 260px;
-  }
+  .pl-hero__media{ aspect-ratio: 4 / 3; min-height: 260px; }
 
   .pl-hero__inner{
     position: static;
@@ -631,23 +791,86 @@ margin: 0px 0 20px;
     background: rgba(245,245,245,.78);
   }
 
-  .pl-h1{ text-align: center; font-size: 15px; line-height: 1.25; margin-bottom: 8px; }
+  .pl-h1{ font-size: 18px; line-height: 1.25; margin-bottom: 8px; }
   .pl-lead{ font-size: 14.5px; margin-bottom: 12px; }
 
-  .pl-hero__meta{
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin: 10px 0 12px;
-  }
+  .pl-hero__meta{ grid-template-columns: 1fr; gap: 10px; }
 
-  /* En móvil: no recortes forzados */
-  .pl-fig--h380 img,
+  /* En móvil: NO recortes forzados en h420 */
   .pl-fig--h420 img{
     height: auto;
     object-fit: contain;
   }
 
   .pl-lb__img{ max-width: 92vw; max-height: 82vh; }
+
+}
+.pl-back{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
+/* Marco visible para figuras del portfolio */
+.pl-fig{
+ background: #fff;
+    padding: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--pl-rule);
+}
 
+/* Pie de imagen separado */
+.pl-cap{
+  padding: 10px 14px 12px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(25,25,25,.6);
+  border-top: 1px solid rgba(0,0,0,.06);
+  background: #fff;
+}
+/* ============================================================
+   5) NAV DE SECCIONES (sticky robusto: sentinel + is-fixed)
+   ============================================================ */
+
+/* offset anchors (lo recalcula el JS) */
+:root{ --pl-anchor-offset: 150px; }
+#contexto, #fase1, #fase2, #resultado, #contacto{ scroll-margin-top: var(--pl-anchor-offset); }
+
+#plNavSentinel{ height: 1px; }
+#plNavSpacer{ height: 0; }
+
+.pl-sectionNav--sticky{
+  position: relative; /* en flujo */
+  z-index: 300;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 6px var(--pl-pad);
+  margin: 0;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: rgb(255 255 255 / 36%);
+  backdrop-filter: blur(3px);
+  border-top: 1px solid var(--pl-rule);
+  border-bottom: 1px solid var(--pl-rule);
+}
+
+.pl-sectionNav--sticky.is-fixed{
+  position: fixed;
+  top: 0;          /* SIEMPRE visible al bajar */
+  left: 0;
+  right: 0;
+  z-index: 999;    /* por encima del header si hiciera falta */
+}
+a:hover {
+    text-decoration: none;
+}

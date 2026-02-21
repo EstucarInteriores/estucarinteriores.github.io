@@ -42,7 +42,7 @@ font-size: 16px;
 .page-sobre h1{
   font-size: 1.3rem;
     font-weight: 500;
-    text-align: left;
+    text-align: center;
     margin: 25px 0 35px;
     line-height: 1.2;
     color: var(--about-ink);
@@ -279,4 +279,40 @@ font-size: 16px;
   left: 50%;
   transform: translateX(-50%);
   margin-top: 0px; /* separa del menú sin “caja” */
+}
+.rule--bleed{
+    height: 1px;
+    background: var(--muted);
+    border: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.pro-siteLine{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+}
+.footer-banner--bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    line-height: 0;
+    height: 180px;
+    overflow: hidden;
+    padding-top: 0;
+    margin-bottom: 0;
+    margin-top: -10px;
 }

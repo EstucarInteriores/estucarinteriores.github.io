@@ -24,6 +24,42 @@
   --list-fz: 13.5px;
 }
 
+
+.svc-strip-top{
+    box-sizing: box-sizing: border-box;
+    margin: 0;
+    padding: 0 180px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(85,110,95,0.45);
+}
+
+.svc-strip-top > a.svc-stripLink:not(:last-child)::after{
+  content: " · ";
+  margin: 0 .65em;
+  color: rgba(25,25,25,0.38);
+  display: inline;
+}
+
+
+/* Separador ·: se lo ponemos al link anterior (robusto) */
+#svc-strip-top > a.svc-stripLink{
+  position: relative;
+}
+
+#svc-strip-top > a.svc-stripLink:not(:last-child)::after{
+  content: " · ";
+  margin: 0 .65em;
+  color: rgba(25,25,25,0.38);
+  display: inline;
+}
+
+.page-profesionales .topbar .brand-mark img {
+    transform: translate(var(--logo-x, -1.5px), var(--logo-y, -0.7px)) scale(var(--logo-scale, 1.4));
+    transform-origin: center;
+}
+
 /* ============================================================
    CONTENEDOR
    ============================================================ */
@@ -51,7 +87,7 @@
    ============================================================ */
 
 .page-servicios-pro .svc-hero{
-  padding: var(--hero-py) 0 0;
+  padding: 0;
 }
 
 /* Strip superior (solo arriba) */
@@ -70,28 +106,17 @@
 opacity:0.6;
 }
 
-/* Strip superior clicable (mismo look que los span) */
-#svc-strip-top a{
-  display: inline-block;
+/* Elementos del strip */
+#svc-strip-top > span{
   white-space: nowrap;
   font-weight: 500;
-  color: var(--ink-soft);
-  text-decoration: none;
-  padding: 6px 0;            /* área clicable sin cambiar el look */
 }
 
-#svc-strip-top a:hover{
-  text-decoration: underline;
-  text-decoration-color: rgba(25,25,25,0.28);
-  text-underline-offset: 3px;
-}
-
-/* Separador “·” SOLO en el strip, ahora entre enlaces */
-#svc-strip-top a + a::before{
+/* Separador “·” SOLO aquí (no afecta a nada más) */
+#svc-strip-top > span + span::before{
   content: " · ";
   margin: 0 .65em;
   color: rgba(25,25,25,0.38);
-  text-decoration: none;
 }
 
 /* Intro */
@@ -131,26 +156,27 @@ opacity:0.6;
 
 /* Sin cajas */
 .page-servicios-pro .svc-box{
-  border: 0;
-  background: transparent;
-  padding: 0;
-  margin: 0;
+      border: 0;
+    background: transparent;
+    padding: 0;
+    margin: 60px 80px 50px;
 }
 
 /* Cada servicio */
 .page-servicios-pro .svc-service{
-  padding: var(--svc-py) 0;
+  padding:  0;
   margin: 0;
 }
 
 /* Título + regla fina */
 .page-servicios-pro .svc-title{
-  margin: 0;
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(95,111,97,0.95);
+      margin: 0;
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(95, 111, 97, 0.95);
+    text-align: left;
 }
 
 .page-servicios-pro .svc-title::after{
@@ -164,8 +190,8 @@ opacity:0.6;
 
 .page-servicios-pro .svc-titleLink{
   text-decoration: none;
+text-align: left;
 }
-
 .page-servicios-pro .svc-titleLink:hover{
   text-decoration: underline;
   text-decoration-color: rgba(85,110,95,0.35);
@@ -199,24 +225,22 @@ opacity:0.6;
 }
 
 .page-servicios-pro .svc-miniTitle{
-  margin: 0 0 8px;
+  margin: 0 20px 8px;
   font-size: 12px;
   font-weight: 650;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(95,111,97,0.95);
+  text-align: left;
 }
 
 .page-servicios-pro .svc-list{
-  margin: 0;
   padding-left: 18px;
   font-size: var(--list-fz);
   line-height: 1.5;
   color: var(--ink-soft);
-}
-
-.page-servicios-pro .svc-list li{
-  margin: 0 0 6px;
+  text-align: left;
+  margin: 0 0 0px;
 }
 
 .page-servicios-pro .svc-list li::marker{
@@ -232,13 +256,12 @@ opacity:0.6;
 }
 
 .page-servicios-pro .svc-noteText{
-  max-width: 760px;
-  margin: 0 auto;
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--ink-soft);
-  text-align: justify;
-  font-style: italic;
+  margin: 0 130px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    text-align: justify;
+    font-style: italic;
 }
 
 /* Negritas en verde SOLO dentro del main de servicios */
@@ -322,38 +345,223 @@ opacity:0.6;
 /* Anclas */
 html{ scroll-behavior: smooth; }
 .page-servicios-pro .svc-service{ scroll-margin-top: var(--scroll-offset, 140px); }
+
 /* ============================================================
-   SERVICIOS — Ajustes móvil (portrait + landscape)
+   HOMOLOGACIÓN SERVICIOS PRO → mismo sistema que SERVICIOS (PAR)
+   - “Papel” claro sobre fondo gris
+   - Líneas verdes SOLO envolviendo el submenu (tabs)
+   - Bullets con guía (punto + línea)
+   - Mantener SOLO una bleed-hr (antes del CTA)
    ============================================================ */
 
-/* MÓVIL / TABLET COMPACTO (vertical) */
+.page-servicios-pro{
+  --pc: #5f6f61;
+  --pc-rule: rgba(85,110,95,0.45);
+
+  --canvas-bg: rgba(255,255,255,0.92);
+  --canvas-radius: 4px;
+  --canvas-shadow: 0 28px 60px rgba(0,0,0,0.06);
+
+  --wrap-maxw: 1200px;
+  --svc-maxw: 980px;
+  --wrap-padx: 18px;
+
+  /* Bullets “Servicios” pero en verde */
+  --bullet-dot: rgba(95,111,97,0.90);
+  --bullet-stroke: rgba(255,255,255,0.95);
+  --bullet-line: rgba(25,25,25,0.22);
+  --bullet-dot-size: 7px;
+  --bullet-axis-x: 7px;
+}
+
+/* 0) Marca sin subrayado (mueve aquí lo que estaba inline en HTML) */
+.page-servicios-pro .topbar .brand,
+.page-servicios-pro .topbar .brand:hover,
+.page-servicios-pro .topbar .brand:focus,
+.page-servicios-pro .topbar .brand:focus-visible{
+  text-decoration: none !important;
+}
+
+/* 1) Fondo gris exterior */
+.page-servicios-pro{
+  background: #dcdcdc;
+}
+
+/* 2) “Papel” claro: usamos .wrap como contenedor visual (sin tocar HTML) */
+.page-servicios-pro .wrap{
+  max-width: var(--wrap-maxw);
+  margin: 20px auto 0;
+  padding: 28px var(--wrap-padx);
+  background: rgb(250 250 250 / 77%);
+  border-radius: var(--canvas-radius);
+  box-shadow: var(--canvas-shadow);
+  box-sizing: border-box;
+}
+
+/* Contenido editorial dentro del “papel” */
+.page-servicios-pro .svc-inner{
+  margin: 0 auto;
+  padding: 0 clamp(18px, 3vw, 34px);
+  box-sizing: border-box;
+}
+
+/* 3) LÍNEAS verdes envolviendo el submenu (tabs PRO) — SIN tocar estructura */
+.page-servicios-pro .tabs--pro-top{
+  position: relative;
+}
+
+/* línea superior */
+.page-servicios-pro .tabs--pro-top::before{
+  content:"";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background: var(--pc-rule);
+  pointer-events: none;
+}
+
+/* línea inferior */
+.page-servicios-pro .tabs--pro-top::after{
+  content:"";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background: var(--pc-rule);
+  pointer-events: none;
+}
+
+/* 4) Quitar “divisor” vertical entre columnas (queremos el look limpio de Servicios PAR) */
+.page-servicios-pro .svc-incCol + .svc-incCol{
+  border-left: 0;
+  padding-left: 0;
+}
+
+/* Ajuste de aire similar a Servicios PAR */
+.page-servicios-pro .svc-incgrid{
+  padding: 0 10px;
+  column-gap: 30px;
+}
+
+/* 5) Bullets con guía (punto + línea) para INCLUYE / NO INCLUYE */
+.page-servicios-pro .svc-list{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* línea vertical */
+.page-servicios-pro .svc-list::before{
+  content:"";
+  position: absolute;
+  left: 6.5px;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background: var(--bullet-line);
+  pointer-events: none;
+}
+
+.page-servicios-pro .svc-list li{
+  position: relative;
+  padding-left: 22px;
+  margin: 0 0 8px;
+ text-align: left;
+}
+
+/* punto con borde blanco */
+.page-servicios-pro .svc-list li::before{
+  content:"";
+  position: absolute;
+  left: calc(var(--bullet-axis-x) - (var(--bullet-dot-size) / 2));
+  top: 0.95em;
+  width: var(--bullet-dot-size);
+  height: var(--bullet-dot-size);
+  border-radius: 999px;
+  background: var(--bullet-dot);
+  border: 1px solid var(--bullet-stroke);
+  box-sizing: border-box;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* 6) bleed-hr: solo quieres una (antes del CTA).
+   Como ya hemos borrado las otras del HTML, aquí lo dejamos consistente. */
+.page-servicios-pro .bleed-hr{
+  background: var(--pc-rule);
+  height: 1px;
+  border: 0;
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin: 18px 0 0;
+}
+
+/* 7) Responsive: el “papel” mantiene lectura */
 @media (max-width: 980px){
-  .page-servicios .svc-box{
-    /* antes: 60px auto 20px */
-    margin: 28px auto 14px;
+  .page-servicios-pro .wrap{
+    margin-top: 12px;
+    padding: 18px var(--wrap-padx);
+  }
 
-    /* mantiene “sin caja”, pero da aire lateral seguro */
-    padding: 0 16px;
-    max-width: 720px;
+  .page-servicios-pro .svc-inner{
+    padding: 0;
+  }
+
+  .page-servicios-pro .svc-incgrid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 0;
   }
 }
+/* ============================================================
+   FIX STRIP TOP — ahora son <a>, no <span>
+   - Reaplica el estilo editorial
+   - Elimina “píldora” (border/padding/bg) heredada
+   - Recupera separadores ·
+   ============================================================ */
 
-/* MÓVIL EN HORIZONTAL (poca altura) */
-@media (max-height: 520px) and (orientation: landscape){
-  .page-servicios .svc-box{
-    /* recorta aún más el margen superior para que no “coma” viewport */
-    margin: 16px auto 10px;
+#svc-strip-top > a.svc-stripLink{
+  /* reset visual */
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 
-    /* en landscape suele hacer falta apretar laterales */
-    padding: 0 14px;
-    max-width: 760px;
-  }
+  /* tipografía/tono (hereda del contenedor) */
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: inherit;
+
+  text-decoration: none !important;
+  white-space: nowrap;
+  font-weight: 500;
+
+  display: inline;
+  cursor: pointer;
 }
 
-/* Extra opcional: teléfonos muy estrechos */
-@media (max-width: 380px){
-  .page-servicios .svc-box{
-    padding: 0 12px;
-  }
+/* Separador · entre items (solo en strip top) */
+#svc-strip-top > a.svc-stripLink + a.svc-stripLink::before{
+  content: " · ";
+  margin: 0 .65em;
+  color: rgba(25,25,25,0.38);
 }
 
+/* Hover discretísimo */
+#svc-strip-top > a.svc-stripLink:hover{
+  opacity: .85;
+}

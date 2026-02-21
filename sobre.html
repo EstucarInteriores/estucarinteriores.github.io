@@ -5,53 +5,74 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Sobre el estudio | Estucar Interiores (Estudio Carcabón)</title>
-  <meta name="description" content="Estudio de interiorismo en Madrid especializado en distribución, mobiliario e iluminación. Criterio y método, forma de trabajo ordenada y colaboraciones con roles definidos." />
+  <meta name="description" content="Estudio de interiorismo en Madrid especializado en distribución, mobiliario e iluminación. Método claro, criterio técnico y colaboraciones con roles definidos." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="googlebot" content="index,follow,max-image-preview:large" />
 
   <link rel="canonical" href="https://estucarinteriores.com/sobre.html" />
   <link rel="alternate" hreflang="es-ES" href="https://estucarinteriores.com/sobre.html" />
 
-  <link rel="stylesheet" href="./assets/css/styles.css?v=1" />
-  <link rel="stylesheet" href="./assets/css/sobre.css?v=3" />
-
-  <meta property="og:type" content="website" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="ESTUCAR INTERIORES — Estudio Carcabón" />
-  <meta property="og:title" content="Sobre el estudio | Estucar Interiores (Estudio Carcabón)" />
+  <meta property="og:title" content="Sobre el estudio | Estucar Interiores" />
   <meta property="og:description" content="Interiorismo con criterio en Madrid: distribución, luz y materialidad con método y documentación útil." />
   <meta property="og:url" content="https://estucarinteriores.com/sobre.html" />
   <meta property="og:image" content="https://estucarinteriores.com/assets/img/banner-antracita.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="es_ES" />
 
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@estucar_interiores" />
+  <meta name="twitter:title" content="Sobre el estudio | Estucar Interiores" />
+  <meta name="twitter:description" content="Interiorismo con criterio en Madrid. Método claro y documentación útil." />
+  <meta name="twitter:image" content="https://estucarinteriores.com/assets/img/banner-antracita.webp" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/styles.css?v=1" />
+  <link rel="stylesheet" href="./assets/css/sobre.css?v=3" />
+
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"AboutPage",
-    "name":"Sobre el estudio | Estucar Interiores (Estudio Carcabón)",
-    "inLanguage":"es-ES",
-    "url":"https://estucarinteriores.com/sobre.html",
-    "about":{
-      "@type":"InteriorDesignBusiness",
-      "name":"Estucar Interiores (Estudio Carcabón)",
-      "url":"https://estucarinteriores.com/"
-    }
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "InteriorDesignBusiness",
+        "@id": "https://estucarinteriores.com/#business",
+        "name": "Estucar Interiores (Estudio Carcabón)",
+        "url": "https://estucarinteriores.com/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Madrid",
+          "addressRegion": "Comunidad de Madrid",
+          "addressCountry": "ES"
+        }
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://estucarinteriores.com/sobre.html#aboutpage",
+        "url": "https://estucarinteriores.com/sobre.html",
+        "name": "Sobre el estudio",
+        "inLanguage": "es-ES",
+        "about": { "@id": "https://estucarinteriores.com/#business" },
+        "description": "Estudio de interiorismo en Madrid especializado en distribución, mobiliario e iluminación con método y criterio técnico."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://estucarinteriores.com/sobre.html#breadcrumbs",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://estucarinteriores.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Sobre el estudio", "item": "https://estucarinteriores.com/sobre.html" }
+        ]
+      }
+    ]
   }
   </script>
-
-  <style>
-    .topbar .brand,
-    .topbar .brand:hover,
-    .topbar .brand:focus,
-    .topbar .brand:focus-visible{ text-decoration:none !important; }
-  </style>
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sobre el estudio | Estucar Interiores (Estudio Carcabón)" />
-  <meta name="twitter:description" content="Estudio de interiorismo en Madrid especializado en distribución, mobiliario e iluminación. Criterio y método, forma de trabajo ordenada y colaboraciones con roles definidos." />
-  <meta name="twitter:image" content="https://estucarinteriores.com/assets/img/banner-antracita.webp" />
 </head>
-
-<body class="page-sobre">
+<body class="page-sobre header--compact">
   <a class="sr-only sr-only-focusable" href="#contenido">Saltar al contenido</a>
 
   <header class="topbar">
@@ -60,7 +81,7 @@
 
       <a class="brand" href="./index.html" aria-label="Volver a inicio">
         <span class="brand-mark" aria-hidden="true">
-          <img src="./assets/img/logo-antracita.webp" alt="ESTUCAR INTERIORES" width="615" height="616">
+          <img src="./assets/img/logo-antracita.webp" alt="ESTUCAR INTERIORES">
         </span>
         <span class="brand-text">
           <span class="brand-name">ESTUCAR INTERIORES</span>
@@ -83,7 +104,8 @@
     </nav>
   </header>
 
-  <main id="contenido" class="page-sobre" role="main">
+
+<main class="page-sobre">
   <div class="wrap">
     <!-- BLOQUE 1 -->
     <section class="about-hero" aria-label="Apertura">
@@ -96,6 +118,8 @@
         </p>
       </div>
     </section>
+
+<div class="about-rule-bleed" aria-hidden="true"></div>
 
     <!-- BLOQUE 2 -->
     <section class="about-block" aria-label="El estudio">
@@ -195,14 +219,16 @@
     <div class="between-wrap" aria-label="Pie de página">
       <div class="rule--bleed" aria-hidden="true"></div>
 
-      <div class="site-line">
-        <a href="https://www.estucarinteriores.com" target="_blank" rel="noopener">estucarinteriores.com</a>
-      </div>
+<div class="pro-siteLine" aria-label="Enlaces legales">
+  <a class="pro-siteLink" href="./aviso-legal.html">AVISO LEGAL</a>
+  <span class="pro-siteSep" aria-hidden="true">·</span>
+  <a class="pro-siteLink" href="./cookies.html">COOKIES</a>
+</div>
 
       <div class="rule--bleed" aria-hidden="true"></div>
 
       <div class="footer-banner footer-banner--bleed" aria-label="Banner final">
-        <img src="./assets/img/banner-antracita.webp" alt="ESTUCAR INTERIORES — Estudio Carcabón" loading="lazy" decoding="async" width="1920" height="187">
+        <img src="./assets/img/banner-antracita.webp" alt="ESTUCAR INTERIORES — Estudio Carcabón" loading="lazy" decoding="async">
       </div>
     </div>
 </div>

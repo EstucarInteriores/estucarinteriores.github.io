@@ -1,638 +1,501 @@
-
 /* ============================================================
-   SERVICIOS — PARTICULARES (EDITORIAL / SIN CAJAS)
-   - Fondo continuo (sin tarjetas)
-   - Cada servicio = “capítulo” con título + regla fina
-   - Incluye / No incluye en 2 columnas abiertas (mismo plano visual)
-   - Intro discreta (nota), sin fondo, ancho más estrecho
-   - Ritmo vertical con aire + una sola línea separadora
+   SERVICIOS — PARTICULARES
+   FIX CLAVE:
+   - particulares.css define .main-canvas como grid (2 columnas) para “Proyectos”
+   - aquí lo anulamos: Servicios necesita 1 columna de contenido
    ============================================================ */
 
 .page-servicios{
-  /* Marca */
   --tc: #c7745c;
   --tc-rule: rgba(195,107,85,0.45);
 
-  /* Tinta */
-  --ink: rgba(25,25,25,0.88);
-  --ink-soft: rgba(25,25,25,0.68);
+  --ink: rgba(47,47,49,0.86);
+  --ink-soft: rgba(47,47,49,0.68);
 
-  /* Caja óptica (editorial) */
-  --maxw: 980px;
-  --padx: clamp(18px, 3vw, 34px);
+  --svc-maxw: 980px;
+  --svc-padx: clamp(18px, 3vw, 34px);
 
-  /* Tipografía / ritmo */
   --kicker-fz: 10.5px;
-  --intro-fz: 14px;
-  --body-fz: 15.5px;
-  --list-fz: 13.5px;
+  --kicker-ls: .22em;
 
-  /* Separaciones */
-  --hero-py: 18px;
-  --svc-py: clamp(22px, 3.2vw, 34px);
-  --svc-gap-top: 12px;
-  --svc-rule-gap: 18px;
+  --title-fz: 10.5px;
+  --title-ls: .20em;
+  --title-fw: 600;
 
-  /* Grid incluye/no */
-  --inc-gap: clamp(18px, 3vw, 34px);
-  --inc-split: 1px solid rgba(195,107,85,0.22);
+  --mini-fz: 10px;
+  --mini-ls: .20em;
+  --mini-fw: 600;
+
+  --body-fz: 13px;
+  --body-lh: 1.55;
+
+  --list-fz: 12px;
+  --list-lh: 1.6;
+
+  --bullet-dot: rgba(199,116,92,0.85);
+  --bullet-line: rgba(195,107,85,0.28);
+
+  --canvas-bg: rgba(255,255,255,0.92);
 }
 
 /* ============================================================
-   CONTENEDOR
+   1) Marca sin subrayado
    ============================================================ */
 
+.page-servicios .topbar .brand,
+.page-servicios .topbar .brand:hover,
+.page-servicios .topbar .brand:focus,
+.page-servicios .topbar .brand:focus-visible{
+  text-decoration: none !important;
+}
+
+/* ============================================================
+   2) Reglas a sangre (mismo sistema)
+   ============================================================ */
+
+.page-servicios .rule--bleed{
+  background: var(--tc-rule);
+  height: 1px;
+  margin-top: 0px;
+}
+.page-servicios .rule--bleed--two{
+  background: var(--tc-rule);
+  height: 1px;
+  margin-top: 20px;
+}
+
+.page-servicios .par-main{ background: transparent; }
+
+/* ============================================================
+   3) HERO (imagen + velo)
+   ============================================================ */
+
+.page-servicios .par-hero-wrap{
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0 0px;
+  background: #dcdcdc; /* mismo “sand” */
+}
+
+.page-servicios .par-hero-bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  display: none !important;
+}
+
+.page-servicios .par-hero-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: #dcdcdccc;
+  z-index: 1;
+  pointer-events: none;
+display: none !important;
+}
+
+.page-servicios .par-hero-inner{
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw, 1200px);
+  margin: 0 100px;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   4) FIX PRINCIPAL: anula el grid de particulares.css
+   (esto elimina la “columna vacía”)
+   ============================================================ */
+
+.page-servicios .main-canvas,
+.page-servicios .main-canvas--svc{
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-auto-flow: initial !important;
+  gap: 0 !important;
+}
+
+.page-servicios .main-canvas{
+  background: var(--canvas-bg);
+    border-radius: 4px;
+    padding: 20px 50px 0;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.06);
+}
+
+/* el contenido ocupa todo el ancho disponible del canvas */
 .page-servicios .svc{
-  color: var(--ink);
+  width: 100%;
 }
 
 .page-servicios .svc-inner{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 var(--padx);
+  margin: -25px 70px 0;
+    padding: 0 var(--svc-padx);
 }
-
-/* Regla fina (coherente con el resto de la web) */
-.page-servicios .svc-rule{
-  border: 0;
-  height: 1px;
-  background: var(--tc-rule);
-  margin: 0;
+ .page-particulares .main-canvas, .page-particulares .par-hero-col{
+background: rgba(255, 255, 255, 0.75) !important;
 }
-
 /* ============================================================
-   HERO (discreto)
+   5) KICKER + INTRO
    ============================================================ */
 
 .page-servicios .svc-hero{
-  padding: var(--hero-py) 0 0;
-
+  padding: 0;
+  margin: 0 0 18px;
 }
 
-/* Kicker: discreto, sin protagonismo */
 .page-servicios .svc-kicker{
-  margin: 15px 100px 20px;
-  font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(199,116,92,0.50);
-  font-weight: 600;
-  text-align: center;
+      margin: 30px 0 40px;
+    text-align: center;
+    font-size: var(--kicker-fz);
+    letter-spacing: var(--kicker-ls);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgba(199, 116, 92, 0.55);
+    line-height: 1.4;
+    letter-spacing: 0.10em;
 }
 
-/* Intro: “nota”, estrecha, pequeña, sin fondo */
+.page-servicios .svc-kicker a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-servicios .svc-kicker a:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(199,116,92,0.35);
+  text-underline-offset: 3px;
+}
+
 .page-servicios .svc-intro{
-  margin: 20px auto 0px;
+  margin: 0px auto 30px;
+  max-width: 760px;
+  font-size: 18px;
   line-height: 1.65;
-  color: var(--ink-soft);
+  color: rgba(47,47,49,0.74);
   text-align: center;
-}
-
-/* Línea bajo el hero (si la usas en el HTML con hr, queda editorial) */
-.page-servicios .svc-hero + .svc-listing{
-  padding-top: 0px;
 }
 
 /* ============================================================
-   LISTADO
+   6) Capítulos
    ============================================================ */
 
-.page-servicios .svc-listing{
-  padding: 0;
-}
+.page-servicios .svc-listing{ padding: 0; }
 
-/* IMPORTANTÍSIMO:
-   eliminamos cualquier “caja grande” anterior que venga del HTML o CSS viejo */
 .page-servicios .svc-box{
-     border: 0;
-    background: transparent;
-    padding: 0;
-    margin: 60px auto 20px;
-}
-
-/* Cada servicio = capítulo */
-.page-servicios .svc-service{
+  border: 0;
+  background: transparent;
   padding: 0;
-  margin: 0px 0px 0px;
+  margin: 0;
 }
 
-/* UNA sola línea separadora entre servicios (no arriba del primero) */
-.page-servicios .svc-service + .svc-service{
-  border-top: 1px solid var(--tc-rule);
+.page-servicios .svc-service{
+  padding: 40px 0;
 }
+
 
 /* ============================================================
-   TÍTULO DE SERVICIO (LIMPIO + LÍNEA FINA)
+   7) Títulos / texto
    ============================================================ */
 
 .page-servicios .svc-title{
-  margin: 0 0 20px;
-  font-size: 15px;
-  font-weight: 550;
-  letter-spacing: .18em;
+  margin: 0 0 10px;
+  font-size: var(--title-fz);
+  font-weight: var(--title-fw);
+  letter-spacing: var(--title-ls);
   text-transform: uppercase;
-  color: rgba(199,116,92,0.92);
+  color: var(--tc);
+  text-align: left;
 }
 
-/* Línea fina bajo el título */
+.page-servicios .svc-titleLink{
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-servicios .svc-titleLink:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(199,116,92,0.35);
+  text-underline-offset: 3px;
+}
+
 .page-servicios .svc-title::after{
   content:"";
   display:block;
   height: 1px;
-  background: rgba(195,107,85,0.35);
+  background: rgba(195,107,85,0.25);
   margin-top: 10px;
 }
 
-/* Descripción: editorial, sin “caja”, con aire controlado */
 .page-servicios .svc-desc{
-  margin: var(--svc-gap-top) 0 0;
+  margin: 0 0 14px;
   font-size: var(--body-fz);
-  line-height: 1.75;
+  line-height: var(--body-lh);
   color: var(--ink-soft);
-  text-align: left;
-}
-
-/* ============================================================
-   INCLUYE / NO INCLUYE (MISMO PLANO VISUAL)
-   - 2 columnas abiertas
-   - mismo tamaño de texto
-   - títulos pequeños en mayúsculas
-   - separación sutil (línea vertical) opcional y ligera
-   ============================================================ */
-
-.page-servicios .svc-incgrid{
-  margin-top: 14px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--inc-gap);
-  align-items: start;
-}
-
-/* Separación sutil entre columnas (sin caja) */
-.page-servicios .svc-incCol + .svc-incCol{
-  border-left: var(--inc-split);
-  padding-left: var(--inc-gap);
+text-align: left;
 }
 
 .page-servicios .svc-miniTitle{
-  margin: 0 0 8px;
-  font-size: 10px;
-  font-weight: 450;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(199,116,92,0.92);
+  margin: 0 20px 8px;
+    font-size: var(--mini-fz);
+    font-weight: var(--mini-fw);
+    letter-spacing: var(--mini-ls);
+    text-transform: uppercase;
+    color: var(--tc);
+    text-align: left;
 }
 
+/* ============================================================
+   8) INCLUYE / NO INCLUYE — 2 columnas (desktop)
+   ============================================================ */
+
+.page-servicios .svc-incgrid{
+ display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(0px, 4vw, 0px);
+    align-items: start;
+    padding: 0 80px;
+    align-content: start;
+    justify-items: start;
+    column-gap: 30px;
+}
+
+.page-servicios .svc-incCol{
+  min-width: 0;
+}
+
+/* ============================================================
+   LISTAS — punto + guía vertical (punto con borde blanco + línea antracita suave)
+   ============================================================ */
+
+.page-servicios{
+  /* ajusta aquí si quieres más/menos contraste */
+  --bullet-dot: rgba(199,116,92,0.90);      /* terracota */
+  --bullet-stroke: rgba(255,255,255,0.95);  /* borde blanco */
+  --bullet-line: rgba(47,47,49,0.22);       /* antracita suave */
+  --bullet-dot-size: 7px;                  /* tamaño del punto */
+  --bullet-stroke-w: 2px;                  /* grosor del borde */
+  --bullet-axis-x: 7px;                    /* eje vertical (centrado con el punto) */
+}
+
+/* lista base */
 .page-servicios .svc-list{
+  list-style: none;
+  padding-left: 0;
   margin: 0;
-  padding-left: 18px;
-  font-size: var(--list-fz);
-  line-height: 1.7;
-  color: var(--ink-soft);
-}
-
-.page-servicios .svc-list li{ margin: 0 0 6px; }
-.page-servicios .svc-list li::marker{ color: rgba(199,116,92,0.9); }
-
-/* ============================================================
-   RITMO VERTICAL (MUY IMPORTANTE)
-   - aire antes/después de cada capítulo
-   - la línea separadora ya aporta orden
-   ============================================================ */
-
-/* Un poco más de aire “antes de empezar” el siguiente servicio */
-.page-servicios .svc-service + .svc-service{
-  padding:10px 0px 10px;
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-/* ============================================================
-   AJUSTE GLOBAL SERVICIOS · MOBILE / TABLET (≤980px)
-   ============================================================ */
-
-@media (max-width: 980px){
-
-  /* CONTENEDOR GENERAL */
-  .page-servicios{
-    padding-top: 24px;
-    padding-bottom: 0px;
-  }
-
-  /* HERO + INTRO */
-  .page-servicios .svc-hero{
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-/* Kicker: discreto, sin protagonismo */
-.page-servicios .svc-kicker{
-  margin: 5px 20px 15px;
-  font-size: 8px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(199,116,92,0.50);
-  font-weight: 600;
-  text-align: center;
-}
-
-  .page-servicios .svc-intro{
-    max-width: 100%;
-    margin: 20px 60px 0px;
-    font-size: 13px;
-    line-height: 1.6;
-    text-align: center;
-  }
-
-  /* BLOQUES DE SERVICIO */
-
-/* Cada servicio = capítulo */
-.page-servicios .svc-service{
-  padding: 0px;
-  margin: 50px 0px 0px;
-}
-
-  .page-servicios .svc-block{
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  /* TÍTULOS DE SERVICIO */
-  .page-servicios .svc-title{
-    font-size: 10px;
-    margin-bottom: 10px;
-  }
-
-  .page-servicios .svc-rule{
-    margin-bottom: 10px;
-  }
-
-  /* DESCRIPCIÓN */
-  .page-servicios .svc-desc{
-    font-size: 12px;
-    line-height: 1.4;
-    margin-bottom: 15px;
-  }
-
-
-  /* INCLUDE / NO INCLUYE */
-  .page-servicios .svc-incgrid{
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-.page-servicios .svc-list{
-  margin: 0;
-  padding-left: 18px;
-  font-size: var(--list-fz);
-  line-height: 1.4;
-  color: var(--ink-soft);
-  font-size: 10px;
-}
-
-  .page-servicios .svc-incCol{
-    padding: 0;
-    border: 0;
-border-left: 0 !important;
-    padding-left: 0 !important;
-  }
-
- .page-servicios .svc-incCol + .svc-incCol{
-    border-left: 0 !important;
-    padding-left: 0 !important;
-  }
-
-.page-servicios .svc-incCol + .svc-incCol{
-    border-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  .page-servicios .svc-incTitle{
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    margin-bottom: 5px;
-  }
-
-  .page-servicios .svc-incList li{
-    font-size: 10px;
-    line-height: 1.45;
-    margin-bottom: 5px;
-  }
-
-  /* LÍNEA DE CIERRE ENTRE SERVICIOS */
-  .page-servicios .svc-divider{
-    margin-top: 18px;
-  }
-
-  /* CTA FINAL */
-  .page-servicios .svc-cta{
-    margin-top: 10px;
-  }
-
-.page-servicios .svc-note{
-  padding: 5px 0 5px;
-}
-
-
-}
-
-
-/* ============================================================
-   ACCESIBILIDAD / ANCLAS
-   (si navegas por #hash para bajar a un servicio)
-   ============================================================ */
-
-html{ scroll-behavior: smooth; }
-.page-servicios .svc-service{ scroll-margin-top: 140px; }
-
-/* ============================================================
-   SEPARADOR ENTRE SERVICIOS — A SANGRE (solo estas líneas)
-   ============================================================ */
-
-/* Apaga el separador “normal” que pusimos entre servicios */
-.page-servicios .svc-service + .svc-service{
-  border-top: 0 !important;
-}
-
-/* Crea una línea a sangre MUY FINA antes de cada servicio (excepto el primero) */
-.page-servicios .svc-service + .svc-service{
   position: relative;
 }
 
-.page-servicios .svc-service + .svc-service::before{
+/* línea vertical (centrada con el punto) */
+.page-servicios .svc-list::before{
   content:"";
   position: absolute;
-  left: 50%;
-  top: 0;
-  width: 100vw;
-  transform: translateX(-50%);
-  height: 1px;
-  background: rgba(195,107,85,0.35); /* más fina / sutil */
+  left: 6.5px;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background: var(--bullet-line);
+  pointer-events: none;
+}
+
+/* item */
+.page-servicios .svc-list li{
+  position: relative;
+  padding-left: 22px; /* espacio para punto + borde */
+  margin: 0 0 8px;
+  font-size: var(--list-fz);
+  line-height: var(--list-lh);
+  color: rgba(47,47,49,0.68);
+  text-align: left;
+}
+
+/* punto con borde blanco */
+.page-servicios .svc-list li::before{
+  content:"";
+  position: absolute;
+  left: calc(var(--bullet-axis-x) - (var(--bullet-dot-size) / 2));
+  top: 0.95em;
+  width: var(--bullet-dot-size);
+  height: var(--bullet-dot-size);
+  border-radius: 999px;
+  background: var(--bullet-dot);
+  border: 1px solid var(--bullet-stroke);
+  box-sizing: border-box;
+  transform: translateY(-50%);
   pointer-events: none;
 }
 
 
-/* ============================================================
-   LÍNEA FINAL DE CIERRE — SERVICIOS (a sangre)
+}/* ============================================================
+   10) FOOTER legal + banner
    ============================================================ */
 
-/* Línea a sangre DESPUÉS del último servicio */
-.page-servicios .svc-listing::after{
-  content: "";
+.page-servicios .svc-footer{
+  margin-top: 18px;
+}
+
+.page-servicios .svc-legalLine{
+ text-align: center;
+    padding: 10px 0px 10px;
+    font-size: 12px;
+    letter-spacing: .06em;
+    color: rgba(47, 47, 49, 0.72);
+}
+
+.page-servicios .svc-legalLine a{
+  color: inherit;
+  text-decoration: none;
+text-transform: uppercase;
+}
+
+.page-servicios .svc-legalLine a:hover{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.page-servicios .svc-bannerBleed img{
   display: block;
-  position: relative;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  height: 1px;
-  background: var(--tc-rule, rgba(195,107,85,0.45));
-  margin-top: 24px;   /* aire tras último servicio */
+  width: 100%;
+  height: auto;
 }
 
 /* ============================================================
-   NOTA FINAL DE ALCANCE (editorial, bajo volumen)
+   11) RESPONSIVE
    ============================================================ */
 
-.page-servicios .svc-note{
-  padding: 18px 0 18px;
+@media (max-width: 900px){
+  .page-servicios .par-hero-wrap{ padding: 20px 0 0px; }
+  .page-servicios .main-canvas{ padding: 0px 18px; }
+
+  .page-servicios .svc-inner{margin: -25px 70px 0;
+    padding: 0 var(--svc-padx);
 }
-
-.page-servicios .svc-noteText{
-    margin: 0;
-    font-size: 12.5px;
-    line-height: 1.55;
-    text-align: left;
-    font-weight: 200;
-    font-style: italic;
-}
-
-/* ============================================================
-   SERVICIOS COMPLEMENTARIOS — PARTICULARES
-   Menor contraste (igual criterio que PRO)
-   ============================================================ */
-
-/* Bloque completo */
-.page-servicios .svc-service.is-complementary{
-  opacity: .92;
-}
-
-/* Título */
-.page-servicios .svc-service.is-complementary .svc-title{
-  color: rgba(199,116,92,0.70); /* terracota más suave */
-}
-
-/* Línea bajo título */
-.page-servicios .svc-service.is-complementary .svc-title::after{
-  background: rgba(195,107,85,0.25);
-}
-
-/* Descripción */
-.page-servicios .svc-service.is-complementary .svc-desc{
-  color: rgba(25,25,25,0.58);
-}
-
-/* Mini títulos (INCLUYE / NO INCLUYE) */
-.page-servicios .svc-service.is-complementary .svc-miniTitle{
-  color: rgba(199,116,92,0.65);
-}
-
-/* Listas */
-.page-servicios .svc-service.is-complementary .svc-list{
-  color: rgba(25,25,25,0.58);
-}
-
-/* Marcadores */
-.page-servicios .svc-service.is-complementary .svc-list li::marker{
-  color: rgba(199,116,92,0.55);
-}
-
-/* Negritas dentro del servicio (si las hay) */
-.page-servicios .svc-service.is-complementary strong{
-  color: rgba(199,116,92,0.70);
-}
-.page-particulares .par-contactCta {
-    margin: 14px 15px 13px;
-    text-align: center;
-    font-weight: 400;
-    color: rgba(47, 47, 49, 0.74);
-    font-size: 14px;
-    line-height: 1.55;
-}
-/* ============================================================
-   SERVICIOS — Ajustes móvil (portrait + landscape)
-   ============================================================ */
-
-/* MÓVIL / TABLET COMPACTO (vertical) */
-@media (max-width: 980px){
-
-.page-servicios{
-    --padx: 18px;         /* padding lateral único */
-    --hero-py: 14px;
-    --svc-py: 18px;       /* aire vertical por servicio */
-    --inc-gap: 12px;      /* gap listas */
-  }
-
-  .page-servicios .svc-box{
-    /* antes: 60px auto 20px */
-    margin: 28px auto 14px;
-
-    /* mantiene “sin caja”, pero da aire lateral seguro */
-    padding: 0 16px;
-    max-width: 720px;
-  }
-}
-
-/* MÓVIL EN HORIZONTAL (poca altura) */
-@media (max-height: 520px) and (orientation: landscape){
-
-.page-servicios{
-    --padx: 18px;         /* padding lateral único */
-    --hero-py: 14px;
-    --svc-py: 18px;       /* aire vertical por servicio */
-    --inc-gap: 12px;      /* gap listas */
-  }
-
-  .page-servicios .svc-box{
-    /* recorta aún más el margen superior para que no “coma” viewport */
-    margin: 16px auto 10px;
-
-    /* en landscape suele hacer falta apretar laterales */
-    padding: 0 14px;
-    max-width: 760px;
-  }
-}
-
-/* Extra opcional: teléfonos muy estrechos */
-@media (max-width: 380px){
-  .page-servicios .svc-box{
-    padding: 0 12px;
-  }
-}
-  /* CONTENEDOR GENERAL */
-  .page-servicios{
-    padding-top: 18px;
-    padding-bottom: 0;
-  }
-
-  .page-servicios .svc-inner{
-    padding: 0 20px;
-  }
-
-  /* HERO */
-  .page-servicios .svc-hero{
-    padding-top: 12px;
-    padding-bottom: 10px;
-  }
 
   .page-servicios .svc-kicker{
-    margin: 0 0 10px;
-    font-size: 9px;
-    letter-spacing: .22em;
-    text-align: center;
+    font-size: 8px;
+    letter-spacing: .20em;
+    margin-bottom: 20px;
   }
 
   .page-servicios .svc-intro{
-    margin: 30px auto 0px;
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: center;
-}
-
-  /* LISTADO (la “caja” no mete padding lateral en móvil) */
-  .page-servicios .svc-box{
-    margin: 50px auto 12px;
-    padding: 0;
-    max-width: none;
-  }
-
-  /* SERVICIO */
-  .page-servicios .svc-service{
-    margin: 0;                 /* fuera márgenes laterales */
-    padding:0 0px 0; /* ritmo vertical uniforme */
-  }
-
-  /* TÍTULO */
-  .page-servicios .svc-title{
-    font-size: 11px;
-    margin: 0 0 10px;
-  }
-
-  .page-servicios .svc-title::after{
-    margin-top: 8px;
-  }
-
-  /* TEXTO */
-  .page-servicios .svc-desc{
     font-size: 13px;
-    line-height: 1.55;
-    margin: 10px 0 0;
+    text-align: justify;
   }
 
-  /* INCLUYE / NO INCLUYE */
   .page-servicios .svc-incgrid{
-    margin-top: 12px;
     grid-template-columns: 1fr;
-    gap: var(--inc-gap);
+    gap: 14px;
   }
 
-  .page-servicios .svc-incCol,
-  .page-servicios .svc-incCol + .svc-incCol{
-    border: 0 !important;
-    padding: 0 !important;
-  }
-
-  .page-servicios .svc-miniTitle{
-    font-size: 9px;
-    margin: 0 0 6px;
-  }
-
-  .page-servicios .svc-list{
+  .page-servicios .svc-desc{
     font-size: 12px;
     line-height: 1.45;
   }
 
-  /* NOTA FINAL */
-  .page-servicios .svc-note{
-    padding: 14px 0 14px;
+  .page-servicios .svc-list li{
+    font-size: 10px;
+    line-height: 1.4;
+    margin-bottom: 6px;
   }
 
-  .page-servicios .svc-noteText{
-        font-size: 11px;
-    line-height: 1.55;
-    text-align: left;
+.page-servicios .svc-bannerBleed img{
+    display: block;
+    width: 100%;
+    height: 50%;
 }
+.footer-banner--bleed img{
+    width: 100%;
+    height: 50%;
+    display: block;
+    object-fit: cover;
+    object-position: var(--banner-pos);
+    transform: translateY(var(--banner-shift-y));
+    transition: transform 260ms ease;
+}
+}
+
+/* Anclas suaves */
+html{ scroll-behavior: smooth; }
+.page-servicios .svc-service{ scroll-margin-top: 140px; }
+
+.page-servicios .par-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--maxw, 1200px);
+    margin: 0 10px;
+    padding: 0 0px;
+    box-sizing: border-box;
+}
+
+.page-servicios .svc-incgrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(0px, 4vw, 0px);
+    align-items: start;
+    padding: 0 10px;
+    align-content: start;
+    justify-items: start;
+    column-gap: 30px;
 }
 /* ============================================================
-   FIX RITMO VERTICAL — MOBILE (servicios con separación uniforme)
+   CTA FUERA: la nota también fuera (sin mover HTML)
+   - Evita el corte feo entre canvas y fondo
+   - Mantiene el CTA en gris, fuera del “papel”
    ============================================================ */
-@media (max-width: 980px){
 
-  /* 1) svc-box NO marca ritmo (en tu HTML está dentro de cada servicio) */
-  .page-servicios .svc-box{
-    margin: 0 !important;
-    padding: 0 20px 0 !important;
-    max-width: none !important;
-  }
+/* 1) Saca visualmente la NOTA del canvas: full-bleed en gris */
+.page-servicios .svc-note{
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
 
-  /* 2) Un único ritmo vertical uniforme por servicio */
-  .page-servicios{
-    --svc-py: 18px; /* ajusta aquí y todo cambia coherente */
-  }
+  background: #dcdcdc;               /* gris del site */
 
-  .page-servicios .svc-service{
-    margin: 0 !important;
-    padding: 0 0px 0;
-  }
-
-  /* 3) Evita “doble aire” por reglas antiguas */
-  .page-servicios .svc-service + .svc-service{
-    padding: var(--svc-py) 0 !important; /* mismo que el resto */
-  }
-
-  /* 4) Reset de márgenes internos típicos (para que no “sume” distinto según contenido) */
-  .page-servicios .svc-title{ margin: 0 0 10px !important; }
-  .page-servicios .svc-desc{ margin: 20px 0 20px !important; }
-  .page-servicios .svc-incgrid{ margin-top: 12px !important; }
+      padding: 10px 0 18px;
+    margin: 18px 0 0;
 }
 
+/* 2) Contenido de la nota alineado con el sistema (mismo “grid” que el resto) */
+.page-servicios .svc-note .svc-inner{
+  padding: 0 0px;
+    box-sizing: border-box;
+}
+
+/* 3) Texto de la nota: editorial, discreto */
+.page-servicios .svc-noteText{
+      max-width: 760px;
+    margin: 0 20px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: rgba(47, 47, 49, 0.62);
+    text-align: center;
+    font-style: italic;
+}
+
+/* 4) CTA fuera: asegúrate de que no se “pega” raro */
+.page-servicios .par-contact{
+  padding-top: 18px;
+}
+
+/* ============================================================
+   FIX CENTRADO — canvas de Servicios (bloque completo)
+   - Centra el contenedor del hero (par-hero-inner)
+   - Centra el “papel” (main-canvas--svc) con max-width consistente
+   ============================================================ */
+
+.page-servicios .par-hero-inner{
+  max-width: var(--maxw, 1200px);
+  margin: 0 auto;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+.page-servicios .main-canvas.main-canvas--svc{
+  max-width: var(--maxw, 1200px);
+  margin: 0 auto;
+}
