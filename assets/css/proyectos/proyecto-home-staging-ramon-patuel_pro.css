@@ -669,7 +669,7 @@ html, body{ background: var(--dj-page-bg); }
 .page-project .dj-fs__backdrop{
   position:absolute;
   inset:0;
-  background: rgb(240 240 240 / 58%);
+  background: rgba(47, 47, 49, 0.88);
 }
 
 .page-project .dj-fs__stage{
