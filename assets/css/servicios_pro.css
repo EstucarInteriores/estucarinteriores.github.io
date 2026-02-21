@@ -594,6 +594,27 @@ html{ scroll-behavior: smooth; }
   .page-servicios-pro .svc-noteText{
     margin: 0 !important;
   }
+  .page-servicios-pro{
+    font-size: calc(1rem - 2px);
+  }
+
+  /* Títulos */
+  .page-servicios-pro h1{ font-size: calc(2.4rem - 2px); }
+  .page-servicios-pro h2{ font-size: calc(1.8rem - 2px); }
+  .page-servicios-pro h3{ font-size: calc(1.2rem - 2px); }
+
+  /* Texto */
+  .page-servicios-pro p,
+  .page-servicios-pro li,
+  .page-servicios-pro a{
+    font-size: calc(1rem - 2px);
+  }
+
+  /* Strip superior */
+  .page-servicios-pro .svc-stripLink{
+    font-size: calc(0.75rem - 2px);
+  }
+
 }
 
 @media (max-width: 520px){
