@@ -341,7 +341,11 @@ text-align: left;
     font-size: 14px;
   }
 }
-
+@media (max-width: 740px) {
+    .page-servicios-pro .svc-noteText {
+        margin: 0 40px !important;
+    }
+}
 /* Anclas */
 html{ scroll-behavior: smooth; }
 .page-servicios-pro .svc-service{ scroll-margin-top: var(--scroll-offset, 140px); }
