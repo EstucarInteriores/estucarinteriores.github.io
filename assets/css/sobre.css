@@ -330,7 +330,7 @@ font-size: 16px;
 
 .about-founder__grid{
     display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
+    grid-template-columns: 1.6fr 1.8fr;
     gap: 26px;
     align-items: start;
     border-top: 1px solid rgba(0, 0, 0, 0.10);
@@ -339,24 +339,25 @@ font-size: 16px;
     justify-content: space-between;
 }
 .about-founder__kicker{
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin: 0 0 10px;
-  color: rgba(0,0,0,0.55);
+     font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 30px 10px;
+    color: rgba(0, 0, 0, 0.55);
 }
 
 .about-founder__copy{
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.75;
-  color: rgba(0,0,0,0.72);
+      margin: 0 30px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(0, 0, 0, 0.52);
 }
 
 .about-founder__copy strong{
-  color: rgba(0,0,0,0.86);
-  font-weight: 600;
+     color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
 }
+
 
 .about-founder__figure{
   margin: 0;
