@@ -160,7 +160,6 @@ body{ overflow-x:hidden; }
 .page-profesionales .content-col .block{
   padding: 0 0 18px;
   margin: 0 0 18px;
-  border-bottom: 1px solid rgba(95,111,97,.18);
 }
 
 .page-profesionales .content-col .block:last-child{
