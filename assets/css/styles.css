@@ -845,27 +845,16 @@ h1{
   opacity:.80;
 }
 
-/* LEGAL — unificar estilo de títulos y texto */
-.legal h3{
-  /* copia el estilo de tus h2 (mismo look) */
-  font-size: inherit; /* se sobrescribe abajo si tu h2 ya define tamaño */
-}
-
-/* Si tu CSS ya tiene estilo para .legal h2, haz que h3 lo herede */
-.legal h2,
-.legal h3{
-  font-size: 12px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(0,0,0,.55);
-  margin: 28px 0 10px;
-}
-
-/* Texto consistente (por si arriba te cambia tamaño/line-height) */
-.legal p,
-.legal li{
-  font-size: 14px;
-  line-height: 1.75;
-  color: rgba(0,0,0,.72);
+/* =========================================================
+   LEGAL — H3 con el MISMO estilo que H2 (sin pisar nada)
+   ========================================================= */
+.page-legal .legal h3{
+  text-align:left;
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-top:32px;
+  margin-bottom:8px;
+  opacity:.75;
+  font-weight:inherit; /* mantiene coherencia con tu h2 */
 }
