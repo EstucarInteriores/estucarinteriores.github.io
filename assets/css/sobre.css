@@ -329,14 +329,15 @@ font-size: 16px;
 }
 
 .about-founder__grid{
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 26px;
-  align-items: center;
-  border-top: 1px solid rgba(0,0,0,0.10);
-  padding-top: 22px;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 26px;
+    align-items: start;
+    border-top: 1px solid rgba(0, 0, 0, 0.10);
+    padding-top: 22px;
+    align-content: start;
+    justify-content: space-between;
 }
-
 .about-founder__kicker{
   font-size: 11px;
   letter-spacing: 0.22em;
@@ -366,7 +367,7 @@ font-size: 16px;
 
 .about-founder__img{
   display: block;
-  width: 100%;
+  width: 80%;
   height: auto;
   border-radius: 16px;
   /* marco editorial sutil */
