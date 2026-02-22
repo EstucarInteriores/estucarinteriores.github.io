@@ -316,3 +316,83 @@ font-size: 16px;
     margin-bottom: 0;
     margin-top: -10px;
 }
+/* ============================================================
+   SOBRE — BLOQUE AUTORÍA (Carmen)
+   Sobrio, editorial, sin romper estilos existentes
+   ============================================================ */
+
+.about-founder{
+  /* Ajusta si tu página usa otro ancho; esto es neutro */
+  max-width: 980px;
+  margin: 26px auto 0;
+  padding: 0 18px;
+}
+
+.about-founder__grid{
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 26px;
+  align-items: center;
+  border-top: 1px solid rgba(0,0,0,0.10);
+  padding-top: 22px;
+}
+
+.about-founder__kicker{
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  color: rgba(0,0,0,0.55);
+}
+
+.about-founder__copy{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(0,0,0,0.72);
+}
+
+.about-founder__copy strong{
+  color: rgba(0,0,0,0.86);
+  font-weight: 600;
+}
+
+.about-founder__figure{
+  margin: 0;
+  justify-self: end;
+  width: 100%;
+  max-width: 320px;
+}
+
+.about-founder__img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  /* marco editorial sutil */
+  outline: 1px solid rgba(0,0,0,0.10);
+  outline-offset: -1px;
+  /* sin sombras agresivas */
+}
+
+/* Mobile */
+@media (max-width: 820px){
+  .about-founder{
+    margin-top: 22px;
+  }
+
+  .about-founder__grid{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-founder__figure{
+    justify-self: start;
+    max-width: 360px;
+  }
+
+  .about-founder__copy{
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
