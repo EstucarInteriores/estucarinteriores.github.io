@@ -856,5 +856,5 @@ h1{
   margin-top:32px;
   margin-bottom:8px;
   opacity:.75;
-  font-weight:inherit; /* mantiene coherencia con tu h2 */
+  font-weight:700;
 }
