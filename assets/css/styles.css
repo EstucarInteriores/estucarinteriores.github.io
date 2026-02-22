@@ -570,6 +570,7 @@ h1{
   margin:10px auto;
   max-width:75ch;
   text-align:left;
+  margin-bottom: 40px;
 }
 
 /* Header legal minimal (sin menú) */
