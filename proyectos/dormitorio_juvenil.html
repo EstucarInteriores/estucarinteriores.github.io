@@ -487,9 +487,13 @@ function addSwipe(el, onLeft, onRight){
     lastDy = t.clientY - y0;
 
     // Si intención horizontal clara, evitamos que la página “arrastre”
-    if(Math.abs(lastDx) > Math.abs(lastDy) && Math.abs(lastDx) > 10){
-      e.preventDefault();
-    }
+   if(
+  e.cancelable &&
+  Math.abs(lastDx) > Math.abs(lastDy) &&
+  Math.abs(lastDx) > 10
+){
+  e.preventDefault();
+}
   }, { passive: false });
 
   el.addEventListener('touchend', () => {
