@@ -455,7 +455,7 @@
     });
 
 
-  // ===== SWIPE (móvil) — robusto =====
+  // ===== SWIPE (móvil) — NO rompe taps =====
 const viewport = root.querySelector('.dj-hero__viewport');
 const fsFrame  = fs ? fs.querySelector('.dj-fs__frame') : null;
 
@@ -464,13 +464,21 @@ function addSwipe(el, onLeft, onRight){
 
   let x0 = 0, y0 = 0;
   let tracking = false;
-  let locked = null; // null | 'h' | 'v'
+  let locked = null;        // null | 'h' | 'v'
+  let startedOnUI = false;  // si empezó sobre botones/links/dots, no swipes
 
-  const THRESH_X = 28;     // más fácil que 40
-  const THRESH_LOCK = 10;  // a partir de aquí decidimos intención
+  const LOCK_AFTER = 14;    // px para decidir intención (más alto = menos falsos)
+  const THRESH_X   = 42;    // px para disparar cambio de slide (tap seguro)
+  
+  function isUI(target){
+    return !!(target && target.closest('button, a, .dj-hero__dots, .dj-hero__arrow, .dj-hero__dot'));
+  }
 
   el.addEventListener('touchstart', (e) => {
     if(!e.touches || e.touches.length !== 1) return;
+    startedOnUI = isUI(e.target);
+    if(startedOnUI) return;
+
     const t = e.touches[0];
     x0 = t.clientX;
     y0 = t.clientY;
@@ -479,30 +487,29 @@ function addSwipe(el, onLeft, onRight){
   }, { passive: true });
 
   el.addEventListener('touchmove', (e) => {
-    if(!tracking || !e.touches || e.touches.length !== 1) return;
+    if(startedOnUI || !tracking || !e.touches || e.touches.length !== 1) return;
+
     const t = e.touches[0];
     const dx = t.clientX - x0;
     const dy = t.clientY - y0;
 
-    // Decide si el gesto es horizontal o vertical (una sola vez)
+    // Decide intención solo cuando hay movimiento “real”
     if(locked === null){
-      if(Math.abs(dx) > THRESH_LOCK || Math.abs(dy) > THRESH_LOCK){
+      if(Math.abs(dx) >= LOCK_AFTER || Math.abs(dy) >= LOCK_AFTER){
         locked = (Math.abs(dx) > Math.abs(dy)) ? 'h' : 'v';
       }
     }
 
-    // Si es horizontal y es cancelable, evitamos que la página arrastre
-    if(locked === 'h' && e.cancelable){
-      e.preventDefault();
+    // Solo si ya es horizontal claro, y solo si es cancelable
+    if(locked === 'h' && Math.abs(dx) > 10 && e.cancelable){
+      e.preventDefault(); // evita scroll horizontal accidental sin matar el tap
     }
   }, { passive: false });
 
   el.addEventListener('touchend', (e) => {
+    if(startedOnUI) { startedOnUI = false; return; }
     if(!tracking) return;
     tracking = false;
-
-    // si el gesto se determinó vertical, no hacemos swipe
-    if(locked === 'v') return;
 
     const t = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
     if(!t) return;
@@ -510,24 +517,29 @@ function addSwipe(el, onLeft, onRight){
     const dx = t.clientX - x0;
     const dy = t.clientY - y0;
 
-    // si se movió más en vertical, no dispares
+    // Si fue más vertical, no hacemos swipe
     if(Math.abs(dy) > Math.abs(dx)) return;
 
-    if(dx <= -THRESH_X) onLeft();       // izquierda -> siguiente
-    else if(dx >= THRESH_X) onRight();  // derecha  -> anterior
+    // Umbral alto para no comerse taps
+    if(dx <= -THRESH_X) onLeft();
+    else if(dx >= THRESH_X) onRight();
   }, { passive: true });
 
   el.addEventListener('touchcancel', () => {
     tracking = false;
     locked = null;
+    startedOnUI = false;
   }, { passive: true });
 }
 
-// Hero
+// Hero (swipe sobre imagen/viewport pero ignorando UI)
 addSwipe(viewport, () => go(index + 1), () => go(index - 1));
 
-// Fullscreen
-addSwipe(fsFrame,  () => stepFs(1),     () => stepFs(-1));    go(0);
+// Fullscreen (swipe en el frame)
+addSwipe(fsFrame,  () => stepFs(1),     () => stepFs(-1));
+
+
+go(0);
   })();
   </script>
 
