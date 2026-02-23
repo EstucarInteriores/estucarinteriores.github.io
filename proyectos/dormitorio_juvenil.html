@@ -455,7 +455,7 @@
     });
 
 
- // ===== SWIPE (móvil) — robusto =====
+  // ===== SWIPE (móvil) — robusto =====
 const viewport = root.querySelector('.dj-hero__viewport');
 const fsFrame  = fs ? fs.querySelector('.dj-fs__frame') : null;
 
@@ -527,10 +527,7 @@ function addSwipe(el, onLeft, onRight){
 addSwipe(viewport, () => go(index + 1), () => go(index - 1));
 
 // Fullscreen
-addSwipe(fsFrame,  () => stepFs(1),     () => stepFs(-1));
-}    
-
-go(0);
+addSwipe(fsFrame,  () => stepFs(1),     () => stepFs(-1));    go(0);
   })();
   </script>
 
