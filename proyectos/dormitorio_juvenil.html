@@ -458,91 +458,54 @@
   // ===== SWIPE (móvil) =====
     const viewport = root.querySelector('.dj-hero__viewport');
     const fsFrame  = fs ? fs.querySelector('.dj-fs__frame') : null;
+function addSwipe(el, onLeft, onRight){
+  if(!el) return;
 
-    function addSwipe(el, onLeft, onRight){
-      if(!el) return;
+  let x0 = 0, y0 = 0, t0 = 0;
+  let tracking = false;
+  let lastDx = 0, lastDy = 0;
 
-      let x0 = 0, y0 = 0, t0 = 0;
-      let tracking = false;
+  const THRESH_X = 40;   // px mínimos en X para considerar swipe
+  const THRESH_Y = 24;   // si Y domina, dejamos scroll
+  const MAX_T    = 650;  // ms (un pelín más permisivo)
 
-      const THRESH_X = 40;   // px mínimos en X para considerar swipe
-      const THRESH_Y = 24;   // si Y domina, dejamos scroll
-      const MAX_T    = 450;  // ms (gesto “rápido”)
+  el.addEventListener('touchstart', (e) => {
+    if(!e.touches || e.touches.length !== 1) return;
+    const t = e.touches[0];
+    x0 = t.clientX;
+    y0 = t.clientY;
+    t0 = Date.now();
+    lastDx = 0;
+    lastDy = 0;
+    tracking = true;
+  }, { passive: true });
 
-      el.addEventListener('touchstart', (e) => {
-        if(!e.touches || e.touches.length !== 1) return;
-        const t = e.touches[0];
-        x0 = t.clientX;
-        y0 = t.clientY;
-        t0 = Date.now();
-        tracking = true;
-      }, { passive: true });
+  el.addEventListener('touchmove', (e) => {
+    if(!tracking || !e.touches || e.touches.length !== 1) return;
+    const t = e.touches[0];
+    lastDx = t.clientX - x0;
+    lastDy = t.clientY - y0;
 
-      el.addEventListener('touchmove', (e) => {
-        if(!tracking || !e.touches || e.touches.length !== 1) return;
-        const t = e.touches[0];
-        const dx = t.clientX - x0;
-        const dy = t.clientY - y0;
-
-        // Si hay intención horizontal clara, evitamos que “arrastre” la página
-        if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10){
-          e.preventDefault();
-        }
-      }, { passive: false });
-
-      el.addEventListener('touchend', () => {
-        if(!tracking) return;
-        tracking = false;
-
-        const dt = Date.now() - t0;
-        // Si fue muy lento, lo ignoramos para no disparar al hacer scroll/ajustes
-        if(dt > MAX_T) return;
-
-        // Nota: en touchend no tenemos el último touch, así que calculamos con el último move sería ideal.
-        // Para mantenerlo simple y robusto: usamos un "pointer" ligero guardando el último dx.
-      }, { passive: true });
-
-      // Variante robusta: guardamos último delta en move
-      let lastDx = 0, lastDy = 0;
-      el.addEventListener('touchmove', (e) => {
-        if(!tracking || !e.touches || e.touches.length !== 1) return;
-        const t = e.touches[0];
-        lastDx = t.clientX - x0;
-        lastDy = t.clientY - y0;
-      }, { passive: true });
-
-      el.addEventListener('touchend', () => {
-        if(!tracking) return;
-        tracking = false;
-
-        const dt = Date.now() - t0;
-        if(dt > MAX_T) { lastDx = 0; lastDy = 0; return; }
-
-        // Si el gesto fue más vertical que horizontal, no hacemos nada
-        if(Math.abs(lastDy) > Math.abs(lastDx) && Math.abs(lastDy) > THRESH_Y){
-          lastDx = 0; lastDy = 0; return;
-        }
-
-        if(lastDx <= -THRESH_X) onLeft();   // swipe izquierda -> siguiente
-        if(lastDx >=  THRESH_X) onRight();  // swipe derecha  -> anterior
-
-        lastDx = 0; lastDy = 0;
-      }, { passive: true });
+    // Si intención horizontal clara, evitamos que la página “arrastre”
+    if(Math.abs(lastDx) > Math.abs(lastDy) && Math.abs(lastDx) > 10){
+      e.preventDefault();
     }
+  }, { passive: false });
 
-    // Swipe en el HERO (móvil)
-    addSwipe(viewport,
-      () => go(index + 1),
-      () => go(index - 1)
-    );
+  el.addEventListener('touchend', () => {
+    if(!tracking) return;
+    tracking = false;
 
-    // Swipe en FULLSCREEN (si está abierto)
-    addSwipe(fsFrame,
-      () => stepFs(1),
-      () => stepFs(-1)
-    );
+    const dt = Date.now() - t0;
+    if(dt > MAX_T) return;
 
-    go(0);
+    // Si fue más vertical que horizontal -> no hacer nada
+    if(Math.abs(lastDy) > Math.abs(lastDx) && Math.abs(lastDy) > THRESH_Y) return;
+
+    if(lastDx <= -THRESH_X) onLeft();   // swipe izquierda -> siguiente
+    else if(lastDx >= THRESH_X) onRight(); // swipe derecha -> anterior
+  }, { passive: true });
+}    go(0);
   })();
   </script>
 
