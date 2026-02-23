@@ -135,7 +135,13 @@
           <span class="brand-sub">Estudio Carcabón</span>
         </span>
       </a>
-
+<div class="langbar" aria-label="Language switcher">
+  <div class="langbar__inner">
+    <a class="langbar__link is-active" href="./dormitorio_juvenil.html" lang="es" hreflang="es">ES</a>
+    <span class="langbar__sep" aria-hidden="true">/</span>
+    <a class="langbar__link" href="./dormitorio_juvenil_en.html" lang="en" hreflang="en">EN</a>
+  </div>
+</div>
       <div aria-hidden="true"></div>
     </div>
 
@@ -362,7 +368,7 @@
     </div>
   </div>
 
-  <script>
+   <script>
   (function(){
     const root = document.querySelector('.dj-hero [data-carousel]');
 
@@ -502,9 +508,93 @@
       if(e.key === 'ArrowRight') stepFs(1);
     });
 
+
+    // ===== SWIPE (móvil) — robusto (no rompe taps) =====
+    const viewport = root.querySelector('.dj-hero__viewport');
+    const fsFrame  = fs ? fs.querySelector('.dj-fs__frame') : null;
+
+    function addSwipe(el, onLeft, onRight){
+      if(!el) return;
+
+      // mejora comportamiento táctil sin tocar CSS
+      try{
+        el.style.touchAction = 'pan-y';
+        el.style.webkitUserSelect = 'none';
+        el.style.userSelect = 'none';
+      }catch(_){}
+
+      let x0 = 0, y0 = 0;
+      let tracking = false;
+      let locked = null; // null | 'h' | 'v'
+
+      const THRESH_X = 28;     // umbral swipe
+      const THRESH_LOCK = 10;  // decide intención
+
+      el.addEventListener('touchstart', (e) => {
+        if(!e.touches || e.touches.length !== 1) return;
+        const t = e.touches[0];
+        x0 = t.clientX;
+        y0 = t.clientY;
+        tracking = true;
+        locked = null;
+      }, { passive: true });
+
+      el.addEventListener('touchmove', (e) => {
+        if(!tracking || !e.touches || e.touches.length !== 1) return;
+        const t = e.touches[0];
+        const dx = t.clientX - x0;
+        const dy = t.clientY - y0;
+
+        // Decide si el gesto es horizontal o vertical (una sola vez)
+        if(locked === null){
+          if(Math.abs(dx) > THRESH_LOCK || Math.abs(dy) > THRESH_LOCK){
+            locked = (Math.abs(dx) > Math.abs(dy)) ? 'h' : 'v';
+          }
+        }
+
+        // Si es horizontal y es cancelable, evitamos que la página arrastre
+        if(locked === 'h' && e.cancelable){
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      el.addEventListener('touchend', (e) => {
+        if(!tracking) return;
+        tracking = false;
+
+        // si el gesto se determinó vertical, no hacemos swipe
+        if(locked === 'v') return;
+
+        const t = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+        if(!t) return;
+
+        const dx = t.clientX - x0;
+        const dy = t.clientY - y0;
+
+        // si se movió más en vertical, no dispares
+        if(Math.abs(dy) > Math.abs(dx)) return;
+
+        if(dx <= -THRESH_X) onLeft();       // izquierda -> siguiente
+        else if(dx >= THRESH_X) onRight();  // derecha  -> anterior
+      }, { passive: true });
+
+      el.addEventListener('touchcancel', () => {
+        tracking = false;
+        locked = null;
+      }, { passive: true });
+    }
+
+    // Hero
+    addSwipe(viewport, () => go(index + 1), () => go(index - 1));
+
+    // Fullscreen
+    addSwipe(fsFrame,  () => stepFs(1),     () => stepFs(-1));
+
+
     go(0);
   })();
   </script>
 
 </body>
 </html>
+
