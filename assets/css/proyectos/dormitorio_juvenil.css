@@ -956,3 +956,10 @@ font-size: 15px;
         transform: none;
     }
 }
+/* Permite scroll vertical pero habilita gesto horizontal con buen comportamiento */
+.dj-hero__viewport,
+.dj-fs__frame{
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
