@@ -455,61 +455,82 @@
     });
 
 
-  // ===== SWIPE (móvil) =====
-    const viewport = root.querySelector('.dj-hero__viewport');
-    const fsFrame  = fs ? fs.querySelector('.dj-fs__frame') : null;
+ // ===== SWIPE (móvil) — robusto =====
+const viewport = root.querySelector('.dj-hero__viewport');
+const fsFrame  = fs ? fs.querySelector('.dj-fs__frame') : null;
+
 function addSwipe(el, onLeft, onRight){
   if(!el) return;
 
-  let x0 = 0, y0 = 0, t0 = 0;
+  let x0 = 0, y0 = 0;
   let tracking = false;
-  let lastDx = 0, lastDy = 0;
+  let locked = null; // null | 'h' | 'v'
 
-  const THRESH_X = 40;   // px mínimos en X para considerar swipe
-  const THRESH_Y = 24;   // si Y domina, dejamos scroll
-  const MAX_T    = 650;  // ms (un pelín más permisivo)
+  const THRESH_X = 28;     // más fácil que 40
+  const THRESH_LOCK = 10;  // a partir de aquí decidimos intención
 
   el.addEventListener('touchstart', (e) => {
     if(!e.touches || e.touches.length !== 1) return;
     const t = e.touches[0];
     x0 = t.clientX;
     y0 = t.clientY;
-    t0 = Date.now();
-    lastDx = 0;
-    lastDy = 0;
     tracking = true;
+    locked = null;
   }, { passive: true });
 
   el.addEventListener('touchmove', (e) => {
     if(!tracking || !e.touches || e.touches.length !== 1) return;
     const t = e.touches[0];
-    lastDx = t.clientX - x0;
-    lastDy = t.clientY - y0;
+    const dx = t.clientX - x0;
+    const dy = t.clientY - y0;
 
-    // Si intención horizontal clara, evitamos que la página “arrastre”
-   if(
-  e.cancelable &&
-  Math.abs(lastDx) > Math.abs(lastDy) &&
-  Math.abs(lastDx) > 10
-){
-  e.preventDefault();
-}
+    // Decide si el gesto es horizontal o vertical (una sola vez)
+    if(locked === null){
+      if(Math.abs(dx) > THRESH_LOCK || Math.abs(dy) > THRESH_LOCK){
+        locked = (Math.abs(dx) > Math.abs(dy)) ? 'h' : 'v';
+      }
+    }
+
+    // Si es horizontal y es cancelable, evitamos que la página arrastre
+    if(locked === 'h' && e.cancelable){
+      e.preventDefault();
+    }
   }, { passive: false });
 
-  el.addEventListener('touchend', () => {
+  el.addEventListener('touchend', (e) => {
     if(!tracking) return;
     tracking = false;
 
-    const dt = Date.now() - t0;
-    if(dt > MAX_T) return;
+    // si el gesto se determinó vertical, no hacemos swipe
+    if(locked === 'v') return;
 
-    // Si fue más vertical que horizontal -> no hacer nada
-    if(Math.abs(lastDy) > Math.abs(lastDx) && Math.abs(lastDy) > THRESH_Y) return;
+    const t = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+    if(!t) return;
 
-    if(lastDx <= -THRESH_X) onLeft();   // swipe izquierda -> siguiente
-    else if(lastDx >= THRESH_X) onRight(); // swipe derecha -> anterior
+    const dx = t.clientX - x0;
+    const dy = t.clientY - y0;
+
+    // si se movió más en vertical, no dispares
+    if(Math.abs(dy) > Math.abs(dx)) return;
+
+    if(dx <= -THRESH_X) onLeft();       // izquierda -> siguiente
+    else if(dx >= THRESH_X) onRight();  // derecha  -> anterior
   }, { passive: true });
-}    go(0);
+
+  el.addEventListener('touchcancel', () => {
+    tracking = false;
+    locked = null;
+  }, { passive: true });
+}
+
+// Hero
+addSwipe(viewport, () => go(index + 1), () => go(index - 1));
+
+// Fullscreen
+addSwipe(fsFrame,  () => stepFs(1),     () => stepFs(-1));
+}    
+
+go(0);
   })();
   </script>
 
