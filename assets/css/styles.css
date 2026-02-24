@@ -202,12 +202,12 @@ a:hover{ text-decoration:underline; }
 .menu.menu--two-row a.nav-tab.nav-particulares{
   grid-column:1; grid-row:2;
   justify-self:end;
-  margin-right:20px;
+  margin-right:10%;
 }
 .menu.menu--two-row a.nav-tab.nav-profesionales{
   grid-column:3; grid-row:2;
   justify-self:start;
-  margin-left: 20px;
+  margin-left: 10%;
 }
 
 /* Normalizar padding/márgenes en grid */
