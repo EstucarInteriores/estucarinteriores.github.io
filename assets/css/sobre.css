@@ -370,7 +370,7 @@ font-size: 16px;
   display: block;
   width: 80%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 4px;
   /* marco editorial sutil */
   outline: 1px solid rgba(0,0,0,0.10);
   outline-offset: -1px;
