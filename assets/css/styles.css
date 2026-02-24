@@ -513,7 +513,7 @@ h1{
    PAGE MODIFIERS · HOME
 ========================= */
 .page-home .topwrap{ padding:12px 16px 12px; padding-top:12px; padding-bottom:18px; }
-.page-home .menu{ padding:14px 22px 10px; margin-top:2px; column-gap:26px; row-gap:8px; }
+.page-home .menu{ padding:14px 22px 10px; margin-top:2px; column-gap:26px; row-gap:18px; }
 .page-home .menu a{ font-size:11px; letter-spacing:.14em; }
 .page-home .hero{ margin-top:0; }
 .page-home .alt-contact{ font-size:13px; opacity:.75; }
