@@ -415,24 +415,23 @@ html{ scroll-behavior: smooth; }
 
 /* línea superior */
 .page-servicios-pro .tabs--pro-top::before{
-  content:"";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 100vw;
-  height: 1px;
-  transform: translateX(-50%);
-  background: var(--pc-rule);
-  pointer-events: none;
+content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateX(-50%);
+    background: var(--pc-rule);
+    pointer-events: none;
 }
-
 /* línea inferior */
 .page-servicios-pro .tabs--pro-top::after{
   content:"";
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   height: 1px;
   transform: translateX(-50%);
   background: var(--pc-rule);
@@ -659,3 +658,58 @@ html{ scroll-behavior: smooth; }
     line-height: 1.75;
   }
 }
+
+/* ============================================================
+ /* LANG BAR — siempre arriba */
+    ============================================================
+.langbar{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  background: transparent;
+  pointer-events: none; /* para que no tape clicks fuera del texto */
+}
+
+/* el inner sí puede recibir clicks */
+.langbar__inner{
+    pointer-events: auto;
+    margin: 0 auto;
+    top: 20px;
+    left: 0;
+    right: 60px;
+    z-index: 2000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    position: fixed;
+}
+
+/* Links */
+.langbar__link{
+  color: rgba(47,47,49,0.9);
+  text-decoration: none;
+  padding: 2px 0;
+  border-bottom: 1px solid transparent;
+}
+.langbar__link:hover{ border-bottom-color: rgba(47,47,49,0.35); }
+.langbar__link.is-active{ border-bottom-color: rgba(47,47,49,0.65); opacity: 1; }
+.langbar__sep{ opacity: 0.35; }
+
+/* Empuje del layout para que no se pise con el header */
+body{ padding-top: 34px; }
+
+@media (max-width: 520px){
+  body{ padding-top: 30px; }
+  .langbar__inner{ padding: 0px 0px 0px;
+        font-size: 11px;
+        top: 10px;
+        right: 30px;
+    }

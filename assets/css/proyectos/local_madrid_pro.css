@@ -882,3 +882,53 @@ html, body{ background: var(--dj-page-bg); }
     letter-spacing:0.05em;
   }
 }
+/* ================================
+   FORCE LANGBAR VISIBLE (PROJECTS)
+   Pegar al final de local_madrid_pro.css
+   ================================ */
+.topbar .langbar{
+  display:block !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  position:relative;
+  z-index:30;
+}
+
+.topbar .topwrap{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr; /* mantiene tu estructura */
+  align-items:center;
+}
+
+.topbar .langbar{
+  justify-self:end;
+}
+
+.topbar .langbar__inner{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.topbar .langbar__link{
+  text-decoration:none;
+  border:0;
+  letter-spacing:.14em;
+  font-size:11px;
+  text-transform:uppercase;
+  color: rgba(47,47,49,.68);
+}
+
+.page-project--pro .topbar .langbar__link.is-active{
+  color: rgba(95,111,97,.95);
+  font-weight:600;
+}
+
+.topbar .langbar__sep{
+  opacity:.55;
+}
+.topbar{
+  position:relative;
+  z-index:50;
+}

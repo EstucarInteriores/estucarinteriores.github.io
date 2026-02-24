@@ -492,7 +492,46 @@
       if(e.key === 'ArrowLeft') stepFs(-1);
       if(e.key === 'ArrowRight') stepFs(1);
     });
+/* =========================
+   SWIPE MÓVIL
+========================= */
+let startX = 0;
+let startY = 0;
+let deltaX = 0;
+let deltaY = 0;
+let isSwiping = false;
+const threshold = 50;     // distancia mínima horizontal
+const restraint = 80;     // tolerancia vertical
 
+track.addEventListener('touchstart', function(e){
+  const t = e.touches[0];
+  startX = t.clientX;
+  startY = t.clientY;
+  deltaX = 0;
+  deltaY = 0;
+  isSwiping = true;
+}, { passive: true });
+
+track.addEventListener('touchmove', function(e){
+  if(!isSwiping) return;
+  const t = e.touches[0];
+  deltaX = t.clientX - startX;
+  deltaY = t.clientY - startY;
+}, { passive: true });
+
+track.addEventListener('touchend', function(){
+  if(!isSwiping) return;
+
+  if(Math.abs(deltaX) > threshold && Math.abs(deltaY) < restraint){
+    if(deltaX < 0){
+      go(index + 1);
+    } else {
+      go(index - 1);
+    }
+  }
+
+  isSwiping = false;
+});
     go(0);
   })();
   </script>

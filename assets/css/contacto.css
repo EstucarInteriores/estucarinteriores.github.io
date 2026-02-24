@@ -74,6 +74,7 @@
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--muted);
+  text-decoration: none;
 }
 
 .contacto-item strong{
@@ -191,7 +192,7 @@
 }
 
 .pro-siteLink:hover{
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 3px;
 }
 
@@ -243,6 +244,7 @@
 
   .contacto-item span{
     font-size: 10px;
+    text-decoration:none;
   }
 
   .contacto-item strong{

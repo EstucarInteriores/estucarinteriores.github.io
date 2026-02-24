@@ -296,9 +296,7 @@ html, body{ background: var(--dj-page-bg); }
 }
 
 .page-project .dj-hero__arrow--next{ right:18px; }
-.page-project .dj-hero__arrow--prev{
-  right: calc(18px + var(--dj-hero-arrow-size) + 10px);
-}
+
 
 .page-project .dj-hero__arrow:focus{ outline:none; }
 .page-project .dj-hero__arrow:focus-visible{
@@ -962,4 +960,23 @@ font-size: 15px;
   touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
+}
+/* ============================================================
+   4) FLECHAS HERO (las dos abajo-dcha, en columna)
+   ============================================================ */
+
+/* Base ya la tienes: .dj-hero__arrow { bottom:18px; ... } */
+
+.page-project .dj-hero__arrow--next{
+  right: 18px;
+}
+
+/* ESTA TE FALTA EN DESKTOP */
+.page-project .dj-hero__arrow--prev{
+  right: calc(18px + var(--dj-hero-arrow-size) + 10px);
+}
+
+/* (Opcional) Hover sutil */
+.page-project .dj-hero__arrow:hover{
+  background: rgba(255,255,255,0.92);
 }

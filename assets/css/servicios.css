@@ -480,6 +480,114 @@ html{ scroll-behavior: smooth; }
 .page-servicios .par-contact{
   padding-top: 18px;
 }
+/* CTA */
+.page-particulares .par-contactCta{
+  margin: 20px 15px 25px;
+  text-align: center;
+  font-weight: 400;
+  color: rgba(47,47,49,0.74);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.page-particulares .par-contactQ{
+  color: var(--tc);
+  font-weight: 700;
+}
+
+/* Center CTA button */
+.page-particulares .par-contactCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0 0;
+}
+
+/* “Escríbeme directamente” */
+.page-particulares .par-directTitle{
+  margin: 15px 0 10px;
+  text-align: center;
+  color: rgba(47,47,49,0.94);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.page-particulares .par-directTitle strong{
+  color: var(--tc);
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+/* Grid enlaces */
+.page-particulares .par-directGrid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  justify-items: center;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Link fila */
+.page-particulares .par-directItem{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: max-content;
+  margin: 0 auto;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  background-image: none !important;
+}
+
+/* Icono contenedor (blindado) */
+.page-particulares .par-ico{
+  width: var(--par-ico) !important;
+  height: var(--par-ico) !important;
+  min-width: var(--par-ico) !important;
+  min-height: var(--par-ico) !important;
+  max-width: var(--par-ico) !important;
+  max-height: var(--par-ico) !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  flex: 0 0 var(--par-ico) !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+
+  font-size: 0 !important;
+  color: var(--tc) !important;
+}
+
+/* SVG (blindaje contra reglas globales) */
+.page-particulares .par-ico svg{
+  width: var(--par-ico) !important;
+  height: var(--par-ico) !important;
+  display: block !important;
+  fill: currentColor !important;
+}
+
+/* Texto */
+.page-particulares .par-directText{
+  display: inline-block;
+  line-height: 1;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(47,47,49,0.78);
+  text-decoration: none;
+}
+
+.page-particulares .par-directItem:hover .par-directText{
+  text-decoration: underline;
+  text-decoration-color: rgba(199,116,92,0.35);
+  text-underline-offset: 3px;
+}
+
 
 /* ============================================================
    FIX CENTRADO — canvas de Servicios (bloque completo)
@@ -560,3 +668,57 @@ html{ scroll-behavior: smooth; }
   .page-servicios .svc-inner{ padding: 0 6px !important; }
   .page-servicios .svc-intro{ max-width: 32ch; }
 }
+/* ============================================================
+ /* LANG BAR — siempre arriba */
+    ============================================================
+.langbar{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  background: transparent;
+  pointer-events: none; /* para que no tape clicks fuera del texto */
+}
+
+/* el inner sí puede recibir clicks */
+.langbar__inner{
+    pointer-events: auto;
+    margin: 0 auto;
+    top: 20px;
+    left: 0;
+    right: 60px;
+    z-index: 2000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    position: fixed;
+}
+
+/* Links */
+.langbar__link{
+  color: rgba(47,47,49,0.9);
+  text-decoration: none;
+  padding: 2px 0;
+  border-bottom: 1px solid transparent;
+}
+.langbar__link:hover{ border-bottom-color: rgba(47,47,49,0.35); }
+.langbar__link.is-active{ border-bottom-color: rgba(47,47,49,0.65); opacity: 1; }
+.langbar__sep{ opacity: 0.35; }
+
+/* Empuje del layout para que no se pise con el header */
+body{ padding-top: 34px; }
+
+@media (max-width: 520px){
+  body{ padding-top: 30px; }
+  .langbar__inner{ padding: 0px 0px 0px;
+        font-size: 11px;
+        top: 10px;
+        right: 30px;
+    }

@@ -9,6 +9,20 @@
   function showBanner() { var b = bannerEl(); if (b) b.hidden = false; }
   function hideBanner() { var b = bannerEl(); if (b) b.hidden = true; }
 
+  function isEnglishPage() {
+    // 1) Por lang en <html lang="en">
+    var lang = (document.documentElement && document.documentElement.lang) ? document.documentElement.lang : "";
+    if (lang && lang.toLowerCase().indexOf("en") === 0) return true;
+
+    // 2) Fallback por convención de URLs *_en.html
+    var path = (window.location && window.location.pathname) ? window.location.pathname : "";
+    return /_en\.html$/i.test(path);
+  }
+
+  function homeHref() {
+    return isEnglishPage() ? "./index_en.html" : "./index.html";
+  }
+
   function getChoice() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
@@ -21,7 +35,7 @@
     if (note) {
       note.hidden = false;
       window.setTimeout(function () {
-        window.location.href = "./index.html";
+        window.location.href = homeHref();
       }, REDIRECT_MS);
     } else {
       // Si no hay nota (p.ej. desde banner en index), cerramos banner.

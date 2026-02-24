@@ -225,13 +225,13 @@ html{ scroll-behavior: smooth; }
   color: var(--pl-tc);
 }
 .pl-h3{
-  margin: 32px 0 8px;
-  text-align: center;
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--pl-tc);
+     margin: 32px 0 8px;
+    text-align: left;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--pl-tc);
 }
 .pl-intro{
   margin: 0 auto 14px;
@@ -242,7 +242,7 @@ html{ scroll-behavior: smooth; }
   letter-spacing: .02em;
 }
 .pl-p{
-  margin: 30px auto 10px;
+  margin: 30px auto 30px;
   max-width: 84ch;
   font-size: 13.5px;
   line-height: 1.85;

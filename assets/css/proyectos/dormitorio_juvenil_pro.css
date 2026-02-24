@@ -853,3 +853,134 @@ html, body{ background: var(--dj-page-bg); }
     letter-spacing:0.05em;
   }
 }
+/* ============================================================
+   NEXT PROJECT — HERO (pegado a flechas, abajo derecha)
+   Visible solo cuando JS añade .is-visible
+   ============================================================ */
+
+.page-project .dj-hero__nextProj{
+  /* ya lo tienes, esto lo ajusta fino */
+  right: var(--dj-hero-arrow-inset);
+  bottom: calc(var(--dj-hero-arrow-bottom) + var(--dj-hero-arrow-size) + 12px); /* encima de flechas */
+  height: 22px;
+  padding: 0 12px;
+  border-radius: 4px;
+
+  border: 1px solid rgba(95,111,97,0.75);
+  background: rgba(255,255,255,0.92);
+  color: rgba(95,111,97,0.95);
+
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+}
+
+.page-project .dj-hero__nextProj.is-visible{
+  display: inline-flex;
+}
+
+.page-project .dj-hero__nextProj:hover{
+  background: rgba(95,111,97,0.95);
+  border-color: rgba(95,111,97,0.95);
+  color: #fff;
+  text-decoration: none;
+}
+/* ============================================================
+   NEXT PROJECT — HERO (pegado a flechas, abajo derecha)
+   Visible solo cuando JS añade .is-visible
+   ============================================================ */
+
+.page-project .dj-hero__nextProj{
+  /* ya lo tienes, esto lo ajusta fino */
+  right: var(--dj-hero-arrow-inset);
+  bottom: calc(var(--dj-hero-arrow-bottom) + var(--dj-hero-arrow-size) + 12px); /* encima de flechas */
+  height: 22px;
+  padding: 0 12px;
+  border-radius: 4px;
+
+  border: 1px solid rgba(95,111,97,0.75);
+  background: rgba(255,255,255,0.92);
+  color: rgba(95,111,97,0.95);
+
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+}
+
+.page-project .dj-hero__nextProj.is-visible{
+  display: inline-flex;
+}
+
+.page-project .dj-hero__nextProj:hover{
+  background: rgba(95,111,97,0.95);
+  border-color: rgba(95,111,97,0.95);
+  color: #fff;
+  text-decoration: none;
+}
+/* ============================================================
+   NEXT PROJECT — FULLSCREEN (abajo derecha)
+   Visible solo cuando JS añade .is-visible
+   ============================================================ */
+
+.page-project .dj-fs__nextProj{
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+
+  height: 22px;
+  padding: 0 18px;
+  border-radius: 4px;
+
+  border: 1px solid rgba(95,111,97,0.75);
+  background: rgba(233,233,231,0.96);
+  color: rgba(95,111,97,0.95);
+
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+}
+
+.page-project .dj-fs__nextProj.is-visible{
+  display: inline-flex;
+}
+
+.page-project .dj-fs__nextProj:hover{
+  background: rgba(95,111,97,0.95);
+  border-color: rgba(95,111,97,0.95);
+  color: #fff;
+  text-decoration: none;
+}
+/* FULLSCREEN caption: solo título (sin caja grande) */
+.page-project .dj-fs__cap{
+  max-width: min(720px, calc(100vw - 24px));
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--dj-fs-cap-border);
+  background: rgba(255,255,255,0.78);
+  color: rgba(95,111,97,0.95);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+}
