@@ -932,3 +932,32 @@ html, body{ background: var(--dj-page-bg); }
   position:relative;
   z-index:50;
 }
+
+/* ============================================================
+   12) FIX DOBLE SCROLL (dejar solo scroll de página)
+   - Fuerza que NO haya contenedor interno scrolleable (100vh/overflow:auto)
+   - Mantiene el scroll en el documento (html/body)
+   ============================================================ */
+html, body{
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Si en styles.css/profesionales.css existe un wrapper con height:100vh + overflow:auto,
+   esto lo neutraliza para este proyecto */
+body.page-project,
+body.page-project .dj-main,
+body.page-project main,
+body.page-project .main,
+body.page-project .content,
+body.page-project .page,
+body.page-project .wrapper,
+body.page-project .site,
+body.page-project .layout,
+body.page-project .container{
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}

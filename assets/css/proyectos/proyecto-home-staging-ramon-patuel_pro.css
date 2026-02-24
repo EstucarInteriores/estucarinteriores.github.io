@@ -918,3 +918,42 @@ html, body{ background: var(--dj-page-bg); }
   visibility: visible !important;
   pointer-events: auto !important;
 }
+
+/* ============================================================
+   99) FIX — EVITAR DOBLE SCROLL (dejar solo el scroll del documento)
+   Motivo típico: algún wrapper/viewport con height:100vh y overflow:auto/scroll
+   definido en styles.css / profesionales.css. Este bloque lo neutraliza SOLO
+   para páginas de proyecto (.page-project).
+   ============================================================ */
+
+/* El scroll debe vivir en el documento, no en contenedores internos */
+html, body{
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Asegura que la página de proyecto no genera un segundo scroll interno */
+body.page-project{
+  height: auto !important;
+  min-height: 100% !important;
+  overflow: visible !important; /* el scroll lo gestiona html/body */
+}
+
+/* Neutraliza wrappers típicos que a veces reciben overflow/height en CSS global */
+body.page-project main,
+body.page-project .dj-main,
+body.page-project .dj-hero,
+body.page-project .dj-hero__carousel,
+body.page-project .dj-hero__viewport,
+body.page-project .dj-wrap,
+body.page-project .between-wrap{
+  max-height: none !important;
+}
+
+/* Mantén overflow:hidden SOLO en el viewport del carrusel para evitar scrollbars internas */
+body.page-project .dj-hero__viewport{
+  overflow: hidden !important;
+}
+
