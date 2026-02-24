@@ -202,12 +202,12 @@ a:hover{ text-decoration:underline; }
 .menu.menu--two-row a.nav-tab.nav-particulares{
   grid-column:1; grid-row:2;
   justify-self:end;
-  margin-right:40px;
-  margin-left:40px;
+  margin-right:20px;
 }
 .menu.menu--two-row a.nav-tab.nav-profesionales{
   grid-column:3; grid-row:2;
   justify-self:start;
+  margin-left: 20px;
 }
 
 /* Normalizar padding/márgenes en grid */
@@ -816,7 +816,7 @@ h1{
 }
 
 .header--compact .menu{
-  padding:0px 10px 20px;
+  padding:10px 10px 10px;
   margin-top:2px;
 }
 
