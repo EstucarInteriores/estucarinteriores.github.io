@@ -189,7 +189,7 @@ a:hover{ text-decoration:underline; }
   grid-template-rows:auto auto;
   justify-content:stretch;
   align-items:center;
-  row-gap:8px;
+  row-gap:18px;
 }
 .menu.menu--two-row .menu-break{ display:none !important; }
 
@@ -749,7 +749,7 @@ h1{
   .menu.menu--two-row{
     grid-template-columns:1fr 1fr 1fr;
     row-gap:15px;
-    column-gap:10px;
+    column-gap:15px;
   }
 
   .menu.menu--two-row a.nav-sobre{ justify-self:start; margin-right:0; }
