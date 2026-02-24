@@ -343,6 +343,13 @@
     font-size: var(--tabs-fs-compact);
     letter-spacing: var(--tabs-ls-compact);
   }
+
+.header--compact .menu {
+    padding: 10px 10px 10px;
+    margin-top: 2px;
+    column-gap: 6px;
+    row-gap:5px;
+}
 }
 
 @media (max-width: 900px){
