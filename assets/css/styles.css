@@ -748,7 +748,7 @@ h1{
 
   .menu.menu--two-row{
     grid-template-columns:1fr 1fr 1fr;
-    row-gap:6px;
+    row-gap:15px;
     column-gap:10px;
   }
 
@@ -816,10 +816,8 @@ h1{
 }
 
 .header--compact .menu{
-  padding:14px 22px 10px;
+  padding:0px 10px 20px;
   margin-top:2px;
-  column-gap:26px;
-  row-gap:8px;
 }
 
 .header--compact .menu a{
