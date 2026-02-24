@@ -644,7 +644,7 @@ position: absolute;
 
 .pl-lb__close:hover{
   background: rgba(255,255,255,.90);
-  border-color: rgba(199,116,92,.85);
+  border-color: #5f6f61;
   transform: translateY(-1px);
 }
 
