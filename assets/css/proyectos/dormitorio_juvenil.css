@@ -953,6 +953,11 @@ font-size: 15px;
         object-position: 50% 51%;
         transform: none;
     }
+    .menu.menu--two-row {
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 0px;
+        column-gap: 0px;
+    }
 }
 /* Permite scroll vertical pero habilita gesto horizontal con buen comportamiento */
 .dj-hero__viewport,
