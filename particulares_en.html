@@ -12,6 +12,7 @@
   <link rel="canonical" href="https://estucarinteriores.com/particulares_en.html" />
   <link rel="alternate" hreflang="es-ES" href="https://estucarinteriores.com/particulares.html" />
   <link rel="alternate" hreflang="en" href="https://estucarinteriores.com/particulares_en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://estucarinteriores.com/particulares.html" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="article" />
@@ -19,6 +20,8 @@
   <meta property="og:title" content="Interior design for private homes in Madrid | Estucar Interiores" />
   <meta property="og:description" content="Clear and structured method: layout, lighting, materials and furniture. Selected projects and direct contact." />
   <meta property="og:url" content="https://estucarinteriores.com/particulares_en.html" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="es_ES" />
   <meta property="og:image" content="https://estucarinteriores.com/assets/img/hero-par.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -26,12 +29,69 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Interior design for private homes in Madrid | Estucar Interiores" />
-  <meta name="twitter:description" content="Clear and structured method: layout, lighting, materials and furniture." />
+  <meta name="twitter:description" content="Interior design for private homes in Madrid: layout, lighting, materials and furniture with a clear, structured method." />
   <meta name="twitter:image" content="https://estucarinteriores.com/assets/img/hero-par.webp" />
   <meta name="twitter:site" content="@estucar_interiores" />
 
   <link rel="stylesheet" href="./assets/css/styles.css?v=12" />
   <link rel="stylesheet" href="./assets/css/particulares.css?v=2" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "InteriorDesignBusiness",
+        "@id": "https://estucarinteriores.com/#business",
+        "name": "Estucar Interiores (Estudio Carcabón)",
+        "url": "https://estucarinteriores.com/",
+        "image": "https://estucarinteriores.com/assets/img/hero-par.webp",
+        "email": "contacto@estucarinteriores.com",
+        "telephone": "+34695440520",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Madrid",
+          "addressRegion": "Comunidad de Madrid",
+          "addressCountry": "ES"
+        },
+        "sameAs": [
+          "https://www.instagram.com/estucar_interiores/"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://estucarinteriores.com/particulares_en.html#service",
+        "name": "Interior design for private homes in Madrid",
+        "serviceType": "Residential interior design",
+        "areaServed": { "@type": "City", "name": "Madrid" },
+        "provider": { "@id": "https://estucarinteriores.com/#business" },
+        "url": "https://estucarinteriores.com/particulares_en.html"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://estucarinteriores.com/particulares_en.html#webpage",
+        "url": "https://estucarinteriores.com/particulares_en.html",
+        "name": "Interior design for private homes in Madrid",
+        "inLanguage": "en",
+        "about": { "@id": "https://estucarinteriores.com/#business" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://estucarinteriores.com/assets/img/hero-par.webp"
+        },
+        "description": "Interior design for private homes in Madrid. Clear and structured method: layout, lighting, materials and furniture. Selected projects and direct contact with Estucar Interiores."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://estucarinteriores.com/particulares_en.html#breadcrumbs",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://estucarinteriores.com/index_en.html" },
+          { "@type": "ListItem", "position": 2, "name": "Private Clients", "item": "https://estucarinteriores.com/particulares_en.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="page-particulares header--compact">

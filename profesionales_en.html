@@ -12,6 +12,7 @@
   <link rel="canonical" href="https://estucarinteriores.com/profesionales_en.html" />
   <link rel="alternate" hreflang="es-ES" href="https://estucarinteriores.com/profesionales.html" />
   <link rel="alternate" hreflang="en" href="https://estucarinteriores.com/profesionales_en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://estucarinteriores.com/profesionales.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
@@ -19,6 +20,8 @@
   <meta property="og:title" content="Interior design for professionals in Madrid | Estucar Interiores" />
   <meta property="og:description" content="Technical and design solutions for architects, contractors and real estate professionals. Layout studies, documentation and 3D visualizations to support execution." />
   <meta property="og:url" content="https://estucarinteriores.com/profesionales_en.html" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="es_ES" />
   <meta property="og:image" content="https://estucarinteriores.com/assets/img/GBP_Local_recibidor.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -34,6 +37,63 @@
   <!-- CSS -->
   <link rel="stylesheet" href="./assets/css/styles.css?v=99" />
   <link rel="stylesheet" href="./assets/css/profesionales.css?v=2" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "InteriorDesignBusiness",
+        "@id": "https://estucarinteriores.com/#business",
+        "name": "Estucar Interiores (Estudio Carcabón)",
+        "url": "https://estucarinteriores.com/",
+        "image": "https://estucarinteriores.com/assets/img/GBP_Local_recibidor.webp",
+        "email": "contacto@estucarinteriores.com",
+        "telephone": "+34695440520",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Madrid",
+          "addressRegion": "Comunidad de Madrid",
+          "addressCountry": "ES"
+        },
+        "sameAs": [
+          "https://www.instagram.com/estucar_interiores/"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://estucarinteriores.com/profesionales_en.html#service",
+        "name": "Interior design support for professionals in Madrid",
+        "serviceType": "Interior design and technical support for architects, contractors and real estate professionals",
+        "areaServed": { "@type": "City", "name": "Madrid" },
+        "provider": { "@id": "https://estucarinteriores.com/#business" },
+        "url": "https://estucarinteriores.com/profesionales_en.html"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://estucarinteriores.com/profesionales_en.html#webpage",
+        "url": "https://estucarinteriores.com/profesionales_en.html",
+        "name": "Interior design for professionals in Madrid",
+        "inLanguage": "en",
+        "about": { "@id": "https://estucarinteriores.com/#business" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://estucarinteriores.com/assets/img/GBP_Local_recibidor.webp"
+        },
+        "description": "Interior design and technical support for architects, contractors and real estate professionals in Madrid. Layout studies, clear documentation and 3D visualizations to move projects forward with clarity and structure."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://estucarinteriores.com/profesionales_en.html#breadcrumbs",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://estucarinteriores.com/index_en.html" },
+          { "@type": "ListItem", "position": 2, "name": "Professionals", "item": "https://estucarinteriores.com/profesionales_en.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="page-profesionales header--compact">

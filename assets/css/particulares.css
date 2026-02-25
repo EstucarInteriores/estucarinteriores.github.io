@@ -694,7 +694,7 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     opacity: 0.7;
-    position: fixed;
+    position: absolute;
 }
 /* Links */
 .langbar__link{
