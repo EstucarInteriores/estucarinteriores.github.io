@@ -194,7 +194,7 @@ a:hover{ text-decoration:underline; }
 .menu.menu--two-row .menu-break{ display:none !important; }
 
 /* Fila 1 */
-.menu.menu--two-row a.nav-sobre{ grid-column:1; grid-row:1; justify-self:center; margin-right:20px; }
+.menu.menu--two-row a.nav-sobre{ grid-column:1; grid-row:1; text-align: center; margin-right:0px; }
 .menu.menu--two-row a.nav-inicio{ grid-column:2; grid-row:1; justify-self:center; }
 .menu.menu--two-row a.nav-contacto{ grid-column:3; grid-row:1; justify-self:center; }
 
@@ -754,9 +754,9 @@ h1{
 
   .menu.menu--two-row a.nav-sobre{ justify-self:start; margin-right:0; }
   .menu.menu--two-row a.nav-inicio{ justify-self:center; }
-  .menu.menu--two-row a.nav-contacto{ justify-self:end; }
+  .menu.menu--two-row a.nav-contacto{ justify-self:start; }
 
-  .menu.menu--two-row a.nav-tab.nav-particulares{ justify-self:start; margin-right:0; }
+  .menu.menu--two-row a.nav-tab.nav-particulares{ justify-self:end; margin-right:0; }
   .menu.menu--two-row a.nav-tab.nav-profesionales{ justify-self:end; margin-left:0; }
 
   .kicker{ font-size:12px; letter-spacing:.18em; margin-top:0; }

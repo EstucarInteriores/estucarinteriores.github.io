@@ -267,22 +267,7 @@
   .pro-siteLine{
     font-size: 11px;
   }
-.menu.menu--two-row a.nav-tab.nav-profesionales {
-    grid-column: 3;
-    grid-row: 2;
-    justify-self: start;
-    margin-left: 30px;
-    transform: none;
-}
-.menu.menu--two-row a.nav-tab.nav-particulares
-Specificity: (0,4,1)
- {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: end;
-    margin-right: 30px;
-    transform: none;
-}
+
 
 }
 
@@ -303,22 +288,7 @@ Specificity: (0,4,1)
   .contacto-item strong{
     word-break: break-word;
   }
-.menu.menu--two-row a.nav-tab.nav-profesionales {
-    grid-column: 3;
-    grid-row: 2;
-    justify-self: start;
-    margin-left: 30px;
-    transform: none;
-}
-.menu.menu--two-row a.nav-tab.nav-particulares
-Specificity: (0,4,1)
- {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: end;
-    margin-right: 30px;
-    transform: none;
-}
+
 
 }
 
@@ -375,15 +345,7 @@ Specificity: (0,4,1)
     padding: 8px 0;
   }
 }
-/* Quitar subrayado/lineas del título (brand) al hover SOLO en Contacto */
-.page-contacto .brand,
-.page-contacto .brand:hover,
-.page-contacto .brand:focus,
-.page-contacto .brand:focus-visible{
-  text-decoration: none !important;
-  border-bottom: none !important;
-  outline: none;
-}
+
 
 /* Por si el subrayado está en el texto interno */
 .page-contacto .brand .brand-name,
@@ -395,10 +357,5 @@ Specificity: (0,4,1)
 .page-contacto .brand::after,
 .page-contacto .brand:hover::after{
   content: none !important;
-}
-
-.header--compact .menu {
-    padding: 10px 10px 10px;
-    margin-top: 25px;
 }
 

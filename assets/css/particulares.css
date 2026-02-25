@@ -623,10 +623,6 @@
 /* ============================================================
    FIX MÓVIL — quita overflow lateral (margen derecha fantasma)
    ============================================================ */
-.page-particulares,
-.page-particulares body{
-  overflow-x: hidden;
-}
 
 @media (max-width: 980px){
   .page-particulares .tabs.tabs--par-top{
