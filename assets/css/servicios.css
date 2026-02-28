@@ -329,7 +329,13 @@ text-align: left;
   pointer-events: none;
 }
 
-
+.page-servicios .svc-not{
+margin:10px auto 0px;
+    padding: 0;
+    text-align: left;
+    font-size: 10px;
+    font-style: italic;
+}
 }/* ============================================================
    10) FOOTER legal + banner
    ============================================================ */
