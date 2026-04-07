@@ -262,12 +262,10 @@ a:hover{ text-decoration:underline; }
   flex-wrap:wrap;
 }
 .below-inner{
-  background:transparent;
-  max-width:690px;
+  max-width:640px;
   margin:0 auto;
-  padding:30px 18px 46px;
+  padding:50px 18px 80px;
 }
-
 .below-grid{
   display:grid;
   grid-template-columns:1fr;
