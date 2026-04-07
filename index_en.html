@@ -155,14 +155,24 @@
   </header>
 
   <main id="contenido">
-    <section class="hero" aria-label="Main image">
-      <img class="hero-img"
-           src="./assets/img/hero-home.webp"
-           alt="Minimalist living room with natural light representing the Estucar Interiores style"
-           loading="eager"
-           decoding="async"
-           fetchpriority="high">
-    </section>
+    <section class="hero hero-home-copy" aria-label="Main image">
+  <img class="hero-img"
+       src="./assets/img/hero-home.webp"
+       alt="Minimalist living room with natural light representing the Estucar Interiores style"
+       loading="eager"
+       decoding="async"
+       fetchpriority="high">
+
+  <div class="hero-copy hero-copy--home">
+    <div class="hero-copy__inner">
+      <div class="hero-kicker">Interior Design · Madrid</div>
+      <h1 class="hero-title">Interior design shaped by clarity, structure, and well-considered decisions.</h1>
+      <p class="hero-text">
+        Layout, spatial design, and lighting for private homes and professional projects.
+      </p>
+    </div>
+  </div>
+</section>
 
     <section class="below">
       <div class="below-inner">
@@ -171,28 +181,37 @@
         <h3 class="sr-only">Interior design for private homes</h3>
         <h3 class="sr-only">Interior design for architects, contractors and developers</h3>
 
-        <div class="below-grid">
-          <div>
-            <div class="kicker">Interior Design · Madrid</div>
-            <h1>Interior design shaped by clarity, structure, and well-considered decisions.</h1>
-            <p class="p-indent"><strong>Layout, spatial design, and lighting</strong> for private homes and professional projects.</p>
-            <p>Tell me about your project and I’ll point you to the most suitable service and the next step, <strong>clearly and with no obligation.</strong></p>
-          </div>
+       <div class="below-grid">
 
-          <div class="side">
-            <div class="cta-row">
-              <a class="btn-outline particulares"
-                 href="https://forms.gle/1dduSop3FBtjsTJB8"
-                 target="_blank" rel="noopener">
-                Let’s talk about your project
-              </a>
+  <div class="home-bridge">
+    Every project starts from a real need. I help you resolve it with <strong>clarity and no unnecessary complexity</strong>.
+  </div>
 
-              <a class="btn-outline profesionales"
-                 href="https://forms.gle/Z4hV8WUVk6ptmpHP9"
-                 target="_blank" rel="noopener">
-                Let’s assess a collaboration
-              </a>
-            </div>
+  <div class="split-home">
+
+    <div class="split-col particulares">
+      <div class="split-kicker">For private clients</div>
+      <h2>Space proposal</h2>
+      <p>A concrete solution to transform one room with clarity and direction.</p>
+
+      <a class="btn-outline particulares" href="./particulares_en.html">
+        Start proposal
+      </a>
+    </div>
+
+    <div class="split-divider" aria-hidden="true"></div>
+
+    <div class="split-col profesionales">
+      <div class="split-kicker">For professionals</div>
+      <h2>Project collaboration</h2>
+      <p>Support in strategy, documentation and visualisation.</p>
+
+      <a class="btn-outline profesionales" href="./profesionales_en.html">
+        View professional services
+      </a>
+    </div>
+
+  </div>
 
             <div class="alt-contact">
               <div class="alt-title">Or, if you prefer, <strong>write to me directly</strong>:</div>

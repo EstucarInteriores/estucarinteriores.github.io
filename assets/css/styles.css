@@ -464,6 +464,275 @@ h1{
     display:none;
   }
 }
+
+/* =========================
+   HOME · HERO COPY + SPLIT
+========================= */
+
+.hero-home-copy{
+  position:relative;
+}
+
+.hero-copy--home{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  pointer-events:none;
+}
+
+.hero-copy__inner{
+  width:min(1200px, 100%);
+  margin:0 auto;
+  padding:0 18px 72px;
+  display:flex;
+  justify-content:flex-start;
+}
+
+.hero-copy__inner > *{
+  pointer-events:auto;
+}
+
+.hero-copy__inner{
+  box-sizing:border-box;
+}
+
+.hero-copy__inner{
+  position:relative;
+}
+
+.hero-copy__inner::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:-22px;
+  width:min(340px, calc(100vw - 60px));
+  height:calc(100% + 44px);
+  background:linear-gradient(90deg, rgba(58,43,34,.58) 0%, rgba(58,43,34,.42) 56%, rgba(58,43,34,0) 100%);
+  border-radius:0;
+  pointer-events:none;
+}
+
+.hero-kicker,
+.hero-title,
+.hero-text{
+  position:relative;
+  z-index:1;
+  max-width:340px;
+  color:#f4f1ec;
+  text-align:left;
+}
+
+.hero-kicker{
+  font-size:14px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:400;
+  margin-bottom:20px;
+}
+
+.hero-title{
+  margin:0 0 18px 0;
+  font-size:34px;
+  line-height:1.18;
+  font-weight:400;
+  letter-spacing:-.02em;
+  color:#f4f1ec;
+}
+
+.hero-text{
+  font-size:15px;
+  line-height:1.6;
+  color:rgba(244,241,236,.92);
+  max-width:34ch;
+}
+
+/* debajo del hero */
+.below-inner{
+  max-width:920px;
+  margin:0 auto;
+  padding:42px 18px 80px;
+}
+
+.below-grid{
+  gap:26px;
+  padding-top:0;
+}
+
+.home-bridge{
+  text-align:center;
+  font-size:15px;
+  line-height:1.7;
+  color:rgba(47,47,49,.78);
+  max-width:68ch;
+  margin:0 auto 10px;
+}
+
+.split-home{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);
+  gap:40px;
+  align-items:start;
+  max-width:860px;
+  margin:0 auto;
+  padding-top:10px;
+}
+
+.split-col{
+  text-align:left;
+  padding:0 6px;
+}
+
+.split-kicker{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  opacity:.58;
+  margin-bottom:12px;
+}
+
+.split-col h2{
+  font-size:20px;
+  line-height:1.25;
+  font-weight:400;
+  margin:0 0 12px 0;
+}
+
+.split-col.particulares h2{
+  color:var(--terracota);
+}
+
+.split-col.profesionales h2{
+  color:var(--musgo);
+}
+
+.split-col p{
+  font-size:14px;
+  line-height:1.7;
+  color:var(--muted);
+  margin:0 0 18px 0;
+  max-width:32ch;
+  text-align:left;
+}
+
+.split-divider{
+  width:1px;
+  height:132px;
+  background:rgba(47,47,49,.14);
+  align-self:center;
+}
+
+.split-home .btn-outline{
+  margin-top:0;
+  padding:14px 18px;
+  font-size:10px;
+  letter-spacing:.12em;
+  min-width:230px;
+}
+
+.split-col.particulares{
+  justify-self:end;
+}
+
+.split-col.profesionales{
+  justify-self:start;
+}
+
+/* tablet */
+@media (max-width: 1100px){
+  .hero-copy__inner{
+    padding:0 18px 54px;
+  }
+
+  .hero-copy__inner::before{
+    width:min(320px, calc(100vw - 56px));
+    top:-18px;
+    height:calc(100% + 36px);
+  }
+
+  .hero-title{
+    font-size:30px;
+  }
+
+  .split-home{
+    gap:28px;
+  }
+}
+
+/* móvil */
+@media (max-width: 800px){
+  .hero-copy__inner{
+    padding:0 18px 30px;
+  }
+
+  .hero-copy__inner::before{
+    left:12px;
+    width:calc(100vw - 48px);
+    max-width:290px;
+    top:-14px;
+    height:calc(100% + 28px);
+    background:linear-gradient(90deg, rgba(58,43,34,.54) 0%, rgba(58,43,34,.34) 60%, rgba(58,43,34,0) 100%);
+  }
+
+  .hero-kicker{
+    font-size:11px;
+    margin-bottom:10px;
+  }
+
+  .hero-title{
+    font-size:22px;
+    line-height:1.16;
+    margin-bottom:10px;
+    max-width:260px;
+  }
+
+  .hero-text{
+    font-size:12px;
+    line-height:1.45;
+    max-width:28ch;
+  }
+
+  .below-inner{
+    padding:28px 16px 54px;
+  }
+
+  .home-bridge{
+    font-size:13px;
+    line-height:1.6;
+    max-width:38ch;
+  }
+
+  .split-home{
+    grid-template-columns:1fr;
+    gap:26px;
+    max-width:420px;
+    padding-top:6px;
+  }
+
+  .split-divider{
+    display:none;
+  }
+
+  .split-col,
+  .split-col.particulares,
+  .split-col.profesionales{
+    justify-self:stretch;
+    text-align:center;
+    padding:0;
+  }
+
+  .split-col p{
+    max-width:none;
+    text-align:center;
+  }
+
+  .split-home .btn-outline{
+    min-width:0;
+    width:100%;
+    max-width:280px;
+  }
+}
 /* =========================
    CIERRE / PIE
 ========================= */
