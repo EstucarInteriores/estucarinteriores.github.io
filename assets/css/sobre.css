@@ -64,7 +64,7 @@ font-size: 16px;
 .page-sobre .about-block p,
 .page-sobre .about-close p{
   margin: 0;
-  font-size: 18px;      /* ↓ desde 15.5 */
+  font-size: 16px;      /* ↓ desde 15.5 */
   line-height: 1.8;
   color: var(--about-muted);
   max-width: 100%;
