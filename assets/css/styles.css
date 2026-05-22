@@ -34,7 +34,7 @@
   box-sizing:    box-sizing: border-box; /* (se deja tal cual para NO cambiar resultado actual) */
   margin: 0;
   padding: 0;
-  text-align: center;
+  text-align: justify;
 }
 
 html{
